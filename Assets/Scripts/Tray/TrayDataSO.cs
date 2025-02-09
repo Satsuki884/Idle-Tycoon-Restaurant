@@ -3,7 +3,25 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "TrayDataSO", menuName = "ScriptableObjects/TrayDataSO", order = 1)]
 [Serializable]
+public class TrayDataSO : ScriptableObject
+{
+    [SerializeField] private List<TrayData> _trayData;
+    public List<TrayData> TrayData
+    {
+        get
+        {
+            return _trayData;
+        }
+        set
+        {
+            _trayData = value;
+        }
+    }
+}
+
+[System.Serializable]
 public class TrayData
 {
     [SerializeField] private string _trayName;
@@ -11,11 +29,19 @@ public class TrayData
     [SerializeField] private ProductType _productType;
     public ProductType ProductType => _productType;
     [SerializeField] private List<Resident> _residents;
-    public List<Resident> Residents => _residents;
+    public List<Resident> Residents
+    {
+        get
+        {
+            return _residents;
+        }
+        set
+        {
+            _residents = value;
+        }
+    }
     [SerializeField] private float _timeToServe;
     public float TimeToServe => _timeToServe;
-    [SerializeField] private int _unlockLevel;
-    public int UnlockLevel => _unlockLevel;
     [SerializeField] private ProductUpgradeDataSO _productUpgradeData;
     public ProductUpgradeDataSO ProductUpgradeData => _productUpgradeData;
     [SerializeField] private int _upgradeLevel;
@@ -33,9 +59,4 @@ public class TrayData
     {
         return _isActive;
     }
-
-    
-
-
-
 }

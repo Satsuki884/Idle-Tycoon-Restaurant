@@ -62,19 +62,13 @@ public class SaveManager : MonoBehaviour
         Debug.Log("Player data loaded successfully.");
         return playerData;
     }
-
-    public void SaveTrayData(List<Tray> trayData)
+    public void SaveTrayData(List<TrayData> trayData)
     {
         if (!File.Exists(_saveTrayDataPath))
         {
             File.Create(_saveTrayDataPath).Dispose();
         }
-        List<TrayData> trayDataList = new List<TrayData>();
-        foreach (var tray in trayData)
-        {
-            trayDataList.Add(tray.TrayData);
-        }
-        string json = JsonUtility.ToJson(trayDataList, true);
+        string json = JsonUtility.ToJson(trayData, true);
         File.WriteAllText(_saveTrayDataPath, json);
         Debug.Log("Tray data saved successfully.");
     }
@@ -83,7 +77,12 @@ public class SaveManager : MonoBehaviour
     {
         if (!File.Exists(_saveTrayDataPath))
         {
-            SaveTrayData(_trayData);
+            List<TrayData> trayDataList = new List<TrayData>();
+            foreach (var tray in _trayData)
+            {
+                trayDataList.Add(tray.TrayData);
+            }
+            SaveTrayData(trayDataList);
         }
         string json = File.ReadAllText(_saveTrayDataPath);
         List<TrayData> trayData = JsonUtility.FromJson<List<TrayData>>(json);

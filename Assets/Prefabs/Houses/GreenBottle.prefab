@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40318175fd341a44a85458bf047657c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _upgradeTray: {fileID: 0}
   _windowCanvas: {fileID: 0}
   _upgradeText: {fileID: 0}
   _closeUpgradeButton: {fileID: 0}
@@ -109,7 +110,6 @@ MonoBehaviour:
     - {fileID: 5307584265451786666}
     - {fileID: 424553691521226141}
     _timeToServe: 3.5
-    _unlockLevel: 1
     _productUpgradeData: {fileID: 11400000, guid: 49bf3946e99e61f43a234cda43337f72, type: 2}
     _upgradeLevel: 0
     _isActive: 0

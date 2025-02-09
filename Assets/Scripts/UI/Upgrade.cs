@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Upgrade : MonoBehaviour
 {
+    [SerializeField] private UpgradeTray _upgradeTray;
     [SerializeField] private GameObject _windowCanvas;
     [SerializeField] private TMP_Text _upgradeText;
     [SerializeField] private Button _closeUpgradeButton;
@@ -27,6 +28,7 @@ public class Upgrade : MonoBehaviour
             bool isActive = _windowCanvas.activeSelf;
             _upgradeText.text = "Selected: " + gameObject.name;
             _windowCanvas.SetActive(!isActive);
+            _upgradeTray.UpdatePanel(gameObject.name);
         }
     }
 
