@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &945075900469207573
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5193615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24203777
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98602366
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.16660528
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_Name
+      value: Peasant Nolant Brown(Free Version) (1) Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6514851788486140854}
+  m_SourcePrefab: {fileID: 100100000, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+--- !u!1 &2694530142421505541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+  m_PrefabInstance: {fileID: 945075900469207573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6514851788486140854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2694530142421505541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isActive: 0

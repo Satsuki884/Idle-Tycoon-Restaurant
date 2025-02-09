@@ -26,7 +26,7 @@ public class Upgrade : MonoBehaviour
         if (_windowCanvas != null)
         {
             bool isActive = _windowCanvas.activeSelf;
-            _upgradeText.text = "Selected: " + gameObject.name;
+            _upgradeText.text = gameObject.name;
             _windowCanvas.SetActive(!isActive);
             _upgradeTray.UpdatePanel(gameObject.name);
         }

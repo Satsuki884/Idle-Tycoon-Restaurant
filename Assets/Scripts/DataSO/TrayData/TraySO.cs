@@ -1,29 +1,26 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TrayDataSO", menuName = "ScriptableObjects/TrayDataSO", order = 1)]
-[Serializable]
-public class TrayDataSO : ScriptableObject
+[CreateAssetMenu(fileName = "NewTray", menuName = "ScriptableObjects/TraySO", order = 1)]
+public class TraySO : ScriptableObject
 {
-    [SerializeField] private List<TrayData> _trayData;
-    public List<TrayData> TrayData
-    {
-        get
-        {
+    [SerializeField] private TrayData _trayData;
+    public TrayData TrayData{
+        get{
             return _trayData;
         }
-        set
-        {
+        set{
             _trayData = value;
         }
-    }
+    } 
 }
+
 
 [System.Serializable]
 public class TrayData
 {
+    [SerializeField] private GameObject _trayPrefab;
+    public GameObject TrayPrefab => _trayPrefab;
     [SerializeField] private string _trayName;
     public string TrayName => _trayName;
     [SerializeField] private ProductType _productType;
@@ -40,6 +37,8 @@ public class TrayData
             _residents = value;
         }
     }
+    [SerializeField] private int _levelForUnlock;
+    public int LevelForUnlock => _levelForUnlock;
     [SerializeField] private float _timeToServe;
     public float TimeToServe => _timeToServe;
     [SerializeField] private ProductUpgradeDataSO _productUpgradeData;
@@ -47,16 +46,28 @@ public class TrayData
     [SerializeField] private int _upgradeLevel;
     public int UpgradeLevel => _upgradeLevel;
     [SerializeField] private bool _isActive;
-    public bool IsActive
+    public bool IsActive => _isActive;
+
+    public void CheckIsActive()
     {
-        get
+        if (_levelForUnlock <= GameManager.Instance.SaveManager.PlayerData.PlayerLevel)
         {
-            return CheckIsActive();
+            _isActive = false;
+        }
+        else
+        {
+            _isActive = true;
         }
     }
 
-    private bool CheckIsActive()
+    public void LevelUp()
     {
-        return _isActive;
+        if (_upgradeLevel < _productUpgradeData.UpgradeCost.Count)
+        {
+            if (GameManager.Instance.SaveManager.PlayerData.PlayerCoins >= _productUpgradeData.UpgradeCost[_upgradeLevel])
+            {
+                _upgradeLevel++;
+            }
+        }
     }
 }

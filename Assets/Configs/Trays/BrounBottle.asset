@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669314794f679b34082c73204f9f965f, type: 3}
+  m_Name: BrounBottle
+  m_EditorClassIdentifier: 
+  _trayData:
+    _trayPrefab: {fileID: 6339928439834528897, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
+    _trayName: BrounBottle
+    _productType: 3
+    _residents:
+    - {fileID: 795359874225634454, guid: d1ddc6e8be2963d489a88e152a648fb8, type: 3}
+    - {fileID: 6614330784294235195, guid: a7d17c644aae35348b108fa1ed34ea11, type: 3}
+    _levelForUnlock: 3
+    _timeToServe: 2.5
+    _productUpgradeData: {fileID: 11400000, guid: b6a7a2fcc35e4154aa9d0ceea4acfd75, type: 2}
+    _upgradeLevel: 0
+    _isActive: 0

@@ -103,16 +103,6 @@ MonoBehaviour:
   - {x: -24.75, y: 1.51, z: -1.28}
   incomePerOrder: 5
   queueManager: {fileID: 0}
-  _trayData:
-    _trayName: RedBottle
-    _productType: 2
-    _residents:
-    - {fileID: 7397589812031549183}
-    - {fileID: 349571087974332375}
-    _timeToServe: 3
-    _productUpgradeData: {fileID: 11400000, guid: 8bbcfb413c0d8f64bb4cd0667cfc69bc, type: 2}
-    _upgradeLevel: 0
-    _isActive: 0
 --- !u!1001 &401856579994189762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,90 +475,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5352104285756674624, guid: 44753b020bbea8a42b22467f249292b9, type: 3}
   m_PrefabInstance: {fileID: 2143387572234837092}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &2303484764603990191
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8366559930293043579}
-    m_Modifications:
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.5193615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.069
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.24203777
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98602366
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.16660528
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 19.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_Name
-      value: Peasant Nolant Brown(Free Version)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7397589812031549183}
-  m_SourcePrefab: {fileID: 100100000, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
---- !u!1 &4003399168442561727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-  m_PrefabInstance: {fileID: 2303484764603990191}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7397589812031549183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4003399168442561727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 0}
-  _isActive: 1
---- !u!4 &4378975454735674885 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-  m_PrefabInstance: {fileID: 2303484764603990191}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3266100988511448475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -755,90 +661,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237517483046682220, guid: a9427b8152400da438a64927a7216602, type: 3}
   m_PrefabInstance: {fileID: 5873545834552504794}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6029510267069789812
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8366559930293043579}
-    m_Modifications:
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.5193615
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.069
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.24203777
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.98602366
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.16660528
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 19.181
-      objectReference: {fileID: 0}
-    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      propertyPath: m_Name
-      value: Peasant Nolant Brown(Free Version) (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 349571087974332375}
-  m_SourcePrefab: {fileID: 100100000, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
---- !u!4 &8115414431830218974 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-  m_PrefabInstance: {fileID: 6029510267069789812}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8922878537822749284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
-  m_PrefabInstance: {fileID: 6029510267069789812}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &349571087974332375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922878537822749284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 0}
-  _isActive: 0
 --- !u!1001 &6253200607962740838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -901,6 +723,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237517483046682220, guid: a9427b8152400da438a64927a7216602, type: 3}
   m_PrefabInstance: {fileID: 6253200607962740838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6823105315500463201
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8366559930293043579}
+    m_Modifications:
+    - target: {fileID: 2694530142421505541, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_Name
+      value: Peasant Nolant Brown(Free Version) (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5193615
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24203777
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98602366
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.16660528
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 225950beff83c96469effa58da763877, type: 3}
+--- !u!4 &8115414431830218974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3327936167804767423, guid: 225950beff83c96469effa58da763877, type: 3}
+  m_PrefabInstance: {fileID: 6823105315500463201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7697837733813746075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -962,6 +846,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4237517483046682220, guid: a9427b8152400da438a64927a7216602, type: 3}
   m_PrefabInstance: {fileID: 7697837733813746075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8277369940331283629
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8366559930293043579}
+    m_Modifications:
+    - target: {fileID: 4995000303765794834, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_Name
+      value: Peasant Nolant Brown(Free Version)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5193615
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24203777
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98602366
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.16660528
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+--- !u!4 &4378975454735674885 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5627844646208924328, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+  m_PrefabInstance: {fileID: 8277369940331283629}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8809805632735329236
 PrefabInstance:

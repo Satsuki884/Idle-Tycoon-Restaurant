@@ -11,14 +11,14 @@ public class UpgradeTray : MonoBehaviour
     [SerializeField] private TMP_Text _costOfUpgradeText;
 
     private PlayerData playerData;
-    private List<TrayData> trayData;
+    private TrayDataSO trayData;
 
     private TrayData currentTrayData;
     private List<Resident> residents;
 
     private void Start()
     {
-        SetData();
+        // SetData();
 
         _buyNewResidentButton.onClick.RemoveAllListeners();
         _buyNewResidentButton.onClick.AddListener(BuyNewResident);
@@ -29,6 +29,7 @@ public class UpgradeTray : MonoBehaviour
 
     public void UpdatePanel(string trayName)
     {
+        // Debug.Log(trayName);
         _trayName = trayName;
         SetData();
         SetPanelData(trayName);
@@ -37,8 +38,16 @@ public class UpgradeTray : MonoBehaviour
 
     private void SetData()
     {
+        Debug.Log(GameManager.Instance);
+        Debug.Log(GameManager.Instance.SaveManager);
+        Debug.Log(GameManager.Instance.SaveManager.PlayerData);
         playerData = GameManager.Instance.SaveManager.PlayerData;
+        Debug.Log(playerData.PlayerCoins);
         trayData = GameManager.Instance.SaveManager.TrayData;
+        foreach (var tray in trayData.TrayData)
+        {
+            Debug.Log(tray.TrayData.TrayName);
+        }
     }
 
     private void LevelUpTray()
@@ -56,19 +65,18 @@ public class UpgradeTray : MonoBehaviour
                 break;
             }
         }
-        trayData.Find(tray => tray.TrayName == gameObject.name).Residents = residents;
+        trayData.TrayData.Find(tray => tray.TrayData.TrayName == gameObject.name).TrayData.Residents = residents;
+        trayData.TrayData.Find(tray => tray.TrayData.TrayName == gameObject.name).TrayData.LevelUp();
         GameManager.Instance.SaveManager.SaveTrayData(trayData);
+        playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
+        GameManager.Instance.SaveManager.SavePlayerData(playerData);
         UpdatePanel(_trayName);
     }
 
     private void SetPanelData(string trayName)
     {
-        Debug.Log(trayData[0]);
-        foreach (var tray in trayData)
-        {
-            Debug.Log(tray.TrayName);
-        }
-        currentTrayData = trayData.Find(tray => tray.TrayName == trayName);
+        Debug.Log(trayData);
+        currentTrayData = trayData.TrayData.Find(tray => tray.TrayData.TrayName == trayName).TrayData;
         Debug.Log(currentTrayData);
 
         if(currentTrayData.UpgradeLevel == currentTrayData.ProductUpgradeData.UpgradeCost.Count)
@@ -80,7 +88,7 @@ public class UpgradeTray : MonoBehaviour
             _upgradeTrayButton.interactable = true;
         }
 
-        if(currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel] > playerData.playerCoins)
+        if(currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel] > playerData.PlayerCoins)
         {
             _upgradeTrayButton.interactable = false;
         }

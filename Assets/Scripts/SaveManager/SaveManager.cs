@@ -2,31 +2,39 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SaveManager : MonoBehaviour
 {
     private string _savePlayerDataPath;
     private string _saveTrayDataPath;
 
-    [SerializeField] private List<Tray> _trayData;
-    public List<TrayData> TrayData
+
+    [SerializeField] private TrayDataSO _trayData;
+    public TrayDataSO TrayData
     {
         get
         {
+            // if (_playerData == null)
+            // {
+            //     _trayData = LoadTrayData();
+            // }
+            // return _trayData;
             return LoadTrayData();
         }
     }
 
-    [SerializeField] private Player Player;
+    [SerializeField] private PlayerDataSO _playerData;
     public PlayerData PlayerData
     {
         get
         {
+            // if (_playerData == null)
+            // {
+            //     _playerData.PlayerData = LoadPlayerData();
+            // }
+            // return _playerData.PlayerData;
             return LoadPlayerData();
-        }
-        set
-        {
-            Player.PlayerData = value;
         }
     }
 
@@ -34,20 +42,25 @@ public class SaveManager : MonoBehaviour
     private void Awake()
     {
         _savePlayerDataPath = Path.Combine(Application.persistentDataPath, "playerdata.json");
+        Debug.Log(_savePlayerDataPath);
         _saveTrayDataPath = Path.Combine(Application.persistentDataPath, "traydata.json");
+        // SavePlayerData(_playerData.PlayerData);
+        // SaveTrayData(_trayData);
+        LoadPlayerData();
+        LoadTrayData();
     }
 
-    public void SavePlayerData(PlayerData playerData)
+    public void SavePlayerData(PlayerData value)
     {
         if (!File.Exists(_savePlayerDataPath))
         {
             File.Create(_savePlayerDataPath).Dispose();
         }
 
-        string json = JsonUtility.ToJson(playerData, true);
+        string json = JsonUtility.ToJson(value, true);
 
         File.WriteAllText(_savePlayerDataPath, json);
-        Player.PlayerData = playerData;
+        _playerData.PlayerData = value;
         Debug.Log("Player data saved successfully.");
     }
 
@@ -55,39 +68,50 @@ public class SaveManager : MonoBehaviour
     {
         if (!File.Exists(_savePlayerDataPath))
         {
-            SavePlayerData(Player.PlayerData);
+            SavePlayerData(_playerData.PlayerData);
         }
         string json = File.ReadAllText(_savePlayerDataPath);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);
         Debug.Log("Player data loaded successfully.");
         return playerData;
     }
-    public void SaveTrayData(List<TrayData> trayData)
+    public void SaveTrayData(TrayDataSO value)
     {
         if (!File.Exists(_saveTrayDataPath))
         {
             File.Create(_saveTrayDataPath).Dispose();
         }
-        string json = JsonUtility.ToJson(trayData, true);
+        string json = JsonUtility.ToJson(new TrayDataWrapper{
+            TrayData = value.TrayData
+        }, true);
         File.WriteAllText(_saveTrayDataPath, json);
+        _trayData = value;
         Debug.Log("Tray data saved successfully.");
     }
 
-    public List<TrayData> LoadTrayData()
+    private TrayDataWrapper _trayDataWrapper;
+
+    public TrayDataSO LoadTrayData()
     {
         if (!File.Exists(_saveTrayDataPath))
         {
-            List<TrayData> trayDataList = new List<TrayData>();
-            foreach (var tray in _trayData)
-            {
-                trayDataList.Add(tray.TrayData);
-            }
-            SaveTrayData(trayDataList);
+            SaveTrayData(_trayData);
         }
         string json = File.ReadAllText(_saveTrayDataPath);
-        List<TrayData> trayData = JsonUtility.FromJson<List<TrayData>>(json);
-        Debug.Log("Tray data loaded successfully.");
-        return trayData;
+        _trayDataWrapper = JsonUtility.FromJson<TrayDataWrapper>(json);
+        // Debug.Log("Tray data loaded successfully.");
+        return ConvertToTrayDataSO();
     }
+
+    private TrayDataSO ConvertToTrayDataSO()
+        {
+            TrayDataSO trayData = null;
+            if (_trayDataWrapper != null)
+            {
+                trayData = ScriptableObject.CreateInstance<TrayDataSO>();
+                trayData.TrayData = _trayDataWrapper.TrayData;
+            }
+            return trayData;
+        }
 
 }

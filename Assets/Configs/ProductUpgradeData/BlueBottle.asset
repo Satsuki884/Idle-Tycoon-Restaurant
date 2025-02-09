@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 797b164b3eede934b8ad02f8e3663962, type: 3}
-  m_Name: RedBottle
+  m_Name: BlueBottle
   m_EditorClassIdentifier: 
-  _trayData: 2
-  _upgradeCost: 
-  _upgradePrice: 
+  _trayData: 0
+  _upgradeCost: 0a000000140000002800000050000000a0000000400100008002000000050000000a000000140000
+  _upgradePrice: 03000000060000000c000000180000003000000060000000c0000000800100000003000000060000

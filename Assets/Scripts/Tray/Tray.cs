@@ -8,18 +8,6 @@ public class Tray : MonoBehaviour
     private List<Vector3> freeSpots = new List<Vector3>();
     public int incomePerOrder = 10;
     public QueueManager queueManager;
-    [SerializeField] private TrayData _trayData;
-    public TrayData TrayData
-    {
-        get
-        {
-            return _trayData;
-        }
-        set
-        {
-            _trayData = value;
-        }
-    }
 
     private void Start()
     {
