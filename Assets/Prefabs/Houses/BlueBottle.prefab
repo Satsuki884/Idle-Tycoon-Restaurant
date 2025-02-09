@@ -9,8 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8383454151178143032}
+  - component: {fileID: 7843709959284522685}
+  - component: {fileID: 1523106553422468158}
+  - component: {fileID: 1193711352926851999}
   m_Layer: 0
-  m_Name: HomeWithBlueBottle
+  m_Name: BlueBottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6854860379759776404}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.98419434, z: -0, w: 0.17709184}
+  m_LocalRotation: {x: 0, y: 0.9841941, z: 0, w: 0.1770934}
   m_LocalPosition: {x: -18.782988, y: 10.282723, z: 8.911446}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7913715609403329321}
   - {fileID: 1628185545924017073}
+  - {fileID: 1147024178236945482}
   - {fileID: 5774272873259506897}
   - {fileID: 7501893873763316136}
   - {fileID: 2574614443313833653}
@@ -47,6 +51,70 @@ Transform:
   - {fileID: 7723300877318190403}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 159.599, z: 0}
+--- !u!114 &7843709959284522685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6854860379759776404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40318175fd341a44a85458bf047657c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowCanvas: {fileID: 0}
+  _upgradeText: {fileID: 0}
+  _closeUpgradeButton: {fileID: 0}
+--- !u!65 &1523106553422468158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6854860379759776404}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.3592978, y: 6.33191, z: 9.237588}
+  m_Center: {x: -2.6796498, y: 2.665955, z: -2.1896434}
+--- !u!114 &1193711352926851999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6854860379759776404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableSpots:
+  - {x: -20.016, y: 1.38, z: 15.44}
+  - {x: -18.451, y: 0, z: 0}
+  incomePerOrder: 5
+  queueManager: {fileID: 0}
+  _trayData:
+    _trayName: BlueBottle
+    _productType: 0
+    _residents:
+    - {fileID: 9096462004369795440}
+    - {fileID: 7444003466154714763}
+    _timeToServe: 4
+    _unlockLevel: 0
+    _productUpgradeData: {fileID: 11400000, guid: f3c9c2f2870a88743baf0d72da48d86f, type: 2}
+    _upgradeLevel: 0
+    _isActive: 1
 --- !u!1001 &2076220880437070145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,7 +435,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5173616
+      value: -0.659
       objectReference: {fileID: 0}
     - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
       propertyPath: m_LocalPosition.y
@@ -375,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24903774
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
       propertyPath: m_LocalRotation.w
@@ -419,6 +487,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
   m_PrefabInstance: {fileID: 4868562703200739174}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9096462004369795440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444353562846328342, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+  m_PrefabInstance: {fileID: 4868562703200739174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5012868976511504615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,6 +684,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 568653527279986074, guid: 290f62a34178e674b8c1f749a6ae71ff, type: 3}
   m_PrefabInstance: {fileID: 6324766690240723275}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6549339635298848925
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8383454151178143032}
+    m_Modifications:
+    - target: {fileID: 4444353562846328342, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: _isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.991
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.971
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.413
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98602337
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.1666071
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792327054025522797, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_Name
+      value: Peasant Nolant Blue(Free Version) (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+--- !u!4 &1147024178236945482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+  m_PrefabInstance: {fileID: 6549339635298848925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7444003466154714763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444353562846328342, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+  m_PrefabInstance: {fileID: 6549339635298848925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6934710086906489991
 PrefabInstance:
   m_ObjectHideFlags: 0

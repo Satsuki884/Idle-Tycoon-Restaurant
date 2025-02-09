@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 6423403879286395853}
   - component: {fileID: 6423403879286395852}
   - component: {fileID: 6423403879286395855}
+  - component: {fileID: 5741736106074400402}
   m_Layer: 0
   m_Name: Little_Ghost_ZOMbi (1)
   m_TagString: Untagged
@@ -266,6 +267,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4277936243970900915, guid: 9ad131497dd2d1545b6c35e7cc732b35, type: 3}
+--- !u!114 &5741736106074400402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6423403879286395854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6479700a4a0d7b5438f7b2ab52656992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!1 &6423403879501658884
 GameObject:
   m_ObjectHideFlags: 0

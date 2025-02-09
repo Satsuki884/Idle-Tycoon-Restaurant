@@ -9,8 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2245454446557446511}
+  - component: {fileID: 4582911801567241497}
+  - component: {fileID: 3353732153429821299}
+  - component: {fileID: 2100354365987700538}
   m_Layer: 0
-  m_Name: HomeWithFood
+  m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9017029466047386611}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.921217, z: -0, w: 0.38904923}
+  m_LocalRotation: {x: 0, y: -0.92121595, z: 0, w: 0.38905165}
   m_LocalPosition: {x: -6.6029873, y: 10.408663, z: 5.2414474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6896079498016097575}
   - {fileID: 6414631552907383278}
+  - {fileID: 1434063615043141740}
   - {fileID: 310137982651032547}
   - {fileID: 7473181084667249073}
   - {fileID: 6843962010104486238}
@@ -48,6 +52,69 @@ Transform:
   - {fileID: 2928034088714006207}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -134.209, z: 0}
+--- !u!114 &4582911801567241497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017029466047386611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40318175fd341a44a85458bf047657c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowCanvas: {fileID: 0}
+  _upgradeText: {fileID: 0}
+  _closeUpgradeButton: {fileID: 0}
+--- !u!65 &3353732153429821299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017029466047386611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.1101413, y: 6.4254184, z: 5.272356}
+  m_Center: {x: -3.0549526, y: 2.7127092, z: -0.65178496}
+--- !u!114 &2100354365987700538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017029466047386611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableSpots:
+  - {x: -9.842, y: 1.74, z: 12.117}
+  - {x: -9.356, y: 1.74, z: 11.003}
+  incomePerOrder: 5
+  queueManager: {fileID: 0}
+  _trayData:
+    _trayName: Food
+    _productType: 4
+    _residents:
+    - {fileID: 3575924858971472687}
+    - {fileID: 8882141477875012269}
+    _timeToServe: 1.5
+    _unlockLevel: 5
+    _productUpgradeData: {fileID: 0}
+    _isActive: 0
 --- !u!1001 &174457341766807421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,6 +432,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+--- !u!114 &3575924858971472687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444353562846328342, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+  m_PrefabInstance: {fileID: 868553378799138105}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6414631552907383278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
@@ -940,6 +1018,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6769819819508098902, guid: 32446da1841517746a87074c228520ba, type: 3}
   m_PrefabInstance: {fileID: 4482306169940256860}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5111076064964289723
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2245454446557446511}
+    m_Modifications:
+    - target: {fileID: 4444353562846328342, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: _isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5173616
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.776
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24903774
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98602337
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.1666071
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792327054025522797, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+      propertyPath: m_Name
+      value: Peasant Nolant Blue(Free Version) (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+--- !u!4 &1434063615043141740 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6127395625895404759, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+  m_PrefabInstance: {fileID: 5111076064964289723}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8882141477875012269 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4444353562846328342, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
+  m_PrefabInstance: {fileID: 5111076064964289723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6401940434617635571
 PrefabInstance:
   m_ObjectHideFlags: 0

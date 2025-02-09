@@ -9,8 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8366559930293043579}
+  - component: {fileID: 5834654251647373032}
+  - component: {fileID: 5911736928902491668}
+  - component: {fileID: 5944008746854831519}
   m_Layer: 0
-  m_Name: HomeWithRedBottle
+  m_Name: RedBottle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683729359958429829}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.3175222, z: -0, w: 0.9482509}
+  m_LocalRotation: {x: 0, y: 0.3175198, z: 0, w: 0.94825166}
   m_LocalPosition: {x: -23.452988, y: 10.408663, z: -12.548553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6339003228391476772}
   - {fileID: 4378975454735674885}
+  - {fileID: 8115414431830218974}
   - {fileID: 1095073816790714387}
   - {fileID: 4651119148224316856}
   - {fileID: 7784889089045628426}
@@ -45,6 +49,70 @@ Transform:
   - {fileID: 917523264449172105}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 37.026, z: 0}
+--- !u!114 &5834654251647373032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683729359958429829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40318175fd341a44a85458bf047657c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowCanvas: {fileID: 0}
+  _upgradeText: {fileID: 0}
+  _closeUpgradeButton: {fileID: 0}
+--- !u!65 &5911736928902491668
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683729359958429829}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.7316504, y: 6.7574635, z: 5.1171274}
+  m_Center: {x: -2.8658483, y: 2.8786955, z: -0.6737208}
+--- !u!114 &5944008746854831519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683729359958429829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availableSpots:
+  - {x: -23.93, y: 1.51, z: -2.5999}
+  - {x: -24.75, y: 1.51, z: -1.28}
+  incomePerOrder: 5
+  queueManager: {fileID: 0}
+  _trayData:
+    _trayName: RedBottle
+    _productType: 2
+    _residents:
+    - {fileID: 7397589812031549183}
+    - {fileID: 349571087974332375}
+    _timeToServe: 3
+    _unlockLevel: 2
+    _productUpgradeData: {fileID: 11400000, guid: 8bbcfb413c0d8f64bb4cd0667cfc69bc, type: 2}
+    _upgradeLevel: 0
+    _isActive: 0
 --- !u!1001 &401856579994189762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,8 +540,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7397589812031549183}
   m_SourcePrefab: {fileID: 100100000, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+--- !u!1 &4003399168442561727 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+  m_PrefabInstance: {fileID: 2303484764603990191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7397589812031549183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003399168442561727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPoint: {fileID: 0}
+  _isActive: 1
 --- !u!4 &4378975454735674885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
@@ -665,6 +755,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4237517483046682220, guid: a9427b8152400da438a64927a7216602, type: 3}
   m_PrefabInstance: {fileID: 5873545834552504794}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6029510267069789812
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8366559930293043579}
+    m_Modifications:
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5193615
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24203777
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98602366
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.16660528
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 19.181
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      propertyPath: m_Name
+      value: Peasant Nolant Brown(Free Version) (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 349571087974332375}
+  m_SourcePrefab: {fileID: 100100000, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+--- !u!4 &8115414431830218974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2536267428180160170, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+  m_PrefabInstance: {fileID: 6029510267069789812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8922878537822749284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
+  m_PrefabInstance: {fileID: 6029510267069789812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &349571087974332375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922878537822749284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e343e4119aa42a48b8e358bdb660cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnPoint: {fileID: 0}
+  _isActive: 0
 --- !u!1001 &6253200607962740838
 PrefabInstance:
   m_ObjectHideFlags: 0
