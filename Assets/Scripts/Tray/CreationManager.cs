@@ -12,6 +12,8 @@ public class CreationManager : MonoBehaviour
     [SerializeField] private GameObject[] _addTray;
     [SerializeField] private Tray[] _trays;
 
+    private TrayDataSO trayData;
+
     public async Task Initialize(params object[] param)
     {
         if (_instance != null)
@@ -27,48 +29,76 @@ public class CreationManager : MonoBehaviour
 
     public void Start()
     {
+        trayData = SaveManager.Instance.TrayData;
+        Debug.Log(trayData.TrayData.Count);
+
         foreach (var tr in _addTray)
         {
             tr.SetActive(false);
         }
-        foreach (var tray in _trays)
+
+        foreach (var tray in trayData.TrayData)
         {
-            if (tray.IsActive)
+            if (!tray.TrayData.IsActive)
             {
-                tray.gameObject.SetActive(true);
-                foreach (var tr in _addTray)
+                Debug.Log(tray.TrayData.TrayName);
+                foreach (var tr in _trays)
                 {
-                    if (tr.name == tray.TrayName)
+                    if (tr.TrayName == tray.TrayData.TrayName)
                     {
-                        tr.SetActive(false);
+                        tr.gameObject.SetActive(false);
                         break;
                     }
                 }
-            }
-            else
-            {
-                tray.gameObject.SetActive(false);
                 foreach (var tr in _addTray)
                 {
-                    if (tr.name == tray.TrayName && tray.IsActiveToPurchase())
+                    if (tr.name == tray.TrayData.TrayName && IsAvailableForPurchase(tray.TrayData.LevelForUnlock))
                     {
-                        Debug.Log(tr.name + " " + tray.TrayName + " " + tray.IsActiveToPurchase());
                         tr.SetActive(true);
                         break;
                     }
 
                 }
             }
+            else
+            {
+                foreach (var tr in _trays)
+                {
+                    if (tr.TrayName == tray.TrayData.TrayName)
+                    {
+                        tr.gameObject.SetActive(true);
+                        break;
+                    }
+                }
+
+                foreach (var tr in _addTray)
+                {
+                    if (tr.name == tray.TrayData.TrayName)
+                    {
+                        tr.SetActive(false);
+                        break;
+                    }
+                }
+            }
         }
+    }
+
+    public bool IsAvailableForPurchase(int levelForUnlock)
+    {
+        if (levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
+        {
+            return true;
+        }
+        return false;
     }
 
     public int GetTrayCost(string trayName)
     {
-        foreach (var tray in _trays)
+        foreach (var tray in trayData.TrayData)
         {
-            if (tray.TrayName == trayName)
+            if (tray.TrayData.TrayName == trayName)
             {
-                return tray.Cost;
+                return tray.TrayData.Cost;
             }
         }
         return 0;
@@ -76,15 +106,23 @@ public class CreationManager : MonoBehaviour
 
     public void BuyTray(string trayName)
     {
-        foreach (var tray in _trays)
+        foreach (var tray in trayData.TrayData)
         {
-            if (tray.TrayName == trayName)
+            if (tray.TrayData.TrayName == trayName)
             {
-                tray.IsActive = true;
-                tray.gameObject.SetActive(true);
+                tray.TrayData.IsActive = true;
+                SaveManager.Instance.SaveTrayData(trayData);
+                foreach (var tr in _trays)
+                {
+                    if (tr.TrayName == trayName)
+                    {
+                        tr.gameObject.SetActive(true);
+                    }
+                }
+
                 foreach (var tr in _addTray)
                 {
-                    if (tr.name == tray.TrayName)
+                    if (tr.name == trayName)
                     {
                         tr.SetActive(false);
                     }

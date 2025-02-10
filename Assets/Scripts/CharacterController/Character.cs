@@ -10,9 +10,9 @@ public class Character : MonoBehaviour
     private ProductType _selectedProductType;
     private Tray _selectedTray;
     public float moveSpeed = 2f;
-    private Vector3[] _allPath;
-    private string _pathToQueue = "PathToQueue";
-    private string _pathfrom = "PathFromQueue";
+    // private Vector3[] _allPath;
+    // private string _pathToQueue = "PathToQueue";
+    // private string _pathfrom = "PathFromQueue";
 
     public void Initialize()
     {

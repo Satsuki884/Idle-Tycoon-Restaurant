@@ -11,7 +11,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float _spawnInterval = 4f;
     [SerializeField] private TrayDataSO _trayDataSo;
 
-    public event Action QueueAvailable;
+    // public event Action QueueAvailable;
 
     void Start()
     {

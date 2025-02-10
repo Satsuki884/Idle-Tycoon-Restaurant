@@ -25,37 +25,40 @@ public class Tray : MonoBehaviour
     public TraySpot[] TraySpot => _traySpot;
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
-    [SerializeField] private int _levelForUnlock;
-    public bool IsActiveToPurchase()
-    {
-        if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-    }// => _isActiveToPurchase;
-    [SerializeField] private bool _isActive;
-    public bool IsActive
-    {
-        get => _isActive;
-        set
-        {
-            _isActive = value;
-            foreach (TraySO tray in trayData.TrayData)
-            {
-                if (tray.TrayData.TrayName == _trayName)
-                {
-                    tray.TrayData.IsActive = value;
-                }
-            }
-            SaveManager.Instance.SaveTrayData(trayData);
-        }
-    }
-    [SerializeField] private int _cost;
-    public int Cost => _cost;
+    // [SerializeField] 
+    // private int _levelForUnlock;
+    // public bool IsActiveToPurchase()
+    // {
+    //     if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
+    //         {
+    //             return true;
+    //         }
+    //         else
+    //         {
+    //             return false;
+    //         }
+    // }// => _isActiveToPurchase;
+    // [SerializeField] 
+    // private bool _isActive;
+    // public bool IsActive
+    // {
+    //     get => _isActive;
+    //     set
+    //     {
+    //         _isActive = value;
+    //         foreach (TraySO tray in trayData.TrayData)
+    //         {
+    //             if (tray.TrayData.TrayName == _trayName)
+    //             {
+    //                 tray.TrayData.IsActive = value;
+    //             }
+    //         }
+    //         SaveManager.Instance.SaveTrayData(trayData);
+    //     }
+    // }
+    // [SerializeField] 
+    // private int _cost;
+    // public int Cost => _cost;
     public QueueManager QueueManager
     {
         get => _queueManager;
@@ -74,17 +77,29 @@ public class Tray : MonoBehaviour
     private void Start()
     {
         trayData = SaveManager.Instance.TrayData;
-        foreach (TraySO tray in trayData.TrayData)
-        {
-            if (tray.TrayData.TrayName == _trayName)
-            {
-                _isActive = tray.TrayData.IsActive;
-                _cost = tray.TrayData.Cost;
-                _productType = tray.TrayData.ProductType;
-                _levelForUnlock = tray.TrayData.LevelForUnlock;
-            }
-        }
+        // foreach (TraySO tray in trayData.TrayData)
+        // {
+        //     if (tray.TrayData.TrayName == _trayName)
+        //     {
+        //         _isActive = tray.TrayData.IsActive;
+        //         _cost = tray.TrayData.Cost;
+        //         _productType = tray.TrayData.ProductType;
+        //         _levelForUnlock = tray.TrayData.LevelForUnlock;
+        //     }
+        // }
     }
+
+    // public int SetCost()
+    // {
+    //     return _cost;
+    // }
+
+    // public bool IsActiveForPurchase()
+    // {
+    //     return _levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel;
+    // }
+
+
     public bool QueueIsFull()
     {
         if (QueueManager.WaitingQueue.Count == incomePerOrder)
