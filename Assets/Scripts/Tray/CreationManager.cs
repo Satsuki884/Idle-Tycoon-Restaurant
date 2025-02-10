@@ -42,17 +42,18 @@ public class CreationManager : MonoBehaviour
                         tr.SetActive(false);
                     }
                 }
-                _addTray.Where(x => x.name == tray.TrayName).First().SetActive(false);
             }
             else
             {
                 tray.gameObject.SetActive(false);
                 foreach (var tr in _addTray)
                 {
-                    if (tr.name == tray.TrayName)
+                    if (tr.name == tray.TrayName && !tray.IsActiveToPurchase)
                     {
+                        Debug.Log(tr.name + " " + tray.TrayName + " " + tray.IsActiveToPurchase);
                         tr.SetActive(true);
                     }
+                    tr.SetActive(false);
                 }
             }
         }
@@ -68,5 +69,26 @@ public class CreationManager : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    public void BuyTray(string trayName)
+    {
+        foreach (var tray in _trays)
+        {
+            if (tray.TrayName == trayName)
+            {
+                tray.IsActive = true;
+                tray.gameObject.SetActive(true);
+                foreach (var tr in _addTray)
+                {
+                    if (tr.name == tray.TrayName)
+                    {
+                        tr.SetActive(false);
+                    }
+                }
+
+            }
+        }
+
     }
 }

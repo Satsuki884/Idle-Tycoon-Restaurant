@@ -59,7 +59,7 @@ public class SaveManager : MonoBehaviour
     private void Awake()
     {
         _savePlayerDataPath = Path.Combine(Application.persistentDataPath, "playerdata.json");
-        // Debug.Log(_savePlayerDataPath);
+        Debug.Log(_savePlayerDataPath);
         _saveTrayDataPath = Path.Combine(Application.persistentDataPath, "traydata.json");
         SavePlayerData(_playerData.PlayerData);
         SaveTrayData(_trayData);

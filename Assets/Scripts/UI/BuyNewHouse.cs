@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,6 +21,14 @@ public class BuyNewHouse : MonoBehaviour
         }
         _closePanelButton.onClick.RemoveAllListeners();
         _closePanelButton.onClick.AddListener(CloseUpgradePanel);
+        _buyButton.onClick.RemoveAllListeners();
+        _buyButton.onClick.AddListener(BuyHouse);
+    }
+
+    private void BuyHouse()
+    {
+        CreationManager.Instance.BuyTray(gameObject.name);
+        CloseUpgradePanel();
     }
 
     void OnMouseDown() 

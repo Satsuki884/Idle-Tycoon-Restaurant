@@ -48,6 +48,19 @@ public class TrayData
     [SerializeField] private ProductUpgradeDataSO _productUpgradeData;
     public ProductUpgradeDataSO ProductUpgradeData => _productUpgradeData;
     [SerializeField] private int _upgradeLevel;
+    public bool IsActiveForPurchase{
+        get
+        {
+            if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
     public int UpgradeLevel
     {
         get
@@ -60,20 +73,17 @@ public class TrayData
         }
     }
     [SerializeField] private bool _isActive;
-    public bool IsActive => _isActive;
+    public bool IsActive{
+        get
+        {
+            return _isActive;
+        }
+        set
+        {
+            _isActive = value;
+        }
+    }
 
     [SerializeField] private int _cost;
     public int Cost => _cost;
-
-    public void CheckIsActive()
-    {
-        if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
-        {
-            _isActive = false;
-        }
-        else
-        {
-            _isActive = true;
-        }
-    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -24,8 +25,25 @@ public class Tray : MonoBehaviour
     public TraySpot[] TraySpot => _traySpot;
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
+    private bool _isActiveToPurchase;
+    public bool IsActiveToPurchase => _isActiveToPurchase;
     [SerializeField] private bool _isActive;
-    public bool IsActive { get => _isActive; set => _isActive = value; }
+    public bool IsActive
+    {
+        get => _isActive;
+        set
+        {
+            _isActive = value;
+            foreach (TraySO tray in trayData.TrayData)
+            {
+                if (tray.TrayData.TrayName == _trayName)
+                {
+                    tray.TrayData.IsActive = value;
+                }
+            }
+            SaveManager.Instance.SaveTrayData(trayData);
+        }
+    }
     [SerializeField] private int _cost;
     public int Cost => _cost;
     public QueueManager QueueManager
@@ -45,7 +63,7 @@ public class Tray : MonoBehaviour
 
     private void Start()
     {
-       trayData = SaveManager.Instance.TrayData;
+        trayData = SaveManager.Instance.TrayData;
         foreach (TraySO tray in trayData.TrayData)
         {
             if (tray.TrayData.TrayName == _trayName)
@@ -53,7 +71,9 @@ public class Tray : MonoBehaviour
                 _isActive = tray.TrayData.IsActive;
                 _cost = tray.TrayData.Cost;
                 _productType = tray.TrayData.ProductType;
+                _isActiveToPurchase = tray.TrayData.IsActiveForPurchase;
             }
+            // Debug.Log(_trayName +" "+_isActiveToPurchase);
         }
     }
     public bool QueueIsFull()
