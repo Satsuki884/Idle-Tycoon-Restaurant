@@ -112,6 +112,9 @@ public class CreationManager : MonoBehaviour
             {
                 tray.TrayData.IsActive = true;
                 SaveManager.Instance.SaveTrayData(trayData);
+                var playerData = SaveManager.Instance.PlayerData;
+                playerData.PlayerCoins -= tray.TrayData.Cost;
+                SaveManager.Instance.SavePlayerData(playerData);
                 foreach (var tr in _trays)
                 {
                     if (tr.TrayName == trayName)
