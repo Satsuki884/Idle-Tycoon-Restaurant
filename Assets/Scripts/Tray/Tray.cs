@@ -11,6 +11,8 @@ public class TraySpot
 
 public class Tray : MonoBehaviour
 {
+    [SerializeField] private string _trayName;
+    public string TrayName => _trayName;
     [SerializeField] private Vector3[] _startPositions;
     public Vector3[] StartPositions => _startPositions;
     [SerializeField] private Vector3[] _endPositions;
@@ -23,7 +25,7 @@ public class Tray : MonoBehaviour
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
     [SerializeField] private bool _isActive;
-    public bool IsActive{ get => _isActive; set => _isActive = value; }
+    public bool IsActive { get => _isActive; set => _isActive = value; }
     [SerializeField] private int _cost;
     public int Cost => _cost;
     public QueueManager QueueManager
@@ -39,6 +41,21 @@ public class Tray : MonoBehaviour
     [SerializeField] private bool _isTrayFool;
     public bool IsTrayFool => _isTrayFool;
 
+    private TrayDataSO trayData;
+
+    private void Start()
+    {
+       trayData = SaveManager.Instance.TrayData;
+        foreach (TraySO tray in trayData.TrayData)
+        {
+            if (tray.TrayData.TrayName == _trayName)
+            {
+                _isActive = tray.TrayData.IsActive;
+                _cost = tray.TrayData.Cost;
+                _productType = tray.TrayData.ProductType;
+            }
+        }
+    }
     public bool QueueIsFull()
     {
         if (QueueManager.WaitingQueue.Count == incomePerOrder)

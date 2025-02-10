@@ -38,15 +38,15 @@ public class UpgradeTray : MonoBehaviour
 
     private void SetData()
     {
-        Debug.Log(SaveManager.Instance);
-        Debug.Log(SaveManager.Instance.PlayerData);
+        // Debug.Log(SaveManager.Instance);
+        // Debug.Log(SaveManager.Instance.PlayerData);
         playerData = SaveManager.Instance.PlayerData;
-        Debug.Log(playerData.PlayerCoins);
+        // Debug.Log(playerData.PlayerCoins);
         trayData = SaveManager.Instance.TrayData;
-        foreach (var tray in trayData.TrayData)
-        {
-            Debug.Log(tray.TrayData.TrayName);
-        }
+        // foreach (var tray in trayData.TrayData)
+        // {
+        //     Debug.Log(tray.TrayData.TrayName);
+        // }
     }
 
     private void LevelUpTray()
@@ -79,9 +79,9 @@ public class UpgradeTray : MonoBehaviour
 
     private void SetPanelData()
     {
-        Debug.Log(trayData);
+        // Debug.Log(trayData);
         currentTrayData = trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData;
-        Debug.Log(currentTrayData);
+        // Debug.Log(currentTrayData);
 
         if (currentTrayData.UpgradeLevel == currentTrayData.ProductUpgradeData.UpgradeCost.Count)
         {

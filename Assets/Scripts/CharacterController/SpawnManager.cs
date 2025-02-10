@@ -15,7 +15,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SpawnCharacters());
+        // StartCoroutine(SpawnCharacters());
     }
 
     IEnumerator SpawnCharacters()

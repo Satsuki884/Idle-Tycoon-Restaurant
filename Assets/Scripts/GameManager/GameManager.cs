@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SaveManager _saveManager;
     [SerializeField] private CreationManager _creationManager;
 
-    private async void Start()
+    private async void Awake()
     {
         if (_saveManager == null)
         {
@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
                 return;
             }
         }
+
+        await _creationManager.Initialize();
     }
     // private static GameManager _instance;
     // public static GameManager Instance

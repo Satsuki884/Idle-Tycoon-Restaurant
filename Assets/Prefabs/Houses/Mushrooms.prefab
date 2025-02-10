@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trayName: Mushrooms
   _startPositions:
   - {x: 0.69, y: 2, z: -8.44}
   - {x: 0, y: 0, z: 0}
@@ -121,7 +122,7 @@ MonoBehaviour:
   _queueManager: {fileID: 0}
   _isActive: 0
   _cost: 1600
-  _productType: 0
+  _productType: 5
   _isQueueFool: 0
   _isTrayFool: 0
 --- !u!1001 &56075443188488674
