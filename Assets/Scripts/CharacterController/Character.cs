@@ -16,9 +16,10 @@ public class Character : MonoBehaviour
 
     public void Initialize()
     {
-        _characterBrain.Initialize(this);
+        // _characterBrain.Initialize(this);
         _selectedProductType = _characterBrain.SelectProduct();
         _selectedTray = FindTray();
+        Debug.Log("Character: "+this + " selected: "+_selectedTray);
 
         AddCharacterToQueue();
 

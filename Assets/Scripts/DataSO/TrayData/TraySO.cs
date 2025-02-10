@@ -1,18 +1,22 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewTray", menuName = "ScriptableObjects/TraySO", order = 1)]
 public class TraySO : ScriptableObject
 {
     [SerializeField] private TrayData _trayData;
-    public TrayData TrayData{
-        get{
+    public TrayData TrayData
+    {
+        get
+        {
             return _trayData;
         }
-        set{
+        set
+        {
             _trayData = value;
         }
-    } 
+    }
 }
 
 
@@ -44,9 +48,22 @@ public class TrayData
     [SerializeField] private ProductUpgradeDataSO _productUpgradeData;
     public ProductUpgradeDataSO ProductUpgradeData => _productUpgradeData;
     [SerializeField] private int _upgradeLevel;
-    public int UpgradeLevel => _upgradeLevel;
+    public int UpgradeLevel
+    {
+        get
+        {
+            return _upgradeLevel;
+        }
+        set
+        {
+            _upgradeLevel = value;
+        }
+    }
     [SerializeField] private bool _isActive;
     public bool IsActive => _isActive;
+
+    [SerializeField] private int _cost;
+    public int Cost => _cost;
 
     public void CheckIsActive()
     {
@@ -57,17 +74,6 @@ public class TrayData
         else
         {
             _isActive = true;
-        }
-    }
-
-    public void LevelUp()
-    {
-        if (_upgradeLevel < _productUpgradeData.UpgradeCost.Count)
-        {
-            if (SaveManager.Instance.PlayerData.PlayerCoins >= _productUpgradeData.UpgradeCost[_upgradeLevel])
-            {
-                _upgradeLevel++;
-            }
         }
     }
 }

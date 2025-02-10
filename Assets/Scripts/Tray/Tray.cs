@@ -22,6 +22,10 @@ public class Tray : MonoBehaviour
     public TraySpot[] TraySpot => _traySpot;
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
+    [SerializeField] private bool _isActive;
+    public bool IsActive{ get => _isActive; set => _isActive = value; }
+    [SerializeField] private int _cost;
+    public int Cost => _cost;
     public QueueManager QueueManager
     {
         get => _queueManager;

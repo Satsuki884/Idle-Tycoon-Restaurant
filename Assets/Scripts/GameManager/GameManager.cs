@@ -4,6 +4,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private SaveManager _saveManager;
+    [SerializeField] private CreationManager _creationManager;
 
     private async void Start()
     {
@@ -18,6 +19,16 @@ public class GameManager : MonoBehaviour
         }
 
         await _saveManager.Initialize();
+
+        if (_creationManager == null)
+        {
+            _creationManager = FindObjectOfType<CreationManager>();
+            if (_creationManager == null)
+            {
+                Debug.LogError("CreationManager not found in the scene!");
+                return;
+            }
+        }
     }
     // private static GameManager _instance;
     // public static GameManager Instance

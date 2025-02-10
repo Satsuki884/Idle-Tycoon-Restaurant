@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 683729359958429829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.3175198, z: 0, w: 0.94825166}
-  m_LocalPosition: {x: -23.452988, y: 10.408663, z: -12.548553}
+  m_LocalPosition: {x: 5.6, y: 1.215939, z: 64.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -112,6 +112,8 @@ MonoBehaviour:
   - {x: -24.75, y: 1.51, z: -1.28}
   incomePerOrder: 5
   _queueManager: {fileID: 0}
+  _isActive: 0
+  _cost: 400
   _productType: 0
   _isQueueFool: 0
   _isTrayFool: 0

@@ -59,7 +59,7 @@ public class SaveManager : MonoBehaviour
     private void Awake()
     {
         _savePlayerDataPath = Path.Combine(Application.persistentDataPath, "playerdata.json");
-        Debug.Log(_savePlayerDataPath);
+        // Debug.Log(_savePlayerDataPath);
         _saveTrayDataPath = Path.Combine(Application.persistentDataPath, "traydata.json");
         SavePlayerData(_playerData.PlayerData);
         SaveTrayData(_trayData);
@@ -78,7 +78,7 @@ public class SaveManager : MonoBehaviour
 
         File.WriteAllText(_savePlayerDataPath, json);
         _playerData.PlayerData = value;
-        Debug.Log("Player data saved successfully.");
+        // Debug.Log("Player data saved successfully.");
     }
 
     public PlayerData LoadPlayerData()
@@ -89,7 +89,7 @@ public class SaveManager : MonoBehaviour
         }
         string json = File.ReadAllText(_savePlayerDataPath);
         PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);
-        Debug.Log("Player data loaded successfully.");
+        // Debug.Log("Player data loaded successfully.");
         return playerData;
     }
     public void SaveTrayData(TrayDataSO value)
@@ -103,7 +103,7 @@ public class SaveManager : MonoBehaviour
         }, true);
         File.WriteAllText(_saveTrayDataPath, json);
         _trayData = value;
-        Debug.Log("Tray data saved successfully.");
+        // Debug.Log("Tray data saved successfully.");
     }
 
     private TrayDataWrapper _trayDataWrapper;

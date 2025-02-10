@@ -32,7 +32,7 @@ public class UpgradeTray : MonoBehaviour
         // Debug.Log(trayName);
         _trayName = trayName;
         SetData();
-        SetPanelData(trayName);
+        SetPanelData();
     }
 
 
@@ -51,54 +51,61 @@ public class UpgradeTray : MonoBehaviour
 
     private void LevelUpTray()
     {
-        throw new NotImplementedException();
+        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.UpgradeLevel++;
+        SaveUpdate();
     }
 
     private void BuyNewResident()
     {
         foreach (var resident in residents)
         {
-            if(!resident.IsActive)
+            if (!resident.IsActive)
             {
                 resident.IsActive = true;
                 break;
             }
         }
-        trayData.TrayData.Find(tray => tray.TrayData.TrayName == gameObject.name).TrayData.Residents = residents;
-        trayData.TrayData.Find(tray => tray.TrayData.TrayName == gameObject.name).TrayData.LevelUp();
+        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.Residents = residents;
+        SaveUpdate();
+    }
+
+    private void SaveUpdate()
+    {
         SaveManager.Instance.SaveTrayData(trayData);
         playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
         SaveManager.Instance.SavePlayerData(playerData);
         UpdatePanel(_trayName);
     }
 
-    private void SetPanelData(string trayName)
+    private void SetPanelData()
     {
         Debug.Log(trayData);
-        currentTrayData = trayData.TrayData.Find(tray => tray.TrayData.TrayName == trayName).TrayData;
+        currentTrayData = trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData;
         Debug.Log(currentTrayData);
 
-        if(currentTrayData.UpgradeLevel == currentTrayData.ProductUpgradeData.UpgradeCost.Count)
+        if (currentTrayData.UpgradeLevel == currentTrayData.ProductUpgradeData.UpgradeCost.Count)
         {
             _costOfUpgradeText.text = "Max Level";
             _upgradeTrayButton.interactable = false;
-        } else {
+        }
+        else
+        {
             _costOfUpgradeText.text = currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel].ToString();
             _upgradeTrayButton.interactable = true;
         }
 
-        if(currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel] > playerData.PlayerCoins)
+        if (currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel] > playerData.PlayerCoins)
         {
             _upgradeTrayButton.interactable = false;
         }
         {
-            _buyNewResidentButton.interactable = true;
+            _upgradeTrayButton.interactable = true;
         }
 
         residents = currentTrayData.Residents;
         foreach (var resident in residents)
         {
-            if(!resident.IsActive)
+            if (!resident.IsActive)
             {
                 _buyNewResidentButton.interactable = true;
                 break;

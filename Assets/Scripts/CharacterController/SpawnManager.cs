@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private Transform _spawnList;
     [SerializeField] private List<Tray> _trays; // Список всех лотков
     [SerializeField] private float _spawnInterval = 4f;
+    [SerializeField] private TrayDataSO _trayDataSo;
 
     public event Action QueueAvailable;
 
@@ -28,8 +29,8 @@ public class SpawnManager : MonoBehaviour
                 newCharacter.transform.SetParent(_spawnList, true);
                 Character character = newCharacter.GetComponent<Character>();
                 // character.AddCharacterToQueue();
-                // character.Initialize();
-                yield return StartCoroutine(character.InitializeAsync());
+                character.Initialize();
+                // yield return StartCoroutine(character.InitializeAsync());
 
                 yield return new WaitForSeconds(_spawnInterval);
             }
