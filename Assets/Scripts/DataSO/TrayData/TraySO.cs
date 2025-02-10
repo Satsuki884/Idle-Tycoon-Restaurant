@@ -50,7 +50,7 @@ public class TrayData
 
     public void CheckIsActive()
     {
-        if (_levelForUnlock <= GameManager.Instance.SaveManager.PlayerData.PlayerLevel)
+        if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
         {
             _isActive = false;
         }
@@ -64,7 +64,7 @@ public class TrayData
     {
         if (_upgradeLevel < _productUpgradeData.UpgradeCost.Count)
         {
-            if (GameManager.Instance.SaveManager.PlayerData.PlayerCoins >= _productUpgradeData.UpgradeCost[_upgradeLevel])
+            if (SaveManager.Instance.PlayerData.PlayerCoins >= _productUpgradeData.UpgradeCost[_upgradeLevel])
             {
                 _upgradeLevel++;
             }

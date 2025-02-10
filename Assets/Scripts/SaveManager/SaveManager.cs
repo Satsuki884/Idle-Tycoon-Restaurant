@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -8,6 +9,22 @@ public class SaveManager : MonoBehaviour
 {
     private string _savePlayerDataPath;
     private string _saveTrayDataPath;
+
+    public static SaveManager _instance;
+    public static SaveManager Instance => _instance;
+
+    public async Task Initialize(params object[] param)
+    {
+        if (_instance != null)
+        {
+            return;
+        }
+
+        _instance = this;
+
+
+        await Task.Delay(100);
+    }
 
 
     [SerializeField] private TrayDataSO _trayData;
@@ -44,8 +61,8 @@ public class SaveManager : MonoBehaviour
         _savePlayerDataPath = Path.Combine(Application.persistentDataPath, "playerdata.json");
         Debug.Log(_savePlayerDataPath);
         _saveTrayDataPath = Path.Combine(Application.persistentDataPath, "traydata.json");
-        // SavePlayerData(_playerData.PlayerData);
-        // SaveTrayData(_trayData);
+        SavePlayerData(_playerData.PlayerData);
+        SaveTrayData(_trayData);
         LoadPlayerData();
         LoadTrayData();
     }
