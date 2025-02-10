@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     {
         while (true)
         {
-            while (!HasAvailableQueue())
+            while (HasAvailableQueue())
             {
 
                 GameObject newCharacter = Instantiate(_characterPrefab[UnityEngine.Random.Range(0, _characterPrefab.Count)]);
