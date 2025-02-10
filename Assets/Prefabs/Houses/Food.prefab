@@ -116,6 +116,7 @@ MonoBehaviour:
   - {x: -9.356, y: 1.74, z: 11.003}
   incomePerOrder: 5
   _queueManager: {fileID: 0}
+  _levelForUnlock: 5
   _isActive: 0
   _cost: 3200
   _productType: 4

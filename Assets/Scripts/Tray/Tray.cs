@@ -25,8 +25,18 @@ public class Tray : MonoBehaviour
     public TraySpot[] TraySpot => _traySpot;
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
-    private bool _isActiveToPurchase;
-    public bool IsActiveToPurchase => _isActiveToPurchase;
+    [SerializeField] private int _levelForUnlock;
+    public bool IsActiveToPurchase()
+    {
+        if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }// => _isActiveToPurchase;
     [SerializeField] private bool _isActive;
     public bool IsActive
     {
@@ -71,9 +81,8 @@ public class Tray : MonoBehaviour
                 _isActive = tray.TrayData.IsActive;
                 _cost = tray.TrayData.Cost;
                 _productType = tray.TrayData.ProductType;
-                _isActiveToPurchase = tray.TrayData.IsActiveForPurchase;
+                _levelForUnlock = tray.TrayData.LevelForUnlock;
             }
-            // Debug.Log(_trayName +" "+_isActiveToPurchase);
         }
     }
     public bool QueueIsFull()

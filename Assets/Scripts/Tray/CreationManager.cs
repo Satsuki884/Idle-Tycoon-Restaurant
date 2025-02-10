@@ -7,13 +7,10 @@ using UnityEngine;
 
 public class CreationManager : MonoBehaviour
 {
-
     public static CreationManager _instance;
     public static CreationManager Instance => _instance;
     [SerializeField] private GameObject[] _addTray;
     [SerializeField] private Tray[] _trays;
-
-    private TrayDataSO trayData;
 
     public async Task Initialize(params object[] param)
     {
@@ -30,6 +27,10 @@ public class CreationManager : MonoBehaviour
 
     public void Start()
     {
+        foreach (var tr in _addTray)
+        {
+            tr.SetActive(false);
+        }
         foreach (var tray in _trays)
         {
             if (tray.IsActive)
@@ -40,6 +41,7 @@ public class CreationManager : MonoBehaviour
                     if (tr.name == tray.TrayName)
                     {
                         tr.SetActive(false);
+                        break;
                     }
                 }
             }
@@ -48,12 +50,13 @@ public class CreationManager : MonoBehaviour
                 tray.gameObject.SetActive(false);
                 foreach (var tr in _addTray)
                 {
-                    if (tr.name == tray.TrayName && !tray.IsActiveToPurchase)
+                    if (tr.name == tray.TrayName && tray.IsActiveToPurchase())
                     {
-                        Debug.Log(tr.name + " " + tray.TrayName + " " + tray.IsActiveToPurchase);
+                        Debug.Log(tr.name + " " + tray.TrayName + " " + tray.IsActiveToPurchase());
                         tr.SetActive(true);
+                        break;
                     }
-                    tr.SetActive(false);
+
                 }
             }
         }
