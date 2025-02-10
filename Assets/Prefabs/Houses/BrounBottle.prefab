@@ -100,11 +100,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startPositions:
+  - {x: -16.07, y: 2, z: -18.01}
+  - {x: 0, y: 0, z: 0}
+  - {x: -11.72, y: 2, z: -4.13}
+  _endPositions:
+  - {x: -20.89, y: 2, z: -5.01}
+  - {x: 0, y: 0, z: 0}
+  - {x: -16.07, y: 2, z: -18.01}
+  _queuePoints: {x: 16.11, y: 0.69, z: 64.38}
   availableSpots:
   - {x: -15.71, y: 2.07, z: -5.76}
   - {x: -17.06, y: 2.07, z: -5.95}
   incomePerOrder: 5
-  queueManager: {fileID: 0}
+  _queueManager: {fileID: 0}
+  _productType: 0
+  _isQueueFool: 0
+  _isTrayFool: 0
 --- !u!1001 &91596289339132903
 PrefabInstance:
   m_ObjectHideFlags: 0

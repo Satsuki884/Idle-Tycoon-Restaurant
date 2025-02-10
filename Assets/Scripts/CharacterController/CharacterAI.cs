@@ -40,7 +40,7 @@ public class CharacterAI : MonoBehaviour
     IEnumerator ProcessOrder()
     {
         yield return new WaitForSeconds(1f);
-        assignedTray.CompleteOrder();
+        // assignedTray.CompleteOrder();
         Destroy(gameObject);
     }
 }

@@ -4,32 +4,17 @@ using UnityEngine;
 
 public class QueueManager : MonoBehaviour
 {
-    private Queue<CharacterAI> waitingQueue = new Queue<CharacterAI>();
-    public Tray[] trays; // Список всех лотков
-
-    public void AddToQueue(CharacterAI character)
+    private Queue<Character> waitingQueue = new Queue<Character>();
+    public Queue<Character> WaitingQueue => waitingQueue;
+    public void AddToQueue(Character character)
     {
         waitingQueue.Enqueue(character);
-        TryAssignTray();
+        // TryAssignTray();
     }
 
-    private void TryAssignTray()
+    public void RemoveFromQueue()
     {
-        if (waitingQueue.Count == 0) return;
-
-        foreach (var tray in trays)
-        {
-            if (tray.HasFreeSpot())
-            {
-                CharacterAI character = waitingQueue.Dequeue();
-                tray.AssignCharacter(character);
-                break;
-            }
-        }
-    }
-
-    public void NotifyTrayFreed()
-    {
-        TryAssignTray();
+        waitingQueue.Dequeue();
+        // TryAssignTray();
     }
 }
