@@ -23,8 +23,8 @@ public class Tray : MonoBehaviour
     [SerializeField] public Transform _spawnZone;
     public Transform SpawnZone => _spawnZone;
     public Vector3[] availableSpots;
-    [SerializeField] private TraySpot[] _traySpot;
-    public TraySpot[] TraySpot => _traySpot;
+    private Dictionary<Vector3, bool> _traySpot;
+    public Dictionary<Vector3, bool> TraySpot => _traySpot;
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
     [SerializeField] private SpawnManager _spawnManager;
@@ -47,6 +47,11 @@ public class Tray : MonoBehaviour
     private void Start()
     {
         trayData = SaveManager.Instance.TrayData;
+        _traySpot = new Dictionary<Vector3, bool>();
+        foreach (var item in availableSpots)
+        {
+            _traySpot.Add(item, true);
+        }
     }
 
     void Update()
@@ -56,6 +61,7 @@ public class Tray : MonoBehaviour
             _queueManager.AddToQueue(_spawnManager.SpawnCharacters(_productType, _spawnZone));
             
         }
+        SetSpot();
     }
 
 
@@ -78,19 +84,20 @@ public class Tray : MonoBehaviour
     {
         Character character = QueueManager.WaitingQueue.Peek();
         List<Vector3> newPath = new List<Vector3>();
-        foreach (TraySpot spot in _traySpot)
+        foreach (var spot in _traySpot)
         {
-            if (spot.isFree)
+            if (spot.Value == true)
             {
-                spot.isFree = false;
+                _traySpot[spot.Key] = false;
                 newPath.Add(character.transform.position);
-                newPath.Add(spot.position);
-                StartCoroutine(MoveToTray(newPath.ToArray(), character.moveSpeed, spot));
+                newPath.Add(spot.Key);
+                StartCoroutine(MoveToTray(newPath.ToArray(), character.moveSpeed));
+                _traySpot[spot.Key] = false;
             }
         }
     }
 
-    IEnumerator MoveToTray(Vector3[] path, float moveSpeed, TraySpot spot)
+    IEnumerator MoveToTray(Vector3[] path, float moveSpeed)
     {
         QueueManager.WaitingQueue.Dequeue();
         foreach (Vector3 point in path)
@@ -101,7 +108,6 @@ public class Tray : MonoBehaviour
                 yield return null;
             }
         }
-        spot.isFree = true;
     }
 
 
