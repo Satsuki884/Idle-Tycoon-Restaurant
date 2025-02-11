@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerDataSO
   m_EditorClassIdentifier: 
   _playerData:
-    _playerLevel: 1
+    _playerLevel: 0
     _playerExperience: 0
-    _playerCoins: 200
+    _playerCoins: 0
     _blueBottle: 0
     _greenBottle: 0
     _redBottle: 0

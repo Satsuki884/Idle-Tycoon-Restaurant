@@ -19,13 +19,20 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Button _closeSynthesisButton;
     [SerializeField] private GameObject _synthesisPanel;
 
+    [Header("Buy")]
+    [SerializeField] private GameObject _buyPanel;
+    [SerializeField] private Button _buyButtonClose;
+
     void Start()
     {
         _settingsPanel.SetActive(false);
+        _buyPanel.SetActive(false);
         _inventoryPanel.SetActive(false);
         _synthesisPanel.SetActive(false);
         _settingsButton.onClick.RemoveAllListeners();
         _settingsButton.onClick.AddListener(() => Open(_settingsPanel));
+        _buyButtonClose.onClick.RemoveAllListeners();
+        _buyButtonClose.onClick.AddListener(() => Close(_settingsPanel));
         _closeSettingsButton.onClick.RemoveAllListeners();
         _closeSettingsButton.onClick.AddListener(() => Close(_settingsPanel));
         _inventoryButton.onClick.RemoveAllListeners();

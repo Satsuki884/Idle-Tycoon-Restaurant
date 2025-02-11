@@ -101,23 +101,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: BrounBottle
-  _startPositions:
-  - {x: -16.07, y: 2, z: -18.01}
-  - {x: 0, y: 0, z: 0}
-  - {x: -11.72, y: 2, z: -4.13}
-  _endPositions:
-  - {x: -20.89, y: 2, z: -5.01}
-  - {x: 0, y: 0, z: 0}
-  - {x: -16.07, y: 2, z: -18.01}
-  _queuePoints: {x: 16.11, y: 0.69, z: 64.38}
+  _startPositions: {fileID: 0}
+  _endPositions: {fileID: 0}
+  _queuePoints: {fileID: 0}
+  _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -15.71, y: 2.07, z: -5.76}
   - {x: -17.06, y: 2.07, z: -5.95}
   incomePerOrder: 5
   _queueManager: {fileID: 0}
-  _levelForUnlock: 3
-  _isActive: 0
-  _cost: 800
+  _spawnManager: {fileID: 0}
+  _spawnTransform: {fileID: 0}
   _productType: 3
   _isQueueFool: 0
   _isTrayFool: 0

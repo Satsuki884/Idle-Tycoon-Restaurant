@@ -14,51 +14,21 @@ public class Tray : MonoBehaviour
 {
     [SerializeField] private string _trayName;
     public string TrayName => _trayName;
-    [SerializeField] private Vector3[] _startPositions;
-    public Vector3[] StartPositions => _startPositions;
-    [SerializeField] private Vector3[] _endPositions;
-    public Vector3[] EndPositions => _endPositions;
-    [SerializeField] private Vector3 _queuePoints;
-    public Vector3 QueuePoints => _queuePoints;
+    [SerializeField] private Transform _startPositions;
+    public Transform StartPositions => _startPositions;
+    [SerializeField] private Transform _endPositions;
+    public Transform EndPositions => _endPositions;
+    [SerializeField] private Transform _queuePoints;
+    public Transform QueuePoints => _queuePoints;
+    [SerializeField] public Transform _spawnZone;
+    public Transform SpawnZone => _spawnZone;
     public Vector3[] availableSpots;
     [SerializeField] private TraySpot[] _traySpot;
     public TraySpot[] TraySpot => _traySpot;
     [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
-    // [SerializeField] 
-    // private int _levelForUnlock;
-    // public bool IsActiveToPurchase()
-    // {
-    //     if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
-    //         {
-    //             return true;
-    //         }
-    //         else
-    //         {
-    //             return false;
-    //         }
-    // }// => _isActiveToPurchase;
-    // [SerializeField] 
-    // private bool _isActive;
-    // public bool IsActive
-    // {
-    //     get => _isActive;
-    //     set
-    //     {
-    //         _isActive = value;
-    //         foreach (TraySO tray in trayData.TrayData)
-    //         {
-    //             if (tray.TrayData.TrayName == _trayName)
-    //             {
-    //                 tray.TrayData.IsActive = value;
-    //             }
-    //         }
-    //         SaveManager.Instance.SaveTrayData(trayData);
-    //     }
-    // }
-    // [SerializeField] 
-    // private int _cost;
-    // public int Cost => _cost;
+    [SerializeField] private SpawnManager _spawnManager;
+    [SerializeField] private Transform _spawnTransform;
     public QueueManager QueueManager
     {
         get => _queueManager;
@@ -77,31 +47,22 @@ public class Tray : MonoBehaviour
     private void Start()
     {
         trayData = SaveManager.Instance.TrayData;
-        // foreach (TraySO tray in trayData.TrayData)
-        // {
-        //     if (tray.TrayData.TrayName == _trayName)
-        //     {
-        //         _isActive = tray.TrayData.IsActive;
-        //         _cost = tray.TrayData.Cost;
-        //         _productType = tray.TrayData.ProductType;
-        //         _levelForUnlock = tray.TrayData.LevelForUnlock;
-        //     }
-        // }
     }
 
-    // public int SetCost()
-    // {
-    //     return _cost;
-    // }
-
-    // public bool IsActiveForPurchase()
-    // {
-    //     return _levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel;
-    // }
+    void Update()
+    {
+        if (!QueueIsFull())
+        {
+            _queueManager.AddToQueue(_spawnManager.SpawnCharacters(_productType, _spawnZone));
+            
+        }
+    }
 
 
     public bool QueueIsFull()
     {
+        Debug.Log(QueueManager.WaitingQueue.Count + " QueueManager.WaitingQueue.Count");
+        Debug.Log(incomePerOrder + " incomePerOrder");
         if (QueueManager.WaitingQueue.Count == incomePerOrder)
         {
             _isQueueFool = true;

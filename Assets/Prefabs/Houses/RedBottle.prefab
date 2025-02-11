@@ -99,23 +99,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: RedBottle
-  _startPositions:
-  - {x: -36.18, y: 2, z: -7.67}
-  - {x: 0, y: 0, z: 0}
-  - {x: -20.89, y: 2, z: -5.01}
-  _endPositions:
-  - {x: -26.42, y: 2, z: 3.29}
-  - {x: 0, y: 0, z: 0}
-  - {x: -36.18, y: 2, z: -7.67}
-  _queuePoints: {x: 8.83, y: 1.69, z: 66.74}
+  _startPositions: {fileID: 0}
+  _endPositions: {fileID: 0}
+  _queuePoints: {fileID: 0}
+  _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -23.93, y: 1.51, z: -2.5999}
   - {x: -24.75, y: 1.51, z: -1.28}
   incomePerOrder: 5
   _queueManager: {fileID: 0}
-  _levelForUnlock: 2
-  _isActive: 0
-  _cost: 400
+  _spawnManager: {fileID: 0}
+  _spawnTransform: {fileID: 0}
   _productType: 2
   _isQueueFool: 0
   _isTrayFool: 0

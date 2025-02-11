@@ -102,23 +102,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: Food
-  _startPositions:
-  - {x: 1.53, y: 2, z: 14.72}
-  - {x: 0, y: 0, z: 0}
-  - {x: -13.4, y: 2, z: 14.44}
-  _endPositions:
-  - {x: -8.04, y: 2, z: 5.12}
-  - {x: 0, y: 0, z: 0}
-  - {x: 1.53, y: 2, z: 14.72}
-  _queuePoints: {x: 19.83, y: 1.69, z: 81.56}
+  _startPositions: {fileID: 0}
+  _endPositions: {fileID: 0}
+  _queuePoints: {fileID: 0}
+  _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -9.842, y: 1.74, z: 12.117}
   - {x: -9.356, y: 1.74, z: 11.003}
   incomePerOrder: 5
   _queueManager: {fileID: 0}
-  _levelForUnlock: 5
-  _isActive: 0
-  _cost: 3200
+  _spawnManager: {fileID: 0}
+  _spawnTransform: {fileID: 0}
   _productType: 4
   _isQueueFool: 0
   _isTrayFool: 0

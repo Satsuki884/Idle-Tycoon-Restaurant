@@ -99,23 +99,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: GreenBottle
-  _startPositions:
-  - {x: -36.47, y: 2, z: 76.49}
-  - {x: 0, y: 0, z: 0}
-  - {x: -26.42, y: 2, z: 3.29}
-  _endPositions:
-  - {x: -23.61, y: 2, z: 13.59}
-  - {x: 0, y: 0, z: 0}
-  - {x: -36.47, y: 2, z: 76.49}
-  _queuePoints: {x: 5.57, y: 1.69, z: 75.71}
+  _startPositions: {fileID: 0}
+  _endPositions: {fileID: 0}
+  _queuePoints: {fileID: 0}
+  _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -26.738, y: 2.179, z: 7.786}
   - {x: -26.026, y: 2.179, z: 8.949}
   incomePerOrder: 5
   _queueManager: {fileID: 0}
-  _levelForUnlock: 1
-  _isActive: 0
-  _cost: 200
+  _spawnManager: {fileID: 0}
+  _spawnTransform: {fileID: 0}
   _productType: 1
   _isQueueFool: 0
   _isTrayFool: 0

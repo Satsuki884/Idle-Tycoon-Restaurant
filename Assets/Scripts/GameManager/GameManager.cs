@@ -4,7 +4,8 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private SaveManager _saveManager;
-    [SerializeField] private CreationManager _creationManager;
+    // [SerializeField] private CreationManager _creationManager;
+    // [SerializeField] private SpawnManager _spawnManager;
 
     private async void Awake()
     {
@@ -20,17 +21,29 @@ public class GameManager : MonoBehaviour
 
         await _saveManager.Initialize();
 
-        if (_creationManager == null)
-        {
-            _creationManager = FindObjectOfType<CreationManager>();
-            if (_creationManager == null)
-            {
-                Debug.LogError("CreationManager not found in the scene!");
-                return;
-            }
-        }
+        // if (_creationManager == null)
+        // {
+        //     _creationManager = FindObjectOfType<CreationManager>();
+        //     if (_creationManager == null)
+        //     {
+        //         Debug.LogError("CreationManager not found in the scene!");
+        //         return;
+        //     }
+        // }
 
-        await _creationManager.Initialize();
+        // await _creationManager.Initialize();
+
+        // if (_spawnManager == null)
+        // {
+        //     _spawnManager = FindObjectOfType<SpawnManager>();
+        //     if (_spawnManager == null)
+        //     {
+        //         Debug.LogError("SpawnManager not found in the scene!");
+        //         return;
+        //     }
+        // }
+
+        // await _spawnManager.Initialize();
     }
     // private static GameManager _instance;
     // public static GameManager Instance
