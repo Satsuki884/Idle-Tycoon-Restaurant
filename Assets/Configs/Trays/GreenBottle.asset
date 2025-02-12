@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _trayPrefab: {fileID: 4405299720757585394, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
+    _trayExp: 15
     _trayName: GreenBottle
     _productType: 1
     _secondResidents: 0

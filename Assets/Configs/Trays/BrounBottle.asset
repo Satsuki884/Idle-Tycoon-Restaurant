@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BrounBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _trayPrefab: {fileID: 6339928439834528897, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
+    _trayExp: 25
     _trayName: BrounBottle
     _productType: 3
     _secondResidents: 0

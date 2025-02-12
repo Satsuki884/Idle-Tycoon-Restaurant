@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RedBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _trayPrefab: {fileID: 683729359958429829, guid: e9525b18722214144b23c6ec52f72020, type: 3}
+    _trayExp: 20
     _trayName: RedBottle
     _productType: 2
     _secondResidents: 0

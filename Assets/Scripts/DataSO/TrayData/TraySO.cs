@@ -36,8 +36,8 @@ public class Resident
 [System.Serializable]
 public class TrayData
 {
-    [SerializeField] private GameObject _trayPrefab;
-    public GameObject TrayPrefab => _trayPrefab;
+    [SerializeField] private int _trayExp;
+    public int TrayExp => _trayExp;
     [SerializeField] private string _trayName;
     public string TrayName => _trayName;
     [SerializeField] private ProductType _productType;

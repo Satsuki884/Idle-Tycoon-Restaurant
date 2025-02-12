@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private SalesSystem _salesSystem;
     [SerializeField] private InventorySystem _inventoryManager;
+    [SerializeField] private PlayerProgressionSystem _playerProgressionSystem;
 
     private async void Awake()
     {
@@ -70,5 +71,17 @@ public class GameManager : MonoBehaviour
         }
 
         await _inventoryManager.Initialize();
+
+        if (_playerProgressionSystem == null)
+        {
+            _playerProgressionSystem = FindObjectOfType<PlayerProgressionSystem>();
+            if (_playerProgressionSystem == null)
+            {
+                Debug.LogError("PlayerProgressionSystem not found in the scene!");
+                return;
+            }
+        }
+
+        await _playerProgressionSystem.Initialize();
     }
 }

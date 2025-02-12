@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _trayPrefab: {fileID: 6854860379759776404, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
+    _trayExp: 10
     _trayName: BlueBottle
     _productType: 0
     _secondResidents: 0

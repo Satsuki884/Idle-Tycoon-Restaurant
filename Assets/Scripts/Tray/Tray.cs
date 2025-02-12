@@ -35,6 +35,7 @@ public class Tray : MonoBehaviour
     [SerializeField] private QueueManager _queueManager;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private Transform _spawnTransform;
+    private PlayerData _playerData;
     public QueueManager QueueManager
     {
         get => _queueManager;
@@ -149,6 +150,10 @@ public class Tray : MonoBehaviour
     private IEnumerator ServeCharacter(Character character, TraySpot spot)
     {
         SalesSystem.Instance.BuyProduct(_thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel], _thisTraySO.ProductType);
+        _playerData = SaveManager.Instance.PlayerData;
+        _playerData.PlayerExperience = _playerData.PlayerExperience + _thisTraySO.TrayExp + _thisTraySO.TrayExp * _thisTraySO.UpgradeLevel;
+        SaveManager.Instance.SavePlayerData(_playerData);
+        PlayerProgressionSystem.Instance.CheckNewLevel();
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();

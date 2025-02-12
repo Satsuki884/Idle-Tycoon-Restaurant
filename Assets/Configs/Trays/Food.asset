@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: 
   _trayData:
-    _trayPrefab: {fileID: 9017029466047386611, guid: 347df88b93a7ff049a265894804a974a, type: 3}
+    _trayExp: 35
     _trayName: Food
     _productType: 4
     _secondResidents: 0
