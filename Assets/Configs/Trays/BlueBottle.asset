@@ -16,11 +16,11 @@ MonoBehaviour:
     _trayPrefab: {fileID: 6854860379759776404, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
     _trayName: BlueBottle
     _productType: 0
-    _residents:
-    - {fileID: 7894695073303992485, guid: 1bce7d6f616060b4ba91a14aa337a714, type: 3}
-    - {fileID: 3559834673634910604, guid: 097d05d7787afe54bbc94f53d1e7ab38, type: 3}
+    _secondResidents: 0
+    _costForSecondResidents: 50
     _levelForUnlock: 0
     _timeToServe: 4
     _productUpgradeData: {fileID: 11400000, guid: f3c9c2f2870a88743baf0d72da48d86f, type: 2}
     _upgradeLevel: 0
     _isActive: 1
+    _cost: 0

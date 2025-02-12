@@ -16,9 +16,8 @@ MonoBehaviour:
     _trayPrefab: {fileID: 4405299720757585394, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
     _trayName: GreenBottle
     _productType: 1
-    _residents:
-    - {fileID: 3030060550738351851, guid: f240486be1a1a8f4bbb9c3fdfb7dc5f3, type: 3}
-    - {fileID: 1984430086997864654, guid: 08a93f2452511eb4b9731f2262510493, type: 3}
+    _secondResidents: 0
+    _costForSecondResidents: 100
     _levelForUnlock: 1
     _timeToServe: 3.5
     _productUpgradeData: {fileID: 11400000, guid: 49bf3946e99e61f43a234cda43337f72, type: 2}

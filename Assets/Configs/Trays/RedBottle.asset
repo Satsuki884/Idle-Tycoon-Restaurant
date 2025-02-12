@@ -16,9 +16,8 @@ MonoBehaviour:
     _trayPrefab: {fileID: 683729359958429829, guid: e9525b18722214144b23c6ec52f72020, type: 3}
     _trayName: RedBottle
     _productType: 2
-    _residents:
-    - {fileID: 6514851788486140854, guid: 225950beff83c96469effa58da763877, type: 3}
-    - {fileID: 1474546967790037586, guid: de19466c0d51ab24fa3ca0e7d53dc7cb, type: 3}
+    _secondResidents: 0
+    _costForSecondResidents: 400
     _levelForUnlock: 2
     _timeToServe: 3
     _productUpgradeData: {fileID: 11400000, guid: 8bbcfb413c0d8f64bb4cd0667cfc69bc, type: 2}

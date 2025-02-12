@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _characterPrefab;
     [SerializeField] private Transform _spawnList;
-    [SerializeField] private float _spawnInterval = 4f;
+    // [SerializeField] private float _spawnInterval = 4f;
     // [SerializeField] public Transform _spawnZone;
 
     public Character SpawnCharacters(ProductType productType, Transform _spawnZone)

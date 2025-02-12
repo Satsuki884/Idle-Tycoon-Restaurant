@@ -19,6 +19,21 @@ public class TraySO : ScriptableObject
     }
 }
 
+[System.Serializable]
+public class Resident 
+{
+    // [SerializeField] private GameObject _residentPrefab;
+    // [SerializeField] private Transform _residentSpawnPoint;
+    [SerializeField] private bool _isActive;
+    public bool IsActive{
+        get{
+            return _isActive;
+        }
+        set{
+            _isActive = value;
+        }
+    }
+}
 
 [System.Serializable]
 public class TrayData
@@ -29,16 +44,18 @@ public class TrayData
     public string TrayName => _trayName;
     [SerializeField] private ProductType _productType;
     public ProductType ProductType => _productType;
-    [SerializeField] private List<Resident> _residents;
-    public List<Resident> Residents
+    [SerializeField] private bool _secondResidents;
+    [SerializeField] private int _costForSecondResidents;
+    public int CostForSecondResidents => _costForSecondResidents;
+    public bool SecondResidents
     {
         get
         {
-            return _residents;
+            return _secondResidents;
         }
         set
         {
-            _residents = value;
+            _secondResidents = value;
         }
     }
     [SerializeField] private int _levelForUnlock;

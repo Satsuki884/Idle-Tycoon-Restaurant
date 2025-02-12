@@ -16,9 +16,8 @@ MonoBehaviour:
     _trayPrefab: {fileID: 9017029466047386611, guid: 347df88b93a7ff049a265894804a974a, type: 3}
     _trayName: Food
     _productType: 4
-    _residents:
-    - {fileID: 8070916135320067225, guid: 6e5c6d351c7c7eb4287492020d3d1bbe, type: 3}
-    - {fileID: 2425023789204221283, guid: 379bfd5b71e2ede41b788fff513817e1, type: 3}
+    _secondResidents: 0
+    _costForSecondResidents: 200
     _levelForUnlock: 5
     _timeToServe: 1.5
     _productUpgradeData: {fileID: 11400000, guid: 3821c44d2bfc7b940b2fb35c3abeda60, type: 2}

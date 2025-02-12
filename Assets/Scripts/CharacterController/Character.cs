@@ -14,31 +14,47 @@ public class Character : MonoBehaviour
     {
         _selectedProductType = productType;
         _selectedTray = FindTray();
-        SetPath();
+        // SetPath();
+        _selectedTray.AddCharacterToQueue(this);
 
     }
 
-    private void SetPath()
+    public void MoveTo(Vector3 target, Action onComplete = null)
     {
-        List<Vector3> newPath = new List<Vector3>
-        {
-            _selectedTray.StartPositions.transform.position,
-            _selectedTray.QueuePoints.transform.position
-        };
-        StartCoroutine(MoveTo(newPath.ToArray()));
+        StartCoroutine(MoveRoutine(target, onComplete));
     }
 
-    IEnumerator MoveTo(Vector3[] path)
+    private IEnumerator MoveRoutine(Vector3 target, Action onComplete)
     {
-        foreach (Vector3 point in path)
+        while (Vector3.Distance(transform.position, target) > 0.1f)
         {
-            while (Vector3.Distance(transform.position, point) > 0.1f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, point, moveSpeed * Time.deltaTime);
-                yield return null;
-            }
+            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 2);
+            yield return null;
         }
+        onComplete?.Invoke();
     }
+
+    // private void SetPath()
+    // {
+    //     List<Vector3> newPath = new List<Vector3>
+    //     {
+    //         _selectedTray.StartPositions.transform.position,
+    //         _selectedTray.QueuePoints.transform.position
+    //     };
+    //     StartCoroutine(MoveTo(newPath.ToArray()));
+    // }
+
+    // IEnumerator MoveTo(Vector3[] path)
+    // {
+    //     foreach (Vector3 point in path)
+    //     {
+    //         while (Vector3.Distance(transform.position, point) > 0.1f)
+    //         {
+    //             transform.position = Vector3.MoveTowards(transform.position, point, moveSpeed * Time.deltaTime);
+    //             yield return null;
+    //         }
+    //     }
+    // }
 
     private Tray FindTray()
     {

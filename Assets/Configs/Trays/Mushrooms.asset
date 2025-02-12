@@ -16,9 +16,8 @@ MonoBehaviour:
     _trayPrefab: {fileID: 4893370522560951585, guid: fe21025b216867b4bbc7bae794177c8f, type: 3}
     _trayName: Mushrooms
     _productType: 5
-    _residents:
-    - {fileID: 6739342705764422983, guid: 887f417ca47632342a2df45110f23c0b, type: 3}
-    - {fileID: 7929151295377266990, guid: effbf9bb1fbf2b64297e116ddae3601b, type: 3}
+    _secondResidents: 0
+    _costForSecondResidents: 800
     _levelForUnlock: 4
     _timeToServe: 2
     _productUpgradeData: {fileID: 11400000, guid: 554a37af52fdb9446b2ac4de0b7a9486, type: 2}

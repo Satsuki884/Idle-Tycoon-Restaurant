@@ -16,9 +16,8 @@ MonoBehaviour:
     _trayPrefab: {fileID: 6339928439834528897, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
     _trayName: BrounBottle
     _productType: 3
-    _residents:
-    - {fileID: 795359874225634454, guid: d1ddc6e8be2963d489a88e152a648fb8, type: 3}
-    - {fileID: 6614330784294235195, guid: a7d17c644aae35348b108fa1ed34ea11, type: 3}
+    _secondResidents: 0
+    _costForSecondResidents: 1600
     _levelForUnlock: 3
     _timeToServe: 2.5
     _productUpgradeData: {fileID: 11400000, guid: b6a7a2fcc35e4154aa9d0ceea4acfd75, type: 2}
