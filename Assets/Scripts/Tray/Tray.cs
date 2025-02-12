@@ -123,9 +123,14 @@ public class Tray : MonoBehaviour
 
     public void AddCharacterToQueue(Character character)
     {
-        character.MoveTo(_queuePoints.position);
-        TryMoveToSpot();
+        // Debug.Log("I " + character.name + " move to start point");
+        character.MoveTo(_queuePoints.position, () =>
+        {
+            TryMoveToSpot();
+        });
     }
+
+    private Character _currentCharacter;
 
     private void TryMoveToSpot()
     {
@@ -134,11 +139,12 @@ public class Tray : MonoBehaviour
         var freeSpot = _availableSpots.FirstOrDefault(s => s.isFree && !s.IsLocked);
         if (freeSpot != null)
         {
-            var character = _queueManager.WaitingQueue.Dequeue();
+            _currentCharacter = _queueManager.WaitingQueue.Dequeue();
             freeSpot.isFree = false;
-            character.MoveTo(freeSpot.position.position, () =>
+            // Debug.Log("I " + _currentCharacter.name + " move to served spot");
+            _currentCharacter.MoveTo(freeSpot.position.position, () =>
             {
-                StartCoroutine(ServeCharacter(character, freeSpot));
+                StartCoroutine(ServeCharacter(_currentCharacter, freeSpot));
             });
         }
     }
@@ -147,12 +153,15 @@ public class Tray : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         spot.isFree = true;
+        TryMoveToSpot();
+        // Debug.Log("I " + character.name + "move to end point");
         character.MoveTo(_endPositions.position, () =>
         {
+            // Debug.Log("I " + character.name + "move to spawn zone");
             character.MoveTo(_spawnZone.position, () =>
             {
+                // Debug.Log("I " + character.name + " destroy");
                 Destroy(character.gameObject);
-                TryMoveToSpot();
             });
         });
     }

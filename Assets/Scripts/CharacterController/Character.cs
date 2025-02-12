@@ -6,67 +6,67 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private ProductType _selectedProductType;
-    private Tray _selectedTray;
-    public float moveSpeed = 2f;
+    [SerializeField] private float moveSpeed = 2f;
 
-    public void Initialize(ProductType productType)
-    {
-        // _selectedProductType = productType;
-        // _selectedTray = FindTray();
-        // // SetPath();
-        // _selectedTray.AddCharacterToQueue(this);
-
-    }
+    private bool hasReachedSpot = false;
 
     public void MoveTo(Vector3 target, Action onComplete = null)
     {
         StartCoroutine(MoveRoutine(target, onComplete));
     }
 
+    public void MoveToSpot(Vector3 target, Action onComplete = null)
+    {
+        StartCoroutine(MoveRoutineToSpot(target, onComplete));
+    }
+
     private IEnumerator MoveRoutine(Vector3 target, Action onComplete)
     {
         yield return new WaitForSeconds(2f);
-        while (Vector3.Distance(transform.position, target) > 0.1f)
+        Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z); // Игнорируем Y
+
+        while (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
+                                new Vector3(targetPosition.x, 0, targetPosition.z)) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 2);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 2);
             yield return null;
+
+            // if (hasReachedSpot) // Если коллайдер сработал
+            // {
+                
+            //     break;
+            // }
         }
         onComplete?.Invoke();
     }
 
-    // private void SetPath()
-    // {
-    //     List<Vector3> newPath = new List<Vector3>
-    //     {
-    //         _selectedTray.StartPositions.transform.position,
-    //         _selectedTray.QueuePoints.transform.position
-    //     };
-    //     StartCoroutine(MoveTo(newPath.ToArray()));
-    // }
-
-    // IEnumerator MoveTo(Vector3[] path)
-    // {
-    //     foreach (Vector3 point in path)
-    //     {
-    //         while (Vector3.Distance(transform.position, point) > 0.1f)
-    //         {
-    //             transform.position = Vector3.MoveTowards(transform.position, point, moveSpeed * Time.deltaTime);
-    //             yield return null;
-    //         }
-    //     }
-    // }
-
-    private Tray FindTray()
+    private IEnumerator MoveRoutineToSpot(Vector3 target, Action onComplete)
     {
-        Tray[] trays = FindObjectsOfType<Tray>();
-        foreach (Tray tray in trays)
+        yield return new WaitForSeconds(2f);
+
+        Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z); // Игнорируем Y
+
+        while (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
+                                new Vector3(targetPosition.x, 0, targetPosition.z)) > 0.1f)
         {
-            if (tray.ProductType == _selectedProductType)
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 2);
+            yield return null;
+
+            if (hasReachedSpot) // Если коллайдер сработал
             {
-                return tray;
+                
+                break;
             }
         }
-        return null;
+        onComplete?.Invoke();
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Spot"))
+        {
+            hasReachedSpot = true;
+        }
     }
 }
