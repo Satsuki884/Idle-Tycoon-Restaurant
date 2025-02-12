@@ -57,7 +57,7 @@ public class Tray : MonoBehaviour
         SetCurrentTrayData();
         StartCoroutine(SpawnCharacters());
         // GetTrayDataSO();
-        
+
 
         _availableSpots = _availableSpots.OrderBy(s => s.position.position.x).ToList();
     }
@@ -80,24 +80,14 @@ public class Tray : MonoBehaviour
         SetAvailableResident();
     }
 
-    public void BuyNewResident()
+    public void SetAvailableResident()
     {
-        // for (int i = 0; i < _thisTraySO.Residents.Count; i++)
-        // {
-        //     if(!_thisTraySO.Residents[i].IsActive)
-        //     {
-        //         _thisTraySO.Residents[i].IsActive = true;
-        SetAvailableResident();
-        //     break;
-        // }
-        // }
-    }
-
-    private void SetAvailableResident()
-    {
-        if(_thisTraySO.SecondResidents){
+        if (_thisTraySO.SecondResidents)
+        {
             _secondResidentPrefab.SetActive(true);
-        } else {
+        }
+        else
+        {
             _secondResidentPrefab.SetActive(false);
         }
         if (_thisTraySO.SecondResidents)
@@ -106,7 +96,9 @@ public class Tray : MonoBehaviour
             {
                 spot.IsLocked = false;
             }
-        } else {
+        }
+        else
+        {
             _availableSpots.First().IsLocked = false;
             _availableSpots.Last().IsLocked = true;
         }
@@ -124,15 +116,14 @@ public class Tray : MonoBehaviour
                 _queueManager.AddToQueue(_character);
                 AddCharacterToQueue(_character);
                 _character = null;
-                // Debug.Log(_queueManager.WaitingQueue.Count);
             }
-            yield return new WaitForSeconds(3f); // Add a delay to prevent infinite rapid spawning
+            yield return new WaitForSeconds(3f);
         }
     }
 
     public void AddCharacterToQueue(Character character)
     {
-        character.MoveTo(_queuePoints.position); // Персонаж идёт в очередь
+        character.MoveTo(_queuePoints.position);
         TryMoveToSpot();
     }
 
@@ -161,7 +152,6 @@ public class Tray : MonoBehaviour
             character.MoveTo(_spawnZone.position, () =>
             {
                 Destroy(character.gameObject);
-                // spot.isFree = true;
                 TryMoveToSpot();
             });
         });
@@ -170,8 +160,6 @@ public class Tray : MonoBehaviour
 
     public bool QueueIsFull()
     {
-        // Debug.Log(QueueManager.WaitingQueue.Count + " QueueManager.WaitingQueue.Count");
-        // Debug.Log(incomePerOrder + " incomePerOrder");
         if (QueueManager.WaitingQueue.Count == incomePerOrder)
         {
             _isQueueFool = true;
@@ -183,35 +171,6 @@ public class Tray : MonoBehaviour
             return false;
         }
     }
-    // public void SetSpot()
-    // {
-    //     Character character = QueueManager.WaitingQueue.Peek();
-    //     List<Vector3> newPath = new List<Vector3>();
-    //     foreach (var spot in _traySpot)
-    //     {
-    //         if (spot.Value == true)
-    //         {
-    //             _traySpot[spot.Key] = false;
-    //             newPath.Add(character.transform.position);
-    //             newPath.Add(spot.Key);
-    //             StartCoroutine(MoveToTray(newPath.ToArray(), character.moveSpeed));
-    //             _traySpot[spot.Key] = false;
-    //         }
-    //     }
-    // }
-
-    // IEnumerator MoveToTray(Vector3[] path, float moveSpeed)
-    // {
-    //     QueueManager.WaitingQueue.Dequeue();
-    //     foreach (Vector3 point in path)
-    //     {
-    //         while (Vector3.Distance(QueueManager.WaitingQueue.Peek().transform.position, point) > 0.1f)
-    //         {
-    //             QueueManager.WaitingQueue.Peek().transform.position = Vector3.MoveTowards(QueueManager.WaitingQueue.Peek().transform.position, point, moveSpeed * Time.deltaTime);
-    //             yield return null;
-    //         }
-    //     }
-    // }
 
 
 }

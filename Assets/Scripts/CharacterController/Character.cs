@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
 
     private IEnumerator MoveRoutine(Vector3 target, Action onComplete)
     {
+        yield return new WaitForSeconds(2f);
         while (Vector3.Distance(transform.position, target) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * 2);

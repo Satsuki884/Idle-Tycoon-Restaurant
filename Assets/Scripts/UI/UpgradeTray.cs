@@ -72,7 +72,7 @@ public class UpgradeTray : MonoBehaviour
     private void SaveUpdate()
     {
         SaveManager.Instance.SaveTrayData(trayData);
-
+        // SetAvailableResident();
         playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
         SaveManager.Instance.SavePlayerData(playerData);
         UpdatePanel(_trayName);
@@ -106,13 +106,15 @@ public class UpgradeTray : MonoBehaviour
         // residents = currentTrayData.Residents;
         // foreach (var resident in residents)
         // {
-            if (!currentTrayData.SecondResidents && currentTrayData.CostForSecondResidents <= playerData.PlayerCoins)
-            {
-                _buyNewResidentButton.interactable = true;
-                // break;
-            }else{
-                _buyNewResidentButton.interactable = false;
-            }
+        if (!currentTrayData.SecondResidents && currentTrayData.CostForSecondResidents <= playerData.PlayerCoins)
+        {
+            _buyNewResidentButton.interactable = true;
+            // break;
+        }
+        else
+        {
+            _buyNewResidentButton.interactable = false;
+        }
         // }
     }
 }
