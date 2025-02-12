@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -111,13 +112,18 @@ public class Tray : MonoBehaviour
         }
     }
 
+    private Character _character;
+
     private IEnumerator SpawnCharacters()
     {
         while (true)
         {
             if (!QueueIsFull() && _thisTraySO.IsActive)
             {
-                _queueManager.AddToQueue(_spawnManager.SpawnCharacters(_productType, _spawnZone));
+                _character = _spawnManager.SpawnCharacters(_productType, _spawnZone);
+                _queueManager.AddToQueue(_character);
+                AddCharacterToQueue(_character);
+                _character = null;
                 // Debug.Log(_queueManager.WaitingQueue.Count);
             }
             yield return new WaitForSeconds(3f); // Add a delay to prevent infinite rapid spawning
