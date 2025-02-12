@@ -14,10 +14,11 @@ public class SpawnManager : MonoBehaviour
 
     public Character SpawnCharacters(ProductType productType, Transform _spawnZone)
     {
+        Debug.Log("SpawnCharacters " + productType);
         GameObject newCharacter = Instantiate(_characterPrefab[UnityEngine.Random.Range(0, _characterPrefab.Count)], _spawnZone.position, Quaternion.identity);
         newCharacter.transform.SetParent(_spawnList, true);
         Character character = newCharacter.GetComponent<Character>();
-        character.Initialize(productType);
+        // character.Initialize(productType);
         return character;
     }
 }

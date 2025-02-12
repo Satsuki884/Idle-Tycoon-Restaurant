@@ -68,12 +68,12 @@ public class Tray : MonoBehaviour
     private void SetCurrentTrayData()
     {
         GetTrayDataSO();
-        // Debug.Log(trayData.TrayData.Count);
         foreach (var tray in trayData.TrayData)
         {
             if (tray.TrayData.ProductType == _productType)
             {
                 _thisTraySO = tray.TrayData;
+                // Debug.Log(_thisTraySO.TrayName + " " + _thisTraySO.IsActive);
             }
         }
         SetAvailableResident();
@@ -115,10 +115,10 @@ public class Tray : MonoBehaviour
     {
         while (true)
         {
-            if (!QueueIsFull())
+            if (!QueueIsFull() && _thisTraySO.IsActive)
             {
                 _queueManager.AddToQueue(_spawnManager.SpawnCharacters(_productType, _spawnZone));
-                Debug.Log(_queueManager.WaitingQueue.Count);
+                // Debug.Log(_queueManager.WaitingQueue.Count);
             }
             yield return new WaitForSeconds(3f); // Add a delay to prevent infinite rapid spawning
         }

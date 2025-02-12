@@ -12,10 +12,10 @@ public class Character : MonoBehaviour
 
     public void Initialize(ProductType productType)
     {
-        _selectedProductType = productType;
-        _selectedTray = FindTray();
-        // SetPath();
-        _selectedTray.AddCharacterToQueue(this);
+        // _selectedProductType = productType;
+        // _selectedTray = FindTray();
+        // // SetPath();
+        // _selectedTray.AddCharacterToQueue(this);
 
     }
 
