@@ -30,7 +30,7 @@ public class CreationManager : MonoBehaviour
     public void Start()
     {
         trayData = SaveManager.Instance.TrayData;
-        Debug.Log(trayData.TrayData.Count);
+        // Debug.Log(trayData.TrayData.Count);
 
         foreach (var tr in _addTray)
         {
@@ -41,7 +41,7 @@ public class CreationManager : MonoBehaviour
         {
             if (!tray.TrayData.IsActive)
             {
-                Debug.Log(tray.TrayData.TrayName);
+                // Debug.Log(tray.TrayData.TrayName);
                 foreach (var tr in _trays)
                 {
                     if (tr.TrayName == tray.TrayData.TrayName)

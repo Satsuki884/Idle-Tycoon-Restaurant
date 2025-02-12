@@ -4,7 +4,7 @@ public enum ProductType
     BlueBottle,
     GreenBottle,
     RedBottle,
-    BrounBottle,
-    Food,
+    BrownBottle,
+    Chicken,
     Mushrooms
 }

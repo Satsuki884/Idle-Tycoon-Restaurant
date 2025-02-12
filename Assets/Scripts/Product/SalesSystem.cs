@@ -8,8 +8,6 @@ public class SalesSystem : MonoBehaviour
 {
     public static SalesSystem _instance;
     public static SalesSystem Instance => _instance;
-
-    [Header("Money")]
     [SerializeField] private TMP_Text _moneyText;
     private PlayerData _playerData;
 
@@ -37,7 +35,7 @@ public class SalesSystem : MonoBehaviour
         int coins = _playerData.PlayerCoins;
         _moneyText.text = FormatNumber(coins);
     }
-    string FormatNumber(int num)
+    public string FormatNumber(int num)
     {
         if (num >= 1_000_000)
             return (num / 1_000_000f).ToString("0.#") + "m";
@@ -61,10 +59,10 @@ public class SalesSystem : MonoBehaviour
             case ProductType.RedBottle:
                 _playerData.RedBottle++;
                 break;
-            case ProductType.BrounBottle:
+            case ProductType.BrownBottle:
                 _playerData.BrounBottle++;
                 break;
-            case ProductType.Food:
+            case ProductType.Chicken:
                 _playerData.Food++;
                 break;
             case ProductType.Mushrooms:
@@ -73,5 +71,6 @@ public class SalesSystem : MonoBehaviour
         }
         SaveManager.Instance.SavePlayerData(_playerData);
         UpdatedPlayerMoney();
+        InventorySystem.Instance.RefreshInventory();
     }
 }

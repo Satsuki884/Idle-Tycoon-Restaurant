@@ -82,7 +82,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trayName: BlueBootle
+  _trayName: BlueBottle
   _startPositions: {fileID: 5429175122472425214}
   _endPositions: {fileID: 5170165978623375736}
   _queuePoints: {fileID: 0}

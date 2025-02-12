@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CreationManager _creationManager;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private SalesSystem _salesSystem;
+    [SerializeField] private InventorySystem _inventoryManager;
 
     private async void Awake()
     {
@@ -57,5 +58,17 @@ public class GameManager : MonoBehaviour
         }
 
         await _salesSystem.Initialize();
+
+        if (_inventoryManager == null)
+        {
+            _inventoryManager = FindObjectOfType<InventorySystem>();
+            if (_inventoryManager == null)
+            {
+                Debug.LogError("InventorySystem not found in the scene!");
+                return;
+            }
+        }
+
+        await _inventoryManager.Initialize();
     }
 }
