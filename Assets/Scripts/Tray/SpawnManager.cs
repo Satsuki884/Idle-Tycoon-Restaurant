@@ -9,16 +9,27 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _characterPrefab;
     [SerializeField] private Transform _spawnList;
-    // [SerializeField] private float _spawnInterval = 4f;
-    // [SerializeField] public Transform _spawnZone;
+    public static SpawnManager _instance;
+    public static SpawnManager Instance => _instance;
 
-    public Character SpawnCharacters(ProductType productType, Transform _spawnZone)
+    public async Task Initialize(params object[] param)
     {
-        // Debug.Log("SpawnCharacters " + productType);
+        if (_instance != null)
+        {
+            return;
+        }
+
+        _instance = this;
+
+
+        await Task.Delay(100);
+    }
+
+    public Character SpawnCharacters(Transform _spawnZone)
+    {
         GameObject newCharacter = Instantiate(_characterPrefab[UnityEngine.Random.Range(0, _characterPrefab.Count)], _spawnZone.position, Quaternion.identity);
         newCharacter.transform.SetParent(_spawnList, true);
         Character character = newCharacter.GetComponent<Character>();
-        // character.Initialize(productType);
         return character;
     }
 }

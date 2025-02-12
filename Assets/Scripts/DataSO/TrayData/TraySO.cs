@@ -22,8 +22,6 @@ public class TraySO : ScriptableObject
 [System.Serializable]
 public class Resident 
 {
-    // [SerializeField] private GameObject _residentPrefab;
-    // [SerializeField] private Transform _residentSpawnPoint;
     [SerializeField] private bool _isActive;
     public bool IsActive{
         get{
@@ -65,19 +63,7 @@ public class TrayData
     [SerializeField] private ProductUpgradeDataSO _productUpgradeData;
     public ProductUpgradeDataSO ProductUpgradeData => _productUpgradeData;
     [SerializeField] private int _upgradeLevel;
-    // public bool IsActiveForPurchase{
-    //     get
-    //     {
-    //         if (_levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
-    //         {
-    //             return true;
-    //         }
-    //         else
-    //         {
-    //             return false;
-    //         }
-    //     }
-    // }
+    
     public int UpgradeLevel
     {
         get

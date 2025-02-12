@@ -31,7 +31,7 @@ public class Tray : MonoBehaviour
     public Vector3[] availableSpots;
     [SerializeField] private List<TraySpot> _availableSpots; // Переделали
     public List<TraySpot> AvailableSpots => _availableSpots;
-    [SerializeField] private int incomePerOrder = 5;
+    [SerializeField] private int incomePerOrder = 2;
     [SerializeField] private QueueManager _queueManager;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private Transform _spawnTransform;
@@ -56,8 +56,6 @@ public class Tray : MonoBehaviour
     {
         SetCurrentTrayData();
         StartCoroutine(SpawnCharacters());
-        // GetTrayDataSO();
-
 
         _availableSpots = _availableSpots.OrderBy(s => s.position.position.x).ToList();
     }
@@ -112,7 +110,8 @@ public class Tray : MonoBehaviour
         {
             if (!QueueIsFull() && _thisTraySO.IsActive)
             {
-                _character = _spawnManager.SpawnCharacters(_productType, _spawnZone);
+                _character = _spawnManager.SpawnCharacters(_spawnZone);
+                // _character = SpawnManager.Instance.SpawnCharacters(_spawnZone);
                 _queueManager.AddToQueue(_character);
                 AddCharacterToQueue(_character);
                 _character = null;
@@ -123,7 +122,6 @@ public class Tray : MonoBehaviour
 
     public void AddCharacterToQueue(Character character)
     {
-        // Debug.Log("I " + character.name + " move to start point");
         character.MoveTo(_queuePoints.position, () =>
         {
             TryMoveToSpot();
@@ -141,7 +139,6 @@ public class Tray : MonoBehaviour
         {
             _currentCharacter = _queueManager.WaitingQueue.Dequeue();
             freeSpot.isFree = false;
-            // Debug.Log("I " + _currentCharacter.name + " move to served spot");
             _currentCharacter.MoveTo(freeSpot.position.position, () =>
             {
                 StartCoroutine(ServeCharacter(_currentCharacter, freeSpot));
@@ -151,16 +148,14 @@ public class Tray : MonoBehaviour
 
     private IEnumerator ServeCharacter(Character character, TraySpot spot)
     {
-        yield return new WaitForSeconds(4f);
+        SalesSystem.Instance.BuyProduct(_thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel], _thisTraySO.ProductType);
+        yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
-        // Debug.Log("I " + character.name + "move to end point");
         character.MoveTo(_endPositions.position, () =>
         {
-            // Debug.Log("I " + character.name + "move to spawn zone");
             character.MoveTo(_spawnZone.position, () =>
             {
-                // Debug.Log("I " + character.name + " destroy");
                 Destroy(character.gameObject);
             });
         });

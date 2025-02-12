@@ -4,8 +4,9 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private SaveManager _saveManager;
-    // [SerializeField] private CreationManager _creationManager;
-    // [SerializeField] private SpawnManager _spawnManager;
+    [SerializeField] private CreationManager _creationManager;
+    [SerializeField] private SpawnManager _spawnManager;
+    [SerializeField] private SalesSystem _salesSystem;
 
     private async void Awake()
     {
@@ -21,81 +22,40 @@ public class GameManager : MonoBehaviour
 
         await _saveManager.Initialize();
 
-        // if (_creationManager == null)
-        // {
-        //     _creationManager = FindObjectOfType<CreationManager>();
-        //     if (_creationManager == null)
-        //     {
-        //         Debug.LogError("CreationManager not found in the scene!");
-        //         return;
-        //     }
-        // }
+        if (_creationManager == null)
+        {
+            _creationManager = FindObjectOfType<CreationManager>();
+            if (_creationManager == null)
+            {
+                Debug.LogError("CreationManager not found in the scene!");
+                return;
+            }
+        }
 
-        // await _creationManager.Initialize();
+        await _creationManager.Initialize();
 
-        // if (_spawnManager == null)
-        // {
-        //     _spawnManager = FindObjectOfType<SpawnManager>();
-        //     if (_spawnManager == null)
-        //     {
-        //         Debug.LogError("SpawnManager not found in the scene!");
-        //         return;
-        //     }
-        // }
+        if (_spawnManager == null)
+        {
+            _spawnManager = FindObjectOfType<SpawnManager>();
+            if (_spawnManager == null)
+            {
+                Debug.LogError("SpawnManager not found in the scene!");
+                return;
+            }
+        }
 
-        // await _spawnManager.Initialize();
+        await _spawnManager.Initialize();
+
+        if (_salesSystem == null)
+        {
+            _salesSystem = FindObjectOfType<SalesSystem>();
+            if (_salesSystem == null)
+            {
+                Debug.LogError("SalesSystem not found in the scene!");
+                return;
+            }
+        }
+
+        await _salesSystem.Initialize();
     }
-    // private static GameManager _instance;
-    // public static GameManager Instance
-    // {
-    //     get
-    //     {
-    //         if (_instance == null)
-    //         {
-    //             _instance = FindObjectOfType<GameManager>();
-    //             if (_instance == null)
-    //             {
-    //                 Debug.LogError("GameManager instance not found in the scene!");
-    //                 return null;
-    //             }
-    //             DontDestroyOnLoad(_instance);
-    //         }
-    //         return _instance;
-    //     }
-    // }
-
-    // [SerializeField] private SaveManager _saveManager;
-    // public SaveManager SaveManager
-    // {
-    //     get
-    //     {
-    //         if (_saveManager == null)
-    //         {
-    //             Debug.LogError("SaveManager is NULL! Make sure it is assigned in the Inspector.");
-    //         }
-    //         return _saveManager;
-    //     }
-    // }
-
-    // private void Awake()
-    // {
-    //     if (_instance == null)
-    //     {
-    //         _instance = this;
-    //         DontDestroyOnLoad(gameObject);
-
-    //         if (_saveManager == null)
-    //         {
-    //             _saveManager = FindObjectOfType<SaveManager>();
-    //             if (_saveManager == null)
-    //             {
-    //                 Debug.LogError("SaveManager not found! Make sure it is added to the scene.");
-    //             }
-    //         }
-    //     }
-    //     else if (_instance != this)
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
 }

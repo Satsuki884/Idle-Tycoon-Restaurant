@@ -9,6 +9,7 @@ public class UpgradeTray : MonoBehaviour
     [SerializeField] private Button _buyNewResidentButton;
     [SerializeField] private Button _upgradeTrayButton;
     [SerializeField] private TMP_Text _costOfUpgradeText;
+    [SerializeField] private TMP_Text _levelUpPriceText;
 
     private PlayerData playerData;
     private TrayDataSO trayData;
@@ -80,41 +81,28 @@ public class UpgradeTray : MonoBehaviour
 
     private void SetPanelData()
     {
-        // Debug.Log(trayData);
-        currentTrayData = trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData;
-        // Debug.Log(currentTrayData);
+        currentTrayData = trayData.TrayData
+            .Find(tray => tray.TrayData.TrayName == _trayName)
+            .TrayData;
 
-        if (currentTrayData.UpgradeLevel == currentTrayData.ProductUpgradeData.UpgradeCost.Count)
+        int upgradeLevel = currentTrayData.UpgradeLevel;
+        var upgradeData = currentTrayData.ProductUpgradeData;
+
+        _costOfUpgradeText.text = upgradeData.UpgradeCost[upgradeLevel].ToString();
+        _levelUpPriceText.text = $"{upgradeData.UpgradePrice[upgradeLevel]} -> {upgradeData.UpgradePrice[upgradeLevel + 1]}";
+
+        _buyNewResidentButton.interactable = !currentTrayData.SecondResidents &&
+                                              currentTrayData.CostForSecondResidents <= playerData.PlayerCoins;
+
+        bool canUpgrade = upgradeData.UpgradeCost[upgradeLevel] <= playerData.PlayerCoins;
+        _upgradeTrayButton.interactable = canUpgrade;
+
+        if (upgradeLevel == upgradeData.UpgradeCost.Count - 1)
         {
             _costOfUpgradeText.text = "Max Level";
             _upgradeTrayButton.interactable = false;
         }
-        else
-        {
-            _costOfUpgradeText.text = currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel].ToString();
-            _upgradeTrayButton.interactable = true;
-        }
 
-        if (currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel] > playerData.PlayerCoins)
-        {
-            _upgradeTrayButton.interactable = false;
-        }
-        {
-            _upgradeTrayButton.interactable = true;
-        }
 
-        // residents = currentTrayData.Residents;
-        // foreach (var resident in residents)
-        // {
-        if (!currentTrayData.SecondResidents && currentTrayData.CostForSecondResidents <= playerData.PlayerCoins)
-        {
-            _buyNewResidentButton.interactable = true;
-            // break;
-        }
-        else
-        {
-            _buyNewResidentButton.interactable = false;
-        }
-        // }
     }
 }
