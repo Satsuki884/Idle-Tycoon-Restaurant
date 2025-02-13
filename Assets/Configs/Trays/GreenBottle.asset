@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreenBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _experiencePerOrder: 15
+    _experiencePerOrder: 10
     _trayName: GreenBottle
     _productType: 1
     _secondResidents: 0

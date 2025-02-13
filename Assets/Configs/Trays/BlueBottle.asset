@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _experiencePerOrder: 90
+    _experiencePerOrder: 5
     _trayName: BlueBottle
     _productType: 0
     _secondResidents: 0

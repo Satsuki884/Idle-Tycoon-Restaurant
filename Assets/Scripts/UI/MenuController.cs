@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,10 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Button _closeSynthesisButton;
     [SerializeField] private GameObject _synthesisPanel;
 
+    [Header("Upgrade Tray")]
+    [SerializeField] private GameObject _upgradeTray;
+    [SerializeField] private Button _closeUpgradeButton;
+
     [Header("Buy")]
     [SerializeField] private GameObject _buyPanel;
     [SerializeField] private Button _buyButtonClose;
@@ -24,12 +29,21 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _getNewLevelPanel;
     [SerializeField] private Button _getNewLevelButtonClose;
 
+    [Header("Experience")]
+
+    [SerializeField] private GameObject _infoPanel;
+    [SerializeField] private Button _openInfoButton;
+    [SerializeField] private Button _closeInfoButton;
+
     void Start()
     {
+        _infoPanel.SetActive(false);
         _settingsPanel.SetActive(false);
         _buyPanel.SetActive(false);
         _inventoryPanel.SetActive(false);
         _synthesisPanel.SetActive(false);
+        _getNewLevelPanel.SetActive(false);
+        _upgradeTray.SetActive(false);
         _settingsButton.onClick.RemoveAllListeners();
         _settingsButton.onClick.AddListener(() => Open(_settingsPanel));
         _buyButtonClose.onClick.RemoveAllListeners();
@@ -46,6 +60,12 @@ public class MenuController : MonoBehaviour
         _closeSynthesisButton.onClick.AddListener(() => Close(_synthesisPanel));
         _getNewLevelButtonClose.onClick.RemoveAllListeners();
         _getNewLevelButtonClose.onClick.AddListener(() => Close(_getNewLevelPanel));
+        _openInfoButton.onClick.RemoveAllListeners();
+        _openInfoButton.onClick.AddListener(() => Open(_infoPanel));
+        _closeInfoButton.onClick.RemoveAllListeners();
+        _closeInfoButton.onClick.AddListener(() => Close(_infoPanel));
+        _closeUpgradeButton.onClick.RemoveAllListeners();
+        _closeUpgradeButton.onClick.AddListener(() => Close(_upgradeTray));
     }
 
     private void Close(GameObject gameObject)

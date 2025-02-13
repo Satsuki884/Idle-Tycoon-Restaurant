@@ -11,6 +11,9 @@ public class PlayerProgressionSystem : MonoBehaviour
     [SerializeField] private TMP_Text _levelText;
     [SerializeField] private TMP_Text _currentLevel;
     [SerializeField] private Slider _expBar;
+    [Header("Info Panel")]
+    [SerializeField] private TMP_Text _currentLevelText;
+    [SerializeField] private TMP_Text _expirienceText;
     private bool _isMaxLevel = false;
 
     public static PlayerProgressionSystem Instance { get; private set; }
@@ -29,9 +32,7 @@ public class PlayerProgressionSystem : MonoBehaviour
     {
         _playerData = SaveManager.Instance.PlayerData;
         _expBar.minValue = 0;
-        _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel + 1);
-        _expBar.value = _playerData.PlayerExperience;
-        _currentLevel.text = _playerData.PlayerLevel.ToString();
+        UpdateUI();
     }
 
     public void AddExperience(int exp)
@@ -49,34 +50,49 @@ public class PlayerProgressionSystem : MonoBehaviour
             return;
         }
 
-        while (_playerData.PlayerExperience >= GetExpForNextLevel(_playerData.PlayerLevel + 1) && !_isMaxLevel)
+        while (!_isMaxLevel && _playerData.PlayerExperience >= GetExpForNextLevel(_playerData.PlayerLevel + 1))
         {
-            Debug.Log(_playerData.PlayerExperience + " " + GetExpForNextLevel(_playerData.PlayerLevel + 1));
-            _playerData.PlayerExperience -= GetExpForNextLevel(_playerData.PlayerLevel + 1);
-            Debug.Log(_playerData.PlayerExperience + "now");
-            if (_playerData.PlayerLevel == _playerData.MaxLevel)
+            int nextLevelExp = GetExpForNextLevel(_playerData.PlayerLevel + 1);
+            _playerData.PlayerExperience -= nextLevelExp;
+
+            if (_playerData.PlayerLevel == _playerData.MaxLevel - 1)
             {
-                _playerData.PlayerExperience = GetExpForNextLevel(_playerData.MaxLevel);
-                _expBar.value = _playerData.PlayerExperience;
+                _playerData.PlayerExperience = nextLevelExp;
                 _isMaxLevel = true;
             }
             else
             {
                 _playerData.PlayerLevel++;
             }
+
+            UpdateUI();
             SaveManager.Instance.SavePlayerData(_playerData);
-            _LevelUpPanel.gameObject.SetActive(true);
-            _levelText.text = _playerData.PlayerLevel.ToString();
-            _currentLevel.text = _playerData.PlayerLevel.ToString();
-            _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel + 1);
         }
 
         _expBar.value = _playerData.PlayerExperience;
     }
 
+    private void UpdateUI()
+    {
+        _LevelUpPanel.gameObject.SetActive(true);
+        _levelText.text = _playerData.PlayerLevel.ToString();
+        _currentLevel.text = _playerData.PlayerLevel.ToString();
+        _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel + 1);
+        _currentLevelText.text = _playerData.PlayerLevel.ToString();
+        if (_isMaxLevel)
+        {
+            _expirienceText.text = "Max Level. Congratulations!";
+            return;
+        }
+        else
+        {
+            _expirienceText.text = _playerData.PlayerExperience.ToString() + " / " + GetExpForNextLevel(_playerData.PlayerLevel + 1);
+        }
+
+    }
+
     private int GetExpForNextLevel(int level)
     {
-        var levelData = _neededExpForNextLevelSO.NeededExpForNextLevel.Find(x => x.Level == level);
-        return levelData.Exp;
+        return _neededExpForNextLevelSO.NeededExpForNextLevel.Find(x => x.Level == level).Exp;
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BrounBottle
   m_EditorClassIdentifier: 
   _trayData:
-    _experiencePerOrder: 25
+    _experiencePerOrder: 20
     _trayName: BrounBottle
     _productType: 3
     _secondResidents: 0

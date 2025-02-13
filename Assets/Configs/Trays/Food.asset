@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: 
   _trayData:
-    _experiencePerOrder: 35
+    _experiencePerOrder: 30
     _trayName: Food
     _productType: 4
     _secondResidents: 0

@@ -57,8 +57,8 @@ public class SaveManager : MonoBehaviour
         _savePlayerDataPath = Path.Combine(Application.persistentDataPath, "playerdata.json");
         Debug.Log(_savePlayerDataPath);
         _saveTrayDataPath = Path.Combine(Application.persistentDataPath, "traydata.json");
-        SavePlayerData(_playerData.PlayerData);
-        SaveTrayData(_trayData);
+        // SavePlayerData(_playerData.PlayerData);
+        // SaveTrayData(_trayData);
         LoadPlayerData();
         LoadTrayData();
     }
