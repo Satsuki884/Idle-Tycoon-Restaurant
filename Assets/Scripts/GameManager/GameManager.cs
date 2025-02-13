@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SaveManager _saveManager;
     [SerializeField] private CreationManager _creationManager;
     [SerializeField] private SpawnManager _spawnManager;
-    // [SerializeField] private QueueManager _queueManager;
-    // [SerializeField] private SalesSystem _salesSystem;
     [SerializeField] private InventorySystem _inventoryManager;
     [SerializeField] private PlayerProgressionSystem _playerProgressionSystem;
 
@@ -48,30 +46,6 @@ public class GameManager : MonoBehaviour
         }
 
         await _spawnManager.Initialize();
-
-        // if (_queueManager == null)
-        // {
-        //     _queueManager = FindObjectOfType<QueueManager>();
-        //     if (_queueManager == null)
-        //     {
-        //         Debug.LogError("QueueManager not found in the scene!");
-        //         return;
-        //     }
-        // }
-
-        // await _queueManager.Initialize();
-
-        // if (_salesSystem == null)
-        // {
-        //     _salesSystem = FindObjectOfType<SalesSystem>();
-        //     if (_salesSystem == null)
-        //     {
-        //         Debug.LogError("SalesSystem not found in the scene!");
-        //         return;
-        //     }
-        // }
-
-        // await _salesSystem.Initialize();
 
         if (_inventoryManager == null)
         {

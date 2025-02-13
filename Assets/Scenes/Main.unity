@@ -11050,51 +11050,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1701449598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &864141904
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 864141905}
-  - component: {fileID: 864141906}
-  m_Layer: 0
-  m_Name: SalesSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &864141905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864141904}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1648097200}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &864141906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864141904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b04baf5ecca773b43a1dfaf534355675, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moneyText: {fileID: 576308241}
 --- !u!1 &869581540
 GameObject:
   m_ObjectHideFlags: 0
@@ -18036,7 +17991,6 @@ Transform:
   - {fileID: 1660847207}
   - {fileID: 413013431}
   - {fileID: 1977386119}
-  - {fileID: 864141905}
   - {fileID: 1012377554}
   - {fileID: 575221416}
   m_Father: {fileID: 0}
@@ -18056,7 +18010,6 @@ MonoBehaviour:
   _saveManager: {fileID: 1977386120}
   _creationManager: {fileID: 1930937357}
   _spawnManager: {fileID: 1250923127}
-  _salesSystem: {fileID: 864141906}
   _inventoryManager: {fileID: 1660847208}
   _playerProgressionSystem: {fileID: 575221417}
 --- !u!1001 &1650001930
