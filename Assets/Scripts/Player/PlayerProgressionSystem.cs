@@ -38,9 +38,23 @@ public class PlayerProgressionSystem : MonoBehaviour
         
     }
 
+    public void BuySmth(int money){
+        _playerData.PlayerCoins -= money;
+        SaveManager.Instance.SavePlayerData(_playerData);
+        UpdatedPlayerMoney();
+    }
+
+    public int GetPlayerMoney(){
+        return _playerData.PlayerCoins;
+    }
+
+    public int GetPlayerLevel(){
+        return _playerData.PlayerLevel;
+    }
+
     public void BuyProduct(int exp, int money, ProductType productType)
     {
-        _playerData = SaveManager.Instance.PlayerData;
+        // _playerData = SaveManager.Instance.PlayerData;
         _playerData.PlayerExperience = _playerData.PlayerExperience + exp;
         CheckNewLevel();
         GetMoneyAndProduct(money, productType);
