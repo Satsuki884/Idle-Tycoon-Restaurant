@@ -11,7 +11,7 @@ public class UpgradeTray : MonoBehaviour
     [SerializeField] private TMP_Text _costOfUpgradeText;
     [SerializeField] private TMP_Text _levelUpPriceText;
 
-    private PlayerData playerData;
+    // private PlayerData playerData;
     private TrayDataSO trayData;
 
     private TrayData currentTrayData;
@@ -41,7 +41,7 @@ public class UpgradeTray : MonoBehaviour
     {
         // Debug.Log(SaveManager.Instance);
         // Debug.Log(SaveManager.Instance.PlayerData);
-        playerData = SaveManager.Instance.PlayerData;
+        // playerData = SaveManager.Instance.PlayerData;
         // Debug.Log(playerData.PlayerCoins);
         trayData = SaveManager.Instance.TrayData;
         // foreach (var tray in trayData.TrayData)
@@ -53,8 +53,9 @@ public class UpgradeTray : MonoBehaviour
     private void LevelUpTray()
     {
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.UpgradeLevel++;
-        playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
+        // playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
         SaveUpdate();
+        PlayerProgressionSystem.Instance.BuySmth(currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel]);
     }
 
     private void BuyNewResident()
@@ -68,15 +69,16 @@ public class UpgradeTray : MonoBehaviour
             }
         }
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
-        playerData.PlayerCoins -= trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents;
+        // playerData.PlayerCoins -= trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents;
+        PlayerProgressionSystem.Instance.BuySmth(trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents);
         SaveUpdate();
     }
 
     private void SaveUpdate()
     {
         SaveManager.Instance.SaveTrayData(trayData);
-        SaveManager.Instance.SavePlayerData(playerData);
-        PlayerProgressionSystem.Instance.UpdatedPlayerMoney();
+        // SaveManager.Instance.SavePlayerData(playerData);
+        // PlayerProgressionSystem.Instance.UpdatedPlayerMoney();
         UpdatePanel(_trayName);
     }
 
@@ -93,9 +95,9 @@ public class UpgradeTray : MonoBehaviour
         _levelUpPriceText.text = $"{upgradeData.UpgradePrice[upgradeLevel]} -> {upgradeData.UpgradePrice[upgradeLevel + 1]}";
 
         _buyNewResidentButton.interactable = !currentTrayData.SecondResidents &&
-                                              currentTrayData.CostForSecondResidents <= playerData.PlayerCoins;
+                                              currentTrayData.CostForSecondResidents <= PlayerProgressionSystem.Instance.GetPlayerMoney();
 
-        bool canUpgrade = upgradeData.UpgradeCost[upgradeLevel] <= playerData.PlayerCoins;
+        bool canUpgrade = upgradeData.UpgradeCost[upgradeLevel] <= PlayerProgressionSystem.Instance.GetPlayerMoney();
         _upgradeTrayButton.interactable = canUpgrade;
 
         if (upgradeLevel == upgradeData.UpgradeCost.Count - 1)

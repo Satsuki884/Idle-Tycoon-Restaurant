@@ -1,28 +1,28 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using TMPro;
-using UnityEngine;
+// using System;
+// using System.Collections.Generic;
+// using System.Threading.Tasks;
+// using TMPro;
+// using UnityEngine;
 
-public class SalesSystem : MonoBehaviour
-{
-    public static SalesSystem _instance;
-    public static SalesSystem Instance => _instance;
-    [SerializeField] private TMP_Text _moneyText;
-    private PlayerData _playerData;
+// public class SalesSystem : MonoBehaviour
+// {
+//     public static SalesSystem _instance;
+//     public static SalesSystem Instance => _instance;
+//     [SerializeField] private TMP_Text _moneyText;
+//     private PlayerData _playerData;
 
-    public async Task Initialize(params object[] param)
-    {
-        if (_instance != null)
-        {
-            return;
-        }
+//     public async Task Initialize(params object[] param)
+//     {
+//         if (_instance != null)
+//         {
+//             return;
+//         }
 
-        _instance = this;
+//         _instance = this;
 
 
-        await Task.Delay(100);
-    }
+//         await Task.Delay(100);
+//     }
 
 //     public void Start()
 //     {
@@ -73,4 +73,4 @@ public class SalesSystem : MonoBehaviour
 //         UpdatedPlayerMoney();
 //         InventorySystem.Instance.RefreshInventory();
 //     }
-}
+// }
