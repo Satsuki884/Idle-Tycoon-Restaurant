@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _neededExpForNextLevel:
   - _level: 1
-    _exp: 150
-  - _level: 2
-    _exp: 500
-  - _level: 3
     _exp: 1000
-  - _level: 4
-    _exp: 2500
-  - _level: 5
+  - _level: 2
     _exp: 5000
+  - _level: 3
+    _exp: 10000
+  - _level: 4
+    _exp: 25000
+  - _level: 5
+    _exp: 50000

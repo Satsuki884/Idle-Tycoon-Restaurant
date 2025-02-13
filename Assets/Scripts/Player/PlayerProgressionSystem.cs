@@ -89,6 +89,7 @@ public class PlayerProgressionSystem : MonoBehaviour
             // SaveManager.Instance.SavePlayerData(_playerData);
             CreationManager.Instance.UpdateView();
         }
+        SetUI();
 
         _expBar.value = _playerData.PlayerExperience;
     }

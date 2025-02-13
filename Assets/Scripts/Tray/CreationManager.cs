@@ -89,7 +89,7 @@ public class CreationManager : MonoBehaviour
 
     public bool IsAvailableForPurchase(int levelForUnlock)
     {
-        if (levelForUnlock <= PlayerProgressionSystem.Instance.GetPlayerLevel())
+        if (levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
         {
             return true;
         }
