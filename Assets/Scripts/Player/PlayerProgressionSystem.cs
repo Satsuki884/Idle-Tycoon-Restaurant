@@ -11,6 +11,7 @@ public class PlayerProgressionSystem : MonoBehaviour
     [SerializeField] private TMP_Text _levelText;
     [SerializeField] private TMP_Text _currentLevel;
     [SerializeField] private Slider _expBar;
+    [SerializeField] private TMP_Text _moneyText;
     [Header("Info Panel")]
     [SerializeField] private TMP_Text _currentLevelText;
     [SerializeField] private TMP_Text _expirienceText;
@@ -32,19 +33,23 @@ public class PlayerProgressionSystem : MonoBehaviour
     {
         _playerData = SaveManager.Instance.PlayerData;
         _expBar.minValue = 0;
+        UpdatedPlayerMoney();
         SetUI();
     }
 
-    public void AddExperience(int exp)
+    public void BuyProduct(int exp, int money, ProductType productType)
     {
+        _playerData = SaveManager.Instance.PlayerData;
         _playerData.PlayerExperience = _playerData.PlayerExperience + exp;
-        SaveManager.Instance.SavePlayerData(_playerData);
         CheckNewLevel();
+        GetMoneyAndProduct(money, productType);
+        // SaveManager.Instance.SavePlayerData(_playerData);
+
     }
 
     public void CheckNewLevel()
     {
-        _playerData = SaveManager.Instance.PlayerData;
+
         if (_isMaxLevel)
         {
             return;
@@ -66,7 +71,7 @@ public class PlayerProgressionSystem : MonoBehaviour
             }
 
             UpdateUI();
-            SaveManager.Instance.SavePlayerData(_playerData);
+            // SaveManager.Instance.SavePlayerData(_playerData);
             CreationManager.Instance.UpdateView();
         }
 
@@ -79,7 +84,8 @@ public class PlayerProgressionSystem : MonoBehaviour
         SetUI();
     }
 
-    private void SetUI(){
+    private void SetUI()
+    {
         _levelText.text = _playerData.PlayerLevel.ToString();
         _currentLevel.text = _playerData.PlayerLevel.ToString();
         _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel + 1);
@@ -99,5 +105,49 @@ public class PlayerProgressionSystem : MonoBehaviour
     private int GetExpForNextLevel(int level)
     {
         return _neededExpForNextLevelSO.NeededExpForNextLevel.Find(x => x.Level == level).Exp;
+    }
+
+    public void UpdatedPlayerMoney()
+    {
+        int coins = _playerData.PlayerCoins;
+        _moneyText.text = FormatNumber(coins);
+    }
+    public string FormatNumber(int num)
+    {
+        if (num >= 1_000_000)
+            return (num / 1_000_000f).ToString("0.#") + "m";
+        if (num >= 1_000)
+            return (num / 1_000f).ToString("0.#") + "k";
+
+        return num.ToString();
+    }
+
+    private void GetMoneyAndProduct(int money, ProductType productType)
+    {
+        _playerData.PlayerCoins += money;
+        switch (productType)
+        {
+            case ProductType.BlueBottle:
+                _playerData.BlueBottle++;
+                break;
+            case ProductType.GreenBottle:
+                _playerData.GreenBottle++;
+                break;
+            case ProductType.RedBottle:
+                _playerData.RedBottle++;
+                break;
+            case ProductType.BrownBottle:
+                _playerData.BrounBottle++;
+                break;
+            case ProductType.Chicken:
+                _playerData.Chicken++;
+                break;
+            case ProductType.Mushrooms:
+                _playerData.Mushrooms++;
+                break;
+        }
+        SaveManager.Instance.SavePlayerData(_playerData);
+        UpdatedPlayerMoney();
+        InventorySystem.Instance.RefreshInventory();
     }
 }

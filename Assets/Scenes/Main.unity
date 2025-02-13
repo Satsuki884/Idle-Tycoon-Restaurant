@@ -7276,6 +7276,7 @@ MonoBehaviour:
   _levelText: {fileID: 1609578279}
   _currentLevel: {fileID: 538093173}
   _expBar: {fileID: 2066929297}
+  _moneyText: {fileID: 576308241}
   _currentLevelText: {fileID: 776108192}
   _expirienceText: {fileID: 697868076}
 --- !u!1 &576308239

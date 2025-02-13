@@ -47,7 +47,7 @@ public class SalesSystem : MonoBehaviour
 
     public void BuyProduct(int money, ProductType productType)
     {
-        _playerData.PlayerCoins = _playerData.PlayerCoins + money;
+        _playerData.PlayerCoins += money;
         switch (productType)
         {
             case ProductType.BlueBottle:

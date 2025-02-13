@@ -15,7 +15,7 @@ MonoBehaviour:
   _playerData:
     _playerLevel: 0
     _maxLevel: 5
-    _playerExperience: 140
+    _playerExperience: 0
     _playerCoins: 0
     _blueBottle: 0
     _greenBottle: 0

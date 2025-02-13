@@ -147,10 +147,11 @@ public class Tray : MonoBehaviour
 
     private IEnumerator ServeCharacter(Character character, TraySpot spot)
     {
-        Debug.Log(_thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel]);
-        SalesSystem.Instance.BuyProduct(_thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel], _thisTraySO.ProductType);
-        
-        PlayerProgressionSystem.Instance.AddExperience(_thisTraySO.ExperiencePerTrayOrder + _thisTraySO.ExperiencePerTrayOrder * _thisTraySO.UpgradeLevel);
+        var _tryExp = _thisTraySO.ExperiencePerTrayOrder;
+
+        PlayerProgressionSystem.Instance.BuyProduct(_thisTraySO.ExperiencePerTrayOrder + _thisTraySO.ExperiencePerTrayOrder * _thisTraySO.UpgradeLevel,
+                                                        _thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel],
+                                                        _thisTraySO.ProductType);
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
