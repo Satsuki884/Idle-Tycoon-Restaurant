@@ -76,7 +76,7 @@ public class UpgradeTray : MonoBehaviour
     {
         SaveManager.Instance.SaveTrayData(trayData);
         SaveManager.Instance.SavePlayerData(playerData);
-        SalesSystem.Instance.UpdatedPlayerMoney();
+        PlayerProgressionSystem.Instance.UpdatedPlayerMoney();
         UpdatePanel(_trayName);
     }
 

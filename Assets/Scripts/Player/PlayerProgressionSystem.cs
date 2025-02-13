@@ -33,8 +33,9 @@ public class PlayerProgressionSystem : MonoBehaviour
     {
         _playerData = SaveManager.Instance.PlayerData;
         _expBar.minValue = 0;
-        UpdatedPlayerMoney();
         SetUI();
+        UpdatedPlayerMoney();
+        
     }
 
     public void BuyProduct(int exp, int money, ProductType productType)

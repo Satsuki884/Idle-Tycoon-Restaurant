@@ -121,7 +121,7 @@ public class CreationManager : MonoBehaviour
                 {
                     playerData.PlayerCoins -= tray.TrayData.Cost;
                     SaveManager.Instance.SavePlayerData(playerData);
-                    SalesSystem.Instance.UpdatedPlayerMoney();
+                    PlayerProgressionSystem.Instance.UpdatedPlayerMoney();
                 }
                 foreach (var tr in _trays)
                 {

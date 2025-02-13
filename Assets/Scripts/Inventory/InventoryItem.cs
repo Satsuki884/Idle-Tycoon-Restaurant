@@ -9,7 +9,7 @@ public class InventoryItem : MonoBehaviour
 
     public void SetItemData(int count, Sprite productImage)
     {
-        _itemCount.text = SalesSystem.Instance.FormatNumber(count);
+        _itemCount.text = PlayerProgressionSystem.Instance.FormatNumber(count);
         _productImage.sprite = productImage;
     }
 }

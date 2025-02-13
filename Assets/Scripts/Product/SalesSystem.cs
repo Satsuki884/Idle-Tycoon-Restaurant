@@ -24,53 +24,53 @@ public class SalesSystem : MonoBehaviour
         await Task.Delay(100);
     }
 
-    public void Start()
-    {
-        _playerData = SaveManager.Instance.PlayerData;
-        UpdatedPlayerMoney();
-    }
+//     public void Start()
+//     {
+//         _playerData = SaveManager.Instance.PlayerData;
+//         UpdatedPlayerMoney();
+//     }
 
-    public void UpdatedPlayerMoney()
-    {
-        int coins = _playerData.PlayerCoins;
-        _moneyText.text = FormatNumber(coins);
-    }
-    public string FormatNumber(int num)
-    {
-        if (num >= 1_000_000)
-            return (num / 1_000_000f).ToString("0.#") + "m";
-        if (num >= 1_000)
-            return (num / 1_000f).ToString("0.#") + "k";
+//     public void UpdatedPlayerMoney()
+//     {
+//         int coins = _playerData.PlayerCoins;
+//         _moneyText.text = FormatNumber(coins);
+//     }
+//     public string FormatNumber(int num)
+//     {
+//         if (num >= 1_000_000)
+//             return (num / 1_000_000f).ToString("0.#") + "m";
+//         if (num >= 1_000)
+//             return (num / 1_000f).ToString("0.#") + "k";
 
-        return num.ToString();
-    }
+//         return num.ToString();
+//     }
 
-    public void BuyProduct(int money, ProductType productType)
-    {
-        _playerData.PlayerCoins += money;
-        switch (productType)
-        {
-            case ProductType.BlueBottle:
-                _playerData.BlueBottle++;
-                break;
-            case ProductType.GreenBottle:
-                _playerData.GreenBottle++;
-                break;
-            case ProductType.RedBottle:
-                _playerData.RedBottle++;
-                break;
-            case ProductType.BrownBottle:
-                _playerData.BrounBottle++;
-                break;
-            case ProductType.Chicken:
-                _playerData.Chicken++;
-                break;
-            case ProductType.Mushrooms:
-                _playerData.Mushrooms++;
-                break;
-        }
-        SaveManager.Instance.SavePlayerData(_playerData);
-        UpdatedPlayerMoney();
-        InventorySystem.Instance.RefreshInventory();
-    }
+//     public void BuyProduct(int money, ProductType productType)
+//     {
+//         _playerData.PlayerCoins += money;
+//         switch (productType)
+//         {
+//             case ProductType.BlueBottle:
+//                 _playerData.BlueBottle++;
+//                 break;
+//             case ProductType.GreenBottle:
+//                 _playerData.GreenBottle++;
+//                 break;
+//             case ProductType.RedBottle:
+//                 _playerData.RedBottle++;
+//                 break;
+//             case ProductType.BrownBottle:
+//                 _playerData.BrounBottle++;
+//                 break;
+//             case ProductType.Chicken:
+//                 _playerData.Chicken++;
+//                 break;
+//             case ProductType.Mushrooms:
+//                 _playerData.Mushrooms++;
+//                 break;
+//         }
+//         SaveManager.Instance.SavePlayerData(_playerData);
+//         UpdatedPlayerMoney();
+//         InventorySystem.Instance.RefreshInventory();
+//     }
 }
