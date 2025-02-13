@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trayData:
     _experiencePerOrder: 30
-    _trayName: Chiken
+    _trayName: Chicken
     _productType: 4
     _secondResidents: 0
     _costForSecondResidents: 200

@@ -26222,7 +26222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5018825040141266436, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
       propertyPath: m_Name
-      value: Chiken
+      value: Chicken
       objectReference: {fileID: 0}
     - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
       propertyPath: _spawnZone
