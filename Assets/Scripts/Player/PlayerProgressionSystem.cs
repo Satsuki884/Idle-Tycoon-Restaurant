@@ -34,30 +34,41 @@ public class PlayerProgressionSystem : MonoBehaviour
         _currentLevel.text = _playerData.PlayerLevel.ToString();
     }
 
+    public void AddExperience(int exp)
+    {
+        _playerData.PlayerExperience = _playerData.PlayerExperience + exp;
+        SaveManager.Instance.SavePlayerData(_playerData);
+        CheckNewLevel();
+    }
+
     public void CheckNewLevel()
     {
+        _playerData = SaveManager.Instance.PlayerData;
         if (_isMaxLevel)
         {
             return;
         }
 
-        if (_playerData.PlayerLevel >= _playerData.MaxLevel)
+        while (_playerData.PlayerExperience >= GetExpForNextLevel(_playerData.PlayerLevel + 1) && !_isMaxLevel)
         {
-            _playerData.PlayerExperience = GetExpForNextLevel(_playerData.PlayerLevel);
-            _isMaxLevel = true;
-            return;
-        }
-
-        while (_playerData.PlayerExperience >= GetExpForNextLevel(_playerData.PlayerLevel + 1)
-            && _playerData.PlayerLevel < _playerData.MaxLevel)
-        {
-            _playerData.PlayerExperience -= GetExpForNextLevel(_playerData.PlayerLevel+1);
-            _playerData.PlayerLevel++;
+            Debug.Log(_playerData.PlayerExperience + " " + GetExpForNextLevel(_playerData.PlayerLevel + 1));
+            _playerData.PlayerExperience -= GetExpForNextLevel(_playerData.PlayerLevel + 1);
+            Debug.Log(_playerData.PlayerExperience + "now");
+            if (_playerData.PlayerLevel == _playerData.MaxLevel)
+            {
+                _playerData.PlayerExperience = GetExpForNextLevel(_playerData.MaxLevel);
+                _expBar.value = _playerData.PlayerExperience;
+                _isMaxLevel = true;
+            }
+            else
+            {
+                _playerData.PlayerLevel++;
+            }
+            SaveManager.Instance.SavePlayerData(_playerData);
             _LevelUpPanel.gameObject.SetActive(true);
             _levelText.text = _playerData.PlayerLevel.ToString();
             _currentLevel.text = _playerData.PlayerLevel.ToString();
-            SaveManager.Instance.SavePlayerData(_playerData);
-            _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel);
+            _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel + 1);
         }
 
         _expBar.value = _playerData.PlayerExperience;
@@ -66,6 +77,6 @@ public class PlayerProgressionSystem : MonoBehaviour
     private int GetExpForNextLevel(int level)
     {
         var levelData = _neededExpForNextLevelSO.NeededExpForNextLevel.Find(x => x.Level == level);
-        return levelData != null ? levelData.Exp : int.MaxValue;
+        return levelData.Exp;
     }
 }

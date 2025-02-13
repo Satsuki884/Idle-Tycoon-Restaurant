@@ -36,8 +36,8 @@ public class Resident
 [System.Serializable]
 public class TrayData
 {
-    [SerializeField] private int _trayExp;
-    public int TrayExp => _trayExp;
+    [SerializeField] private int _experiencePerOrder;
+    public int ExperiencePerTrayOrder => _experiencePerOrder;
     [SerializeField] private string _trayName;
     public string TrayName => _trayName;
     [SerializeField] private ProductType _productType;

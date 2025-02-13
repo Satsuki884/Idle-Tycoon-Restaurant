@@ -20,6 +20,10 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject _buyPanel;
     [SerializeField] private Button _buyButtonClose;
 
+    [Header("GetNewLevel")]
+    [SerializeField] private GameObject _getNewLevelPanel;
+    [SerializeField] private Button _getNewLevelButtonClose;
+
     void Start()
     {
         _settingsPanel.SetActive(false);
@@ -40,6 +44,8 @@ public class MenuController : MonoBehaviour
         _synthesisButton.onClick.AddListener(() => Open(_synthesisPanel));
         _closeSynthesisButton.onClick.RemoveAllListeners();
         _closeSynthesisButton.onClick.AddListener(() => Close(_synthesisPanel));
+        _getNewLevelButtonClose.onClick.RemoveAllListeners();
+        _getNewLevelButtonClose.onClick.AddListener(() => Close(_getNewLevelPanel));
     }
 
     private void Close(GameObject gameObject)

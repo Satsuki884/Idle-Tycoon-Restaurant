@@ -35,12 +35,11 @@ public class Tray : MonoBehaviour
     [SerializeField] private QueueManager _queueManager;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private Transform _spawnTransform;
-    private PlayerData _playerData;
-    public QueueManager QueueManager
-    {
-        get => _queueManager;
-        set => _queueManager = value;
-    }
+    // public QueueManager QueueManager
+    // {
+    //     get => _queueManager;
+    //     set => _queueManager = value;
+    // }
     [SerializeField] private ProductType _productType;
     public ProductType ProductType => _productType;
     [SerializeField] private bool _isQueueFool;
@@ -112,12 +111,11 @@ public class Tray : MonoBehaviour
             if (!QueueIsFull() && _thisTraySO.IsActive)
             {
                 _character = _spawnManager.SpawnCharacters(_spawnZone);
-                // _character = SpawnManager.Instance.SpawnCharacters(_spawnZone);
                 _queueManager.AddToQueue(_character);
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         }
     }
 
@@ -150,10 +148,8 @@ public class Tray : MonoBehaviour
     private IEnumerator ServeCharacter(Character character, TraySpot spot)
     {
         SalesSystem.Instance.BuyProduct(_thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel], _thisTraySO.ProductType);
-        _playerData = SaveManager.Instance.PlayerData;
-        _playerData.PlayerExperience = _playerData.PlayerExperience + _thisTraySO.TrayExp + _thisTraySO.TrayExp * _thisTraySO.UpgradeLevel;
-        SaveManager.Instance.SavePlayerData(_playerData);
-        PlayerProgressionSystem.Instance.CheckNewLevel();
+        // Debug.Log("Product " + _trayName + " sold");
+        PlayerProgressionSystem.Instance.AddExperience(_thisTraySO.ExperiencePerTrayOrder + _thisTraySO.ExperiencePerTrayOrder * _thisTraySO.UpgradeLevel);
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
@@ -169,7 +165,8 @@ public class Tray : MonoBehaviour
 
     public bool QueueIsFull()
     {
-        if (QueueManager.WaitingQueue.Count == incomePerOrder)
+        // if (QueueManager.WaitingQueue.Count == incomePerOrder)
+        if (_queueManager.WaitingQueue.Count == incomePerOrder)
         {
             _isQueueFool = true;
             return true;

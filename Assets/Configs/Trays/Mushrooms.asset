@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushrooms
   m_EditorClassIdentifier: 
   _trayData:
-    _trayExp: 30
+    _experiencePerOrder: 30
     _trayName: Mushrooms
     _productType: 5
     _secondResidents: 0
