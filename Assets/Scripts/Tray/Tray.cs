@@ -121,7 +121,7 @@ public class Tray : MonoBehaviour
 
     public void AddCharacterToQueue(Character character)
     {
-        character.MoveTo(_queuePoints.position, () =>
+        character.MoveTo(_queuePoints.position, _character.transform.position, () =>
         {
             TryMoveToSpot();
         });
@@ -138,7 +138,7 @@ public class Tray : MonoBehaviour
         {
             _currentCharacter = _queueManager.WaitingQueue.Dequeue();
             freeSpot.isFree = false;
-            _currentCharacter.MoveTo(freeSpot.position.position, () =>
+            _currentCharacter.MoveTo(freeSpot.position.position, Vector3.zero, () =>
             {
                 StartCoroutine(ServeCharacter(_currentCharacter, freeSpot));
             });
@@ -156,9 +156,9 @@ public class Tray : MonoBehaviour
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
-        character.MoveTo(_endPositions.position, () =>
+        character.MoveTo(_endPositions.position, Vector3.zero, () =>
         {
-            character.MoveTo(_spawnZone.position, () =>
+            character.MoveTo(_spawnZone.position, Vector3.zero, () =>
             {
                 Destroy(character.gameObject);
             });

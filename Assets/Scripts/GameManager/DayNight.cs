@@ -57,7 +57,7 @@ public class DayNight : MonoBehaviour
     private bool IsNightTime()
     {
         int hour = DateTime.Now.Hour;
-        return hour >= 18 || hour < 6; // Ночь с 19:00 до 06:00
+        return hour >= 20 || hour < 6; // Ночь с 19:00 до 06:00
     }
 
     private void Update()

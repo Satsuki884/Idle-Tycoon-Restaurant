@@ -34,7 +34,7 @@ public class InventorySystem : MonoBehaviour
 
     void Start()
     {
-        _playerData = SaveManager.Instance.PlayerData;
+        // _playerData = SaveManager.Instance.PlayerData;
         _trayData = SaveManager.Instance.TrayData;
         CreateInventory();
         RefreshInventory();
@@ -50,6 +50,8 @@ public class InventorySystem : MonoBehaviour
 
     private void CreateInventory()
     {
+
+        _playerData = SaveManager.Instance.PlayerData;
         if (_inventoryItemsContainer.childCount > 0)
         {
             Destroy(_inventoryItemsContainer.GetChild(0).gameObject);

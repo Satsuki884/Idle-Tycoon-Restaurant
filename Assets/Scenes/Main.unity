@@ -5022,13 +5022,13 @@ RectTransform:
   m_Children:
   - {fileID: 1400438038}
   - {fileID: 1772693224}
-  - {fileID: 3846638006531901507}
   - {fileID: 1731850602}
   - {fileID: 1302950206}
   - {fileID: 374324514}
   - {fileID: 1366860812}
   - {fileID: 1574385986}
   - {fileID: 494078653}
+  - {fileID: 3846638006531901507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

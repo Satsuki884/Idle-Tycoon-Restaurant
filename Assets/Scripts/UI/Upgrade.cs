@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Upgrade : MonoBehaviour
@@ -18,9 +19,18 @@ public class Upgrade : MonoBehaviour
         }
     }
 
-    void OnMouseDown() 
+    private bool IsPointerOverUIObject()
     {
-        if (_windowCanvas != null)
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
+    }
+
+    void OnMouseDown()
+    {
+        if (_windowCanvas != null && !IsPointerOverUIObject())
         {
             bool isActive = _windowCanvas.activeSelf;
             _upgradeText.text = gameObject.name;
