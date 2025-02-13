@@ -41,8 +41,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        // _musicSource.clip = _backgroundMusic;
-        // _musicSource.Play();
+        _musicSource.clip = _backgroundMusic;
+        _musicSource.Play();
     }
 
     public string ButtonClick = "ButtonClick";
