@@ -89,7 +89,7 @@ public class CreationManager : MonoBehaviour
 
     public bool IsAvailableForPurchase(int levelForUnlock)
     {
-        if (levelForUnlock <= SaveManager.Instance.PlayerData.PlayerLevel)
+        if (levelForUnlock <= PlayerProgressionSystem.Instance.GetPlayerLevel())
         {
             return true;
         }
@@ -119,9 +119,7 @@ public class CreationManager : MonoBehaviour
                 var playerData = SaveManager.Instance.PlayerData;
                 if (playerData.PlayerCoins >= tray.TrayData.Cost)
                 {
-                    playerData.PlayerCoins -= tray.TrayData.Cost;
-                    SaveManager.Instance.SavePlayerData(playerData);
-                    PlayerProgressionSystem.Instance.UpdatedPlayerMoney();
+                    PlayerProgressionSystem.Instance.BuySmth(tray.TrayData.Cost);
                 }
                 foreach (var tr in _trays)
                 {

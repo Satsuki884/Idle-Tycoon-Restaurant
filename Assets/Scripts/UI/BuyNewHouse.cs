@@ -38,7 +38,7 @@ public class BuyNewHouse : MonoBehaviour
             bool isActive = _buyPanel.activeSelf;
             _productText.text = "Buy " + gameObject.name + " ?";
             _costText.text = CreationManager.Instance.GetTrayCost(gameObject.name).ToString();
-            if (CreationManager.Instance.GetTrayCost(gameObject.name) > SaveManager.Instance.PlayerData.PlayerCoins)
+            if (CreationManager.Instance.GetTrayCost(gameObject.name) > PlayerProgressionSystem.Instance.GetPlayerMoney())
             {
                 _buyButton.interactable = false;
             }
