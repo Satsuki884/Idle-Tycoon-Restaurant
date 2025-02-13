@@ -63,7 +63,7 @@ public class SalesSystem : MonoBehaviour
                 _playerData.BrounBottle++;
                 break;
             case ProductType.Chicken:
-                _playerData.Food++;
+                _playerData.Chicken++;
                 break;
             case ProductType.Mushrooms:
                 _playerData.Mushrooms++;

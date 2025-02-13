@@ -80,8 +80,8 @@ public class PlayerData
     public int RedBottle { get => _redBottle; set => _redBottle = value; }
     [SerializeField] private int _brounBottle;
     public int BrounBottle { get => _brounBottle; set => _brounBottle = value; }
-    [SerializeField] private int _food;
-    public int Food { get => _food; set => _food = value; }
+    [SerializeField] private int _chiken;
+    public int Chicken { get => _chiken; set => _chiken = value; }
     [SerializeField] private int _mushrooms;
     public int Mushrooms { get => _mushrooms; set => _mushrooms = value; }
 

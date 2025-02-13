@@ -53,6 +53,7 @@ public class UpgradeTray : MonoBehaviour
     private void LevelUpTray()
     {
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.UpgradeLevel++;
+        playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
         SaveUpdate();
     }
 
@@ -67,15 +68,15 @@ public class UpgradeTray : MonoBehaviour
             }
         }
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
+        playerData.PlayerCoins -= trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents;
         SaveUpdate();
     }
 
     private void SaveUpdate()
     {
         SaveManager.Instance.SaveTrayData(trayData);
-        // SetAvailableResident();
-        playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
         SaveManager.Instance.SavePlayerData(playerData);
+        SalesSystem.Instance.UpdatedPlayerMoney();
         UpdatePanel(_trayName);
     }
 

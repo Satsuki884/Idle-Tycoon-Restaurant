@@ -30,13 +30,17 @@ public class CreationManager : MonoBehaviour
     public void Start()
     {
         trayData = SaveManager.Instance.TrayData;
-        // Debug.Log(trayData.TrayData.Count);
+
+        UpdateView();
 
         foreach (var tr in _addTray)
         {
             tr.SetActive(false);
         }
+    }
 
+    public void UpdateView()
+    {
         foreach (var tray in trayData.TrayData)
         {
             if (!tray.TrayData.IsActive)
@@ -117,6 +121,7 @@ public class CreationManager : MonoBehaviour
                 {
                     playerData.PlayerCoins -= tray.TrayData.Cost;
                     SaveManager.Instance.SavePlayerData(playerData);
+                    SalesSystem.Instance.UpdatedPlayerMoney();
                 }
                 foreach (var tr in _trays)
                 {

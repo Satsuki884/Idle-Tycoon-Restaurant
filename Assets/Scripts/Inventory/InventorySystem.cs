@@ -97,9 +97,9 @@ public class InventorySystem : MonoBehaviour
             // itemRect.anchoredPosition = new Vector2(xOffset, 0);
             // xOffset += _itemWidth;
         }
-        else if (_playerData.Food != 0)
+        else if (_playerData.Chicken != 0)
         {
-            SetInventoryItem(_playerData.Food, _chikenImage);
+            SetInventoryItem(_playerData.Chicken, _chikenImage);
             // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
             // itemUI.SetItemData(_playerData.Food, _chikenImage);
             // RectTransform itemRect = itemUI.GetComponent<RectTransform>();

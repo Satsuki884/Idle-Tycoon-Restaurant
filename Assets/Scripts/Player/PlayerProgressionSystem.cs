@@ -32,7 +32,7 @@ public class PlayerProgressionSystem : MonoBehaviour
     {
         _playerData = SaveManager.Instance.PlayerData;
         _expBar.minValue = 0;
-        UpdateUI();
+        SetUI();
     }
 
     public void AddExperience(int exp)
@@ -67,6 +67,7 @@ public class PlayerProgressionSystem : MonoBehaviour
 
             UpdateUI();
             SaveManager.Instance.SavePlayerData(_playerData);
+            CreationManager.Instance.UpdateView();
         }
 
         _expBar.value = _playerData.PlayerExperience;
@@ -75,6 +76,10 @@ public class PlayerProgressionSystem : MonoBehaviour
     private void UpdateUI()
     {
         _LevelUpPanel.gameObject.SetActive(true);
+        SetUI();
+    }
+
+    private void SetUI(){
         _levelText.text = _playerData.PlayerLevel.ToString();
         _currentLevel.text = _playerData.PlayerLevel.ToString();
         _expBar.maxValue = GetExpForNextLevel(_playerData.PlayerLevel + 1);
@@ -88,7 +93,7 @@ public class PlayerProgressionSystem : MonoBehaviour
         {
             _expirienceText.text = _playerData.PlayerExperience.ToString() + " / " + GetExpForNextLevel(_playerData.PlayerLevel + 1);
         }
-
+        _expBar.value = _playerData.PlayerExperience;
     }
 
     private int GetExpForNextLevel(int level)
