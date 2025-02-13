@@ -31,7 +31,7 @@ public class Tray : MonoBehaviour
     public Vector3[] availableSpots;
     [SerializeField] private List<TraySpot> _availableSpots; // Переделали
     public List<TraySpot> AvailableSpots => _availableSpots;
-    [SerializeField] private int incomePerOrder = 2;
+    [SerializeField] private int incomePerOrder = 5;
     [SerializeField] private QueueManager _queueManager;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private Transform _spawnTransform;
@@ -42,7 +42,7 @@ public class Tray : MonoBehaviour
     // }
     [SerializeField] private ProductType _productType;
     public ProductType ProductType => _productType;
-    [SerializeField] private bool _isQueueFool;
+    [SerializeField] private bool _isQueueFool = false;
     public bool IsQueueFool => _isQueueFool;
 
     [SerializeField] private bool _isTrayFool;
@@ -112,6 +112,7 @@ public class Tray : MonoBehaviour
             {
                 _character = _spawnManager.SpawnCharacters(_spawnZone);
                 _queueManager.AddToQueue(_character);
+                Debug.Log(_queueManager.WaitingQueueList.Count);
                 AddCharacterToQueue(_character);
                 _character = null;
             }
@@ -121,7 +122,8 @@ public class Tray : MonoBehaviour
 
     public void AddCharacterToQueue(Character character)
     {
-        character.MoveTo(_queuePoints.position, _character.transform.position, () =>
+        character.MoveTo(_queuePoints.position, Vector3.zero, () =>
+        // character.MoveTo(_queuePoints.position, _character.transform.position, () =>
         {
             TryMoveToSpot();
         });
@@ -160,6 +162,7 @@ public class Tray : MonoBehaviour
         {
             character.MoveTo(_spawnZone.position, Vector3.zero, () =>
             {
+                _queueManager.RemoveFromQueueList(character);
                 Destroy(character.gameObject);
             });
         });
@@ -168,8 +171,8 @@ public class Tray : MonoBehaviour
 
     public bool QueueIsFull()
     {
-        // if (QueueManager.WaitingQueue.Count == incomePerOrder)
-        if (_queueManager.WaitingQueue.Count == incomePerOrder)
+        // if (_queueManager.WaitingQueue.Count == incomePerOrder && _queueManager.WaitingQueueList.Count == incomePerOrder)
+        if (_queueManager.WaitingQueueList.Count == incomePerOrder)
         {
             _isQueueFool = true;
             return true;
