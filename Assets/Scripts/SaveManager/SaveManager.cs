@@ -9,6 +9,10 @@ public class SaveManager : MonoBehaviour
 {
     private string _savePlayerDataPath;
     private string _saveTrayDataPath;
+    private string _saveAudioDataPath;
+    [SerializeField] private string _playerDataPath = "playerdata";
+    [SerializeField] private string _trayDataPath = "traydata";
+    [SerializeField] private string _audioDataPath = "audiodata";
 
     public static SaveManager _instance;
     public static SaveManager Instance => _instance;
@@ -50,17 +54,28 @@ public class SaveManager : MonoBehaviour
             return LoadPlayerData();
         }
     }
+    [SerializeField] private SettingsSO _settingsData;
+    public SettingsData SettingsData
+    {
+        get
+        {
+            return LoadSettingsData();
+        }
+    }
 
 
     private void Awake()
     {
-        _savePlayerDataPath = Path.Combine(Application.persistentDataPath, "playerdata.json");
+        _savePlayerDataPath = Path.Combine(Application.persistentDataPath, _playerDataPath + ".json");
         Debug.Log(_savePlayerDataPath);
-        _saveTrayDataPath = Path.Combine(Application.persistentDataPath, "traydata.json");
+        _saveTrayDataPath = Path.Combine(Application.persistentDataPath, _trayDataPath + ".json");
+        _saveAudioDataPath = Path.Combine(Application.persistentDataPath, _audioDataPath + ".json");
         SavePlayerData(_playerData.PlayerData);
         SaveTrayData(_trayData);
+        SaveSettingsData(_settingsData.SettingsData);
         LoadPlayerData();
         LoadTrayData();
+        LoadSettingsData();
     }
 
     public void SavePlayerData(PlayerData value)
@@ -94,7 +109,8 @@ public class SaveManager : MonoBehaviour
         {
             File.Create(_saveTrayDataPath).Dispose();
         }
-        string json = JsonUtility.ToJson(new TrayDataWrapper{
+        string json = JsonUtility.ToJson(new TrayDataWrapper
+        {
             TrayData = value.TrayData
         }, true);
         File.WriteAllText(_saveTrayDataPath, json);
@@ -117,14 +133,42 @@ public class SaveManager : MonoBehaviour
     }
 
     private TrayDataSO ConvertToTrayDataSO()
+    {
+        TrayDataSO trayData = null;
+        if (_trayDataWrapper != null)
         {
-            TrayDataSO trayData = null;
-            if (_trayDataWrapper != null)
-            {
-                trayData = ScriptableObject.CreateInstance<TrayDataSO>();
-                trayData.TrayData = _trayDataWrapper.TrayData;
-            }
-            return trayData;
+            trayData = ScriptableObject.CreateInstance<TrayDataSO>();
+            trayData.TrayData = _trayDataWrapper.TrayData;
         }
+        return trayData;
+    }
+
+    public void SaveSettingsData(SettingsData value)
+    {
+        if (!File.Exists(_saveAudioDataPath))
+        {
+            File.Create(_saveAudioDataPath).Dispose();
+        }
+
+        string json = JsonUtility.ToJson(new SettingsData
+        {
+            MusicVolume = value.MusicVolume,
+            QualityLevel = value.QualityLevel
+        }, true);
+
+        File.WriteAllText(_saveAudioDataPath, json);
+        _settingsData.SettingsData = value;
+    }
+
+    public SettingsData LoadSettingsData()
+    {
+        if (!File.Exists(_saveAudioDataPath))
+        {
+            SaveSettingsData(_settingsData.SettingsData);
+        }
+        string json = File.ReadAllText(_saveAudioDataPath);
+        SettingsData playerData = JsonUtility.FromJson<SettingsData>(json);
+        return playerData;
+    }
 
 }

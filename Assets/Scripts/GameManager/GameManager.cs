@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private InventorySystem _inventoryManager;
     [SerializeField] private PlayerProgressionSystem _playerProgressionSystem;
+    [SerializeField] private AudioManager _audioManager;
 
     private async void Awake()
     {
@@ -70,5 +71,17 @@ public class GameManager : MonoBehaviour
         }
 
         await _playerProgressionSystem.Initialize();
+
+        if (_audioManager == null)
+        {
+            _audioManager = FindObjectOfType<AudioManager>();
+            if (_audioManager == null)
+            {
+                Debug.LogError("AudioManager not found in the scene!");
+                return;
+            }
+        }
+
+        await _audioManager.Initialize();
     }
 }
