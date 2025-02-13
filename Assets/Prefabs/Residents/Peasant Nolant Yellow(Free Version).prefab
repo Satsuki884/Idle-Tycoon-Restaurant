@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 8756750350535824435}
   - component: {fileID: 2059875864091395285}
   - component: {fileID: 8081320024733246431}
+  - component: {fileID: 7978809507968276550}
   m_Layer: 6
   m_Name: Peasant Nolant Yellow(Free Version)
   m_TagString: Untagged
@@ -514,7 +515,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &8081320024733246431
 CapsuleCollider:
@@ -539,6 +540,19 @@ CapsuleCollider:
   m_Height: 1.7803425
   m_Direction: 1
   m_Center: {x: -0.0036043823, y: 0.8981152, z: -0.0037455857}
+--- !u!114 &7978809507968276550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2669372775266760516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c2718c811156045b6b5152d383c2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!1 &2692937624729608998
 GameObject:
   m_ObjectHideFlags: 0

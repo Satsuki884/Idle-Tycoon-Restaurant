@@ -7,7 +7,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _characterPrefab;
+    [SerializeField] private List<GameObject> _characterDayPrefab;
+    [SerializeField] private List<GameObject> _characterNightPrefab;
     [SerializeField] private Transform _spawnList;
     public static SpawnManager _instance;
     public static SpawnManager Instance => _instance;
@@ -27,9 +28,16 @@ public class SpawnManager : MonoBehaviour
 
     public Character SpawnCharacters(Transform _spawnZone)
     {
-        GameObject newCharacter = Instantiate(_characterPrefab[UnityEngine.Random.Range(0, _characterPrefab.Count)], _spawnZone.position, Quaternion.identity);
+        List<GameObject> selectedPrefabs = IsNightTime() ? _characterNightPrefab : _characterDayPrefab;
+        GameObject newCharacter = Instantiate(selectedPrefabs[UnityEngine.Random.Range(0, selectedPrefabs.Count)], _spawnZone.position, Quaternion.identity);
         newCharacter.transform.SetParent(_spawnList, true);
         Character character = newCharacter.GetComponent<Character>();
         return character;
+    }
+
+    private bool IsNightTime()
+    {
+        int hour = DateTime.Now.Hour;
+        return hour >= 18 || hour < 6; // Ночь с 18:00 до 06:00
     }
 }

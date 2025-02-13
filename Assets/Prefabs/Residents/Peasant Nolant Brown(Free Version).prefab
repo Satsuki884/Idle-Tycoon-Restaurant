@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: -7660444766582653914}
   - component: {fileID: 6167399926666743350}
   - component: {fileID: -2667277733458764911}
+  - component: {fileID: -7260658994345652728}
   m_Layer: 6
   m_Name: Peasant Nolant Brown(Free Version)
   m_TagString: Untagged
@@ -615,7 +616,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &-2667277733458764911
 CapsuleCollider:
@@ -640,6 +641,19 @@ CapsuleCollider:
   m_Height: 1.7999158
   m_Direction: 1
   m_Center: {x: 0.0019865632, y: 0.8812659, z: -0.005964279}
+--- !u!114 &-7260658994345652728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916486913691104272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c2718c811156045b6b5152d383c2c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!1 &3059172289395975680
 GameObject:
   m_ObjectHideFlags: 0

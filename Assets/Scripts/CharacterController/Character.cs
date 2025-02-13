@@ -18,6 +18,13 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
 
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.2f);
+        }
+
         while (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z),
                                 new Vector3(targetPosition.x, 0, targetPosition.z)) > 0.1f)
         {

@@ -12511,6 +12511,7 @@ Transform:
   - {fileID: 1250923126}
   - {fileID: 3752450176032397221}
   - {fileID: 1811177765}
+  - {fileID: 1750113067}
   m_Father: {fileID: 1648097200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1042786229
@@ -14210,11 +14211,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b18453b7975e049a734c157e4cb47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterPrefab:
+  _characterDayPrefab:
   - {fileID: 6792327054025522797, guid: 3f84a2a7e73428449983c1854dbb6466, type: 3}
   - {fileID: 2916486913691104272, guid: 895f7e46793bc0e43b31760b2d91a0f5, type: 3}
   - {fileID: 5226954981596785403, guid: 252038ebfe4f54f458c1ca8e8e23da9a, type: 3}
   - {fileID: 2669372775266760516, guid: 3b49916ce496fd2449868134d7910936, type: 3}
+  _characterNightPrefab:
+  - {fileID: 498253721416304272, guid: 802c0ac6a2a24104cb2e326f94f4a22e, type: 3}
+  - {fileID: 8406845055882037674, guid: 1c3042cacf3595740b337a2b3a86191e, type: 3}
+  - {fileID: 6007180743642840513, guid: 150184c4ed375a24ba728446de157229, type: 3}
+  - {fileID: 2602231374797837610, guid: 83cef4200af462041956c631f9427a7d, type: 3}
+  - {fileID: 5446477390807014373, guid: 99bb892aac6fa9e488b1921811f210d7, type: 3}
+  - {fileID: 2676405798547930095, guid: 47ae1de708341f34f8c30b6764cd7e80, type: 3}
+  - {fileID: 958745142335686053, guid: 8d4b9458b2b2e8143a1bd465567b9771, type: 3}
   _spawnList: {fileID: 1811177765}
 --- !u!1001 &1251146798
 PrefabInstance:
@@ -18964,6 +18973,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4680757731159730826, guid: 0fde05fa0f3321942a21896ff4f0856f, type: 3}
   m_PrefabInstance: {fileID: 1736731160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1750113066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1750113067}
+  - component: {fileID: 1750113068}
+  m_Layer: 0
+  m_Name: DayNightController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1750113067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750113066}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1012377554}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750113068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750113066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da186024d1aa1924998c8b0ab6ed919f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 1136385242}
+  _sun: {fileID: 315136620}
 --- !u!1001 &1751282041
 PrefabInstance:
   m_ObjectHideFlags: 0
