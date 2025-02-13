@@ -41,8 +41,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        _musicSource.clip = _backgroundMusic;
-        _musicSource.Play();
+        // _musicSource.clip = _backgroundMusic;
+        // _musicSource.Play();
     }
 
     public string ButtonClick = "ButtonClick";
@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string clipName)
     {
-        // Debug.Log("Playing SFX: " + clipName);
+        Debug.Log("Playing SFX: " + clipName);
         switch (clipName)
         {
             case "ButtonClick":
@@ -72,5 +72,6 @@ public class AudioManager : MonoBehaviour
                 _sfxSource.clip = _levelUpMusic;
                 break;
         }
+        _sfxSource.Play();
     }
 }

@@ -55,6 +55,7 @@ public class UpgradeTray : MonoBehaviour
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.UpgradeLevel++;
         // playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
         SaveUpdate();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.UpgradeTrayMusic);
         PlayerProgressionSystem.Instance.BuySmth(currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel]);
     }
 
@@ -69,6 +70,7 @@ public class UpgradeTray : MonoBehaviour
             }
         }
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.BuySecondResidentMusic);
         // playerData.PlayerCoins -= trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents;
         PlayerProgressionSystem.Instance.BuySmth(trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents);
         SaveUpdate();

@@ -28,6 +28,7 @@ public class BuyNewHouse : MonoBehaviour
     private void BuyHouse()
     {
         CreationManager.Instance.BuyTray(gameObject.name);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.BuyHomeMusic);
         CloseUpgradePanel();
     }
 

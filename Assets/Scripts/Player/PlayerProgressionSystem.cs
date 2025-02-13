@@ -35,20 +35,23 @@ public class PlayerProgressionSystem : MonoBehaviour
         _expBar.minValue = 0;
         SetUI();
         UpdatedPlayerMoney();
-        
+
     }
 
-    public void BuySmth(int money){
+    public void BuySmth(int money)
+    {
         _playerData.PlayerCoins -= money;
         SaveManager.Instance.SavePlayerData(_playerData);
         UpdatedPlayerMoney();
     }
 
-    public int GetPlayerMoney(){
+    public int GetPlayerMoney()
+    {
         return _playerData.PlayerCoins;
     }
 
-    public int GetPlayerLevel(){
+    public int GetPlayerLevel()
+    {
         return _playerData.PlayerLevel;
     }
 
@@ -83,9 +86,11 @@ public class PlayerProgressionSystem : MonoBehaviour
             else
             {
                 _playerData.PlayerLevel++;
+                UpdateUI();
+
             }
 
-            UpdateUI();
+            SetUI();
             // SaveManager.Instance.SavePlayerData(_playerData);
             CreationManager.Instance.UpdateView();
         }
@@ -96,6 +101,7 @@ public class PlayerProgressionSystem : MonoBehaviour
 
     private void UpdateUI()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.LevelUpMusic);
         _LevelUpPanel.gameObject.SetActive(true);
         SetUI();
     }
