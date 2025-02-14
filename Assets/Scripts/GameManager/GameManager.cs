@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InventorySystem _inventoryManager;
     [SerializeField] private PlayerProgressionSystem _playerProgressionSystem;
     [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private SalesManager _salesManager;
 
     private async void Awake()
     {
@@ -83,5 +84,17 @@ public class GameManager : MonoBehaviour
         }
 
         await _audioManager.Initialize();
+
+        if (_salesManager == null)
+        {
+            _salesManager = FindObjectOfType<SalesManager>();
+            if (_salesManager == null)
+            {
+                Debug.LogError("SalesManager not found in the scene!");
+                return;
+            }
+        }
+
+        await _salesManager.Initialize();
     }
 }

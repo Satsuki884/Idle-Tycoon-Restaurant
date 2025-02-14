@@ -72,18 +72,18 @@ public class PlayerData
     public int PlayerExperience { get => _playerExperience; set => _playerExperience = value; }
     [SerializeField] private int _playerCoins;
     public int PlayerCoins { get => _playerCoins; set => _playerCoins = value; }
-    [SerializeField] private int _blueBottle;
-    public int BlueBottle { get => _blueBottle; set => _blueBottle = value; }
-    [SerializeField] private int _greenBottle;
-    public int GreenBottle { get => _greenBottle; set => _greenBottle = value; }
-    [SerializeField] private int _redBottle;
-    public int RedBottle { get => _redBottle; set => _redBottle = value; }
-    [SerializeField] private int _brounBottle;
-    public int BrounBottle { get => _brounBottle; set => _brounBottle = value; }
-    [SerializeField] private int _chiken;
-    public int Chicken { get => _chiken; set => _chiken = value; }
-    [SerializeField] private int _mushrooms;
-    public int Mushrooms { get => _mushrooms; set => _mushrooms = value; }
+    // [SerializeField] private int _blueBottle;
+    // public int BlueBottle { get => _blueBottle; set => _blueBottle = value; }
+    // [SerializeField] private int _greenBottle;
+    // public int GreenBottle { get => _greenBottle; set => _greenBottle = value; }
+    // [SerializeField] private int _redBottle;
+    // public int RedBottle { get => _redBottle; set => _redBottle = value; }
+    // [SerializeField] private int _brounBottle;
+    // public int BrounBottle { get => _brounBottle; set => _brounBottle = value; }
+    // [SerializeField] private int _chiken;
+    // public int Chicken { get => _chiken; set => _chiken = value; }
+    // [SerializeField] private int _mushrooms;
+    // public int Mushrooms { get => _mushrooms; set => _mushrooms = value; }
 
     [SerializeField] private long _lastLongTime;
     public long LastLongTime { get => _lastLongTime; set => _lastLongTime = value; }

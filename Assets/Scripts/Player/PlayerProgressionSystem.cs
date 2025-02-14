@@ -55,12 +55,12 @@ public class PlayerProgressionSystem : MonoBehaviour
         return _playerData.PlayerLevel;
     }
 
-    public void BuyProduct(int exp, int money, ProductType productType)
+    public void SellProduct(int exp, int money)
     {
         // _playerData = SaveManager.Instance.PlayerData;
         _playerData.PlayerExperience = _playerData.PlayerExperience + exp;
+        _playerData.PlayerCoins = _playerData.PlayerCoins + money;
         CheckNewLevel();
-        GetMoneyAndProduct(money, productType);
         // SaveManager.Instance.SavePlayerData(_playerData);
 
     }
@@ -144,32 +144,32 @@ public class PlayerProgressionSystem : MonoBehaviour
         return num.ToString();
     }
 
-    private void GetMoneyAndProduct(int money, ProductType productType)
-    {
-        _playerData.PlayerCoins += money;
-        switch (productType)
-        {
-            case ProductType.BlueBottle:
-                _playerData.BlueBottle++;
-                break;
-            case ProductType.GreenBottle:
-                _playerData.GreenBottle++;
-                break;
-            case ProductType.RedBottle:
-                _playerData.RedBottle++;
-                break;
-            case ProductType.BrownBottle:
-                _playerData.BrounBottle++;
-                break;
-            case ProductType.Chicken:
-                _playerData.Chicken++;
-                break;
-            case ProductType.Mushrooms:
-                _playerData.Mushrooms++;
-                break;
-        }
-        SaveManager.Instance.SavePlayerData(_playerData);
-        UpdatedPlayerMoney();
-        InventorySystem.Instance.RefreshInventory();
-    }
+    // private void GetMoneyAndProduct(int money, ProductType productType)
+    // {
+    //     _playerData.PlayerCoins += money;
+    //     switch (productType)
+    //     {
+    //         case ProductType.BlueBottle:
+    //             _playerData.BlueBottle++;
+    //             break;
+    //         case ProductType.GreenBottle:
+    //             _playerData.GreenBottle++;
+    //             break;
+    //         case ProductType.RedBottle:
+    //             _playerData.RedBottle++;
+    //             break;
+    //         case ProductType.BrownBottle:
+    //             _playerData.BrounBottle++;
+    //             break;
+    //         case ProductType.Chicken:
+    //             _playerData.Chicken++;
+    //             break;
+    //         case ProductType.Mushrooms:
+    //             _playerData.Mushrooms++;
+    //             break;
+    //     }
+    //     SaveManager.Instance.SavePlayerData(_playerData);
+    //     UpdatedPlayerMoney();
+    //     InventorySystem.Instance.RefreshInventory();
+    // }
 }

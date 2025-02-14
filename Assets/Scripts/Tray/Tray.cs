@@ -104,7 +104,7 @@ public class Tray : MonoBehaviour
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(Random.Range(_thisTraySO.TimeToServe /1.3f, _thisTraySO.TimeToServe * 2));
+            yield return new WaitForSeconds(Random.Range(_thisTraySO.TimeToServe / 1.3f, _thisTraySO.TimeToServe * 2));
         }
     }
 
@@ -138,6 +138,11 @@ public class Tray : MonoBehaviour
     {
         var _tryExp = _thisTraySO.ExperiencePerTrayOrder;
         _tryExp += _thisTraySO.ExperiencePerTrayOrder * _thisTraySO.UpgradeLevel;
+
+        var _tryMoney = _thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel];
+
+        SalesManager.Instance.BuyProduct(_tryExp, _tryMoney, _thisTraySO);
+
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
