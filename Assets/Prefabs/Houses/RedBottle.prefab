@@ -197,7 +197,14 @@ MonoBehaviour:
   _trayName: RedBottle
   _startPositions: {fileID: 7026593895012273183}
   _endPositions: {fileID: 0}
-  _queuePoints: {fileID: 0}
+  _queuePoint: {fileID: 0}
+  _queuePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -23.93, y: 1.51, z: -2.5999}

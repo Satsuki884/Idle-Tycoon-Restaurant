@@ -103,7 +103,14 @@ MonoBehaviour:
   _trayName: GreenBottle
   _startPositions: {fileID: 0}
   _endPositions: {fileID: 0}
-  _queuePoints: {fileID: 0}
+  _queuePoint: {fileID: 0}
+  _queuePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -26.738, y: 2.179, z: 7.786}

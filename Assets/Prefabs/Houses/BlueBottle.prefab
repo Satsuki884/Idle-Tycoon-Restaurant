@@ -105,7 +105,20 @@ MonoBehaviour:
   _trayName: BlueBottle
   _startPositions: {fileID: 7070106651986262385}
   _endPositions: {fileID: 5666457405744960054}
-  _queuePoints: {fileID: 0}
+  _queuePoint: {fileID: 0}
+  _queuePoints:
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
   _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -20.016, y: 1.38, z: 15.44}
@@ -117,10 +130,8 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-  incomePerOrder: 5
   _queueManager: {fileID: 8515742082716809280, guid: 54281a7a4d0a5e24daf37d927220c489, type: 3}
   _spawnManager: {fileID: 0}
-  _spawnTransform: {fileID: 0}
   _productType: 0
   _isQueueFool: 0
   _isTrayFool: 0

@@ -104,7 +104,14 @@ MonoBehaviour:
   _trayName: Chicken
   _startPositions: {fileID: 0}
   _endPositions: {fileID: 0}
-  _queuePoints: {fileID: 0}
+  _queuePoint: {fileID: 0}
+  _queuePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -9.842, y: 1.74, z: 12.117}

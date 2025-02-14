@@ -15,38 +15,27 @@ public class TraySpot
     public bool IsLocked = false;
 }
 
+[System.Serializable]
+public class TrayQueuePoint
+{
+    public Transform position;
+    public bool isFree = true;
+}
+
 
 public class Tray : MonoBehaviour
 {
     [SerializeField] private string _trayName;
-    public string TrayName => _trayName;
-    [SerializeField] private Transform _startPositions;
-    public Transform StartPositions => _startPositions;
+    [SerializeField] public string TrayName => _trayName;
     [SerializeField] private Transform _endPositions;
-    public Transform EndPositions => _endPositions;
-    [SerializeField] private Transform _queuePoints;
-    public Transform QueuePoints => _queuePoints;
+    [SerializeField] private Transform _queuePoint;
+    [SerializeField] private List<TrayQueuePoint> _queuePoints;
     [SerializeField] public Transform _spawnZone;
-    public Transform SpawnZone => _spawnZone;
-    public Vector3[] availableSpots;
-    [SerializeField] private List<TraySpot> _availableSpots; // Переделали
-    public List<TraySpot> AvailableSpots => _availableSpots;
-    [SerializeField] private int incomePerOrder = 5;
-    [SerializeField] private QueueManager _queueManager;
+    [SerializeField] private List<TraySpot> _availableSpots;
+    private Queue<Character> _waitingQueue = new Queue<Character>();
     [SerializeField] private SpawnManager _spawnManager;
-    [SerializeField] private Transform _spawnTransform;
-    // public QueueManager QueueManager
-    // {
-    //     get => _queueManager;
-    //     set => _queueManager = value;
-    // }
     [SerializeField] private ProductType _productType;
-    public ProductType ProductType => _productType;
     [SerializeField] private bool _isQueueFool = false;
-    public bool IsQueueFool => _isQueueFool;
-
-    [SerializeField] private bool _isTrayFool;
-    public bool IsTrayFool => _isTrayFool;
     private TrayDataSO trayData;
     private TrayData _thisTraySO;
 
@@ -111,19 +100,17 @@ public class Tray : MonoBehaviour
             if (!QueueIsFull() && _thisTraySO.IsActive)
             {
                 _character = _spawnManager.SpawnCharacters(_spawnZone);
-                _queueManager.AddToQueue(_character);
-                Debug.Log(_queueManager.WaitingQueueList.Count);
+                _waitingQueue.Enqueue(_character);
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(_thisTraySO.TimeToServe);
+            yield return new WaitForSeconds(Random.Range(_thisTraySO.TimeToServe /1.3f, _thisTraySO.TimeToServe * 2));
         }
     }
 
     public void AddCharacterToQueue(Character character)
     {
-        character.MoveTo(_queuePoints.position, Vector3.zero, () =>
-        // character.MoveTo(_queuePoints.position, _character.transform.position, () =>
+        character.MoveTo(_queuePoint.position, () =>
         {
             TryMoveToSpot();
         });
@@ -133,14 +120,14 @@ public class Tray : MonoBehaviour
 
     private void TryMoveToSpot()
     {
-        if (_queueManager.WaitingQueue.Count == 0) return;
+        if (_waitingQueue.Count == 0) return;
 
         var freeSpot = _availableSpots.FirstOrDefault(s => s.isFree && !s.IsLocked);
         if (freeSpot != null)
         {
-            _currentCharacter = _queueManager.WaitingQueue.Dequeue();
+            _currentCharacter = _waitingQueue.Dequeue();
             freeSpot.isFree = false;
-            _currentCharacter.MoveTo(freeSpot.position.position, Vector3.zero, () =>
+            _currentCharacter.MoveTo(freeSpot.position.position, () =>
             {
                 StartCoroutine(ServeCharacter(_currentCharacter, freeSpot));
             });
@@ -151,35 +138,26 @@ public class Tray : MonoBehaviour
     {
         var _tryExp = _thisTraySO.ExperiencePerTrayOrder;
         _tryExp += _thisTraySO.ExperiencePerTrayOrder * _thisTraySO.UpgradeLevel;
-
-        var _tryMoney = _thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel];
-
-        PlayerProgressionSystem.Instance.BuyProduct(_tryExp, _tryMoney, _thisTraySO.ProductType);
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
-        character.MoveTo(_endPositions.position, Vector3.zero, () =>
+        character.MoveTo(_endPositions.position, () =>
         {
-            character.MoveTo(_spawnZone.position, Vector3.zero, () =>
+            character.MoveTo(_spawnZone.position, () =>
             {
-                _queueManager.RemoveFromQueueList(character);
                 Destroy(character.gameObject);
             });
         });
     }
 
-
     public bool QueueIsFull()
     {
-        // if (_queueManager.WaitingQueue.Count == incomePerOrder && _queueManager.WaitingQueueList.Count == incomePerOrder)
-        if (_queueManager.WaitingQueueList.Count == incomePerOrder)
+        if (_waitingQueue.Count >= _queuePoints.Count)
         {
-            _isQueueFool = true;
             return true;
         }
         else
         {
-            _isQueueFool = false;
             return false;
         }
     }

@@ -108,7 +108,14 @@ MonoBehaviour:
   _trayName: Mushrooms
   _startPositions: {fileID: 0}
   _endPositions: {fileID: 0}
-  _queuePoints: {fileID: 0}
+  _queuePoint: {fileID: 0}
+  _queuePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _spawnZone: {fileID: 0}
   availableSpots:
   - {x: -8.71, y: 1.15, z: -0.26999}
