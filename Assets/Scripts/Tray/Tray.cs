@@ -101,19 +101,36 @@ public class Tray : MonoBehaviour
             {
                 _character = _spawnManager.SpawnCharacters(_spawnZone);
                 _waitingQueue.Enqueue(_character);
+                // Debug.Log(_waitingQueue.Count);
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(Random.Range(_thisTraySO.TimeToServe /1.3f, _thisTraySO.TimeToServe * 2));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(_thisTraySO.TimeToServe / 2, _thisTraySO.TimeToServe * 2));
         }
     }
 
+    private Character _prevCharacter;
+
     public void AddCharacterToQueue(Character character)
     {
+        // if (_prevCharacter == null)
+        // {
+        //     _prevCharacter = character;
         character.MoveTo(_queuePoint.position, () =>
         {
             TryMoveToSpot();
         });
+        return;
+        // }
+        // else
+        // {
+        //     character.MoveToQueue(_prevCharacter.transform.position, () =>
+        //     // character.MoveTo(_queuePoints.position, _character.transform.position, () =>
+        //     {
+        //         _prevCharacter = character;
+        //         TryMoveToSpot();
+        //     });
+        // }
     }
 
     private Character _currentCharacter;
@@ -138,6 +155,10 @@ public class Tray : MonoBehaviour
     {
         var _tryExp = _thisTraySO.ExperiencePerTrayOrder;
         _tryExp += _thisTraySO.ExperiencePerTrayOrder * _thisTraySO.UpgradeLevel;
+
+        var _tryMoney = _thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel];
+
+        PlayerProgressionSystem.Instance.BuyProduct(_tryExp, _tryMoney, _thisTraySO.ProductType);
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
