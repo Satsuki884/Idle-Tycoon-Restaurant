@@ -61,62 +61,68 @@ public class InventorySystem : MonoBehaviour
 
         xOffset = 0f;
         _itemWidth = _inventoryItemPrefab.GetComponent<RectTransform>().sizeDelta.x;
+        SetInventoryItem(_playerData.BlueBottle, _blueBottleImage);
+        SetInventoryItem(_playerData.RedBottle, _redBottleImage);
+        SetInventoryItem(_playerData.GreenBottle, _greenBottleImage);
+        SetInventoryItem(_playerData.BrounBottle, _brownBottleImage);
+        SetInventoryItem(_playerData.Chicken, _chikenImage);
+        SetInventoryItem(_playerData.Mushrooms, _mushroomsImage);
 
 
-        if (_playerData.BlueBottle != 0)
-        {
-            SetInventoryItem(_playerData.BlueBottle, _blueBottleImage);
+        // if (_playerData.BlueBottle != 0)
+        // {
+            // SetInventoryItem(_playerData.BlueBottle, _blueBottleImage);
             // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
             // itemUI.SetItemData(_playerData.BlueBottle, _blueBottleImage);
             // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
             // itemRect.anchoredPosition = new Vector2(xOffset, 0);
             // xOffset += _itemWidth;
-        }
-        else if (_playerData.RedBottle != 0)
-        {
-            SetInventoryItem(_playerData.RedBottle, _redBottleImage);
-            // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-            // itemUI.SetItemData(_playerData.RedBottle, _redBottleImage);
-            // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-            // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-            // xOffset += _itemWidth;
-        }
-        else if (_playerData.GreenBottle != 0)
-        {
-            SetInventoryItem(_playerData.GreenBottle, _greenBottleImage);
-            // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-            // itemUI.SetItemData(_playerData.GreenBottle, _greenBottleImage);
-            // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-            // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-            // xOffset += _itemWidth;
-        }
-        else if (_playerData.BrounBottle != 0)
-        {
-            SetInventoryItem(_playerData.BrounBottle, _brownBottleImage);
-            // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-            // itemUI.SetItemData(_playerData.BrounBottle, _brownBottleImage);
-            // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-            // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-            // xOffset += _itemWidth;
-        }
-        else if (_playerData.Chicken != 0)
-        {
-            SetInventoryItem(_playerData.Chicken, _chikenImage);
-            // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-            // itemUI.SetItemData(_playerData.Food, _chikenImage);
-            // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-            // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-            // xOffset += _itemWidth;
-        }
-        else if (_playerData.Mushrooms != 0)
-        {
-            SetInventoryItem(_playerData.Mushrooms, _mushroomsImage);
-            // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-            // itemUI.SetItemData(_playerData.Mushrooms, _mushroomsImage);
-            // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-            // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-            // xOffset += _itemWidth;
-        }
+        // }
+        // else if (_playerData.RedBottle != 0)
+        // {
+            // SetInventoryItem(_playerData.RedBottle, _redBottleImage);
+        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
+        //     // itemUI.SetItemData(_playerData.RedBottle, _redBottleImage);
+        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
+        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
+        //     // xOffset += _itemWidth;
+        // }
+        // else if (_playerData.GreenBottle != 0)
+        // {
+            // SetInventoryItem(_playerData.GreenBottle, _greenBottleImage);
+        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
+        //     // itemUI.SetItemData(_playerData.GreenBottle, _greenBottleImage);
+        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
+        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
+        //     // xOffset += _itemWidth;
+        // }
+        // else if (_playerData.BrounBottle != 0)
+        // {
+            // SetInventoryItem(_playerData.BrounBottle, _brownBottleImage);
+        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
+        //     // itemUI.SetItemData(_playerData.BrounBottle, _brownBottleImage);
+        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
+        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
+        //     // xOffset += _itemWidth;
+        // }
+        // else if (_playerData.Chicken != 0)
+        // {
+            // SetInventoryItem(_playerData.Chicken, _chikenImage);
+        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
+        //     // itemUI.SetItemData(_playerData.Food, _chikenImage);
+        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
+        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
+        //     // xOffset += _itemWidth;
+        // }
+        // else if (_playerData.Mushrooms != 0)
+        // {
+            // SetInventoryItem(_playerData.Mushrooms, _mushroomsImage);
+        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
+        //     // itemUI.SetItemData(_playerData.Mushrooms, _mushroomsImage);
+        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
+        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
+        //     // xOffset += _itemWidth;
+        // }
 
 
 

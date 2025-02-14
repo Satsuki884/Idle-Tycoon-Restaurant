@@ -7,7 +7,6 @@ using TMPro;
 
 public class SettingController : MonoBehaviour
 {
-    private string QualityLevel = "QualityLevel";
     private string Music = "Music";
 
     [Header("Audio")]
@@ -37,7 +36,7 @@ public class SettingController : MonoBehaviour
     public void SetBetweenSession()
     {
         _volumeSlider.value = _settingsData.MusicVolume;
-        _audioMixer.SetFloat("Music", _settingsData.MusicVolume);
+        _audioMixer.SetFloat(Music, _settingsData.MusicVolume);
 
         _qualityDropdown.value = _settingsData.QualityLevel;
         QualitySettings.SetQualityLevel(_settingsData.QualityLevel);
@@ -46,7 +45,7 @@ public class SettingController : MonoBehaviour
     public void SetVolumeMusic(float volume)
     {
         _settingsData.MusicVolume = volume;
-        _audioMixer.SetFloat("Music", volume);
+        _audioMixer.SetFloat(Music, volume);
         SaveManager.Instance.SaveSettingsData(_settingsData);
     }
 
