@@ -79,7 +79,8 @@ public class InventorySystem : MonoBehaviour
     public void SetInventoryItem(int count, Sprite image)
     {
         InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        itemUI.SetItemData(count, image);
+        // itemUI.SetItemData(count, image);
+        itemUI.SetItemData(count);
         RectTransform itemRect = itemUI.GetComponent<RectTransform>();
         itemRect.anchoredPosition = new Vector2(xOffset, 0);
         xOffset += _itemWidth;

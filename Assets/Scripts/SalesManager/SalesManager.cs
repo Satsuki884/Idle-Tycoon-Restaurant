@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class SalesManager : MonoBehaviour
 {
-    PlayerData _playerData;
     TrayDataSO _trayData;
     PlayerProgressionSystem _playerProgressionSystem;
+    SaveManager _saveManager;
+    InventorySystem _inventorySystem;
     public static SalesManager _instance;
     public static SalesManager Instance => _instance;
 
@@ -25,16 +26,17 @@ public class SalesManager : MonoBehaviour
     }
     void Start()
     {
-        _playerData = SaveManager.Instance.PlayerData;
+        _saveManager = SaveManager.Instance;
         _trayData = SaveManager.Instance.TrayData;
         _playerProgressionSystem = PlayerProgressionSystem.Instance;
+        _inventorySystem = InventorySystem.Instance;
     }
 
     public void BuyProduct(int exp, int money, TrayData trayData)
     {
         _trayData.TrayData.Find(tray => tray.TrayData == trayData).TrayData.ItemCount++;
-        SaveManager.Instance.SaveTrayData(_trayData);
+        _saveManager.SaveTrayData(_trayData);
         _playerProgressionSystem.SellProduct(exp, money);
-        InventorySystem.Instance.RefreshInventory();
+        _inventorySystem.RefreshInventory();
     }
 }
