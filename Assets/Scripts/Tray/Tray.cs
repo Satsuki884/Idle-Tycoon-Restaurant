@@ -35,7 +35,6 @@ public class Tray : MonoBehaviour
     private Queue<Character> _waitingQueue = new Queue<Character>();
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private ProductType _productType;
-    [SerializeField] private bool _isQueueFool = false;
     private TrayDataSO trayData;
     private TrayData _thisTraySO;
 
@@ -141,7 +140,8 @@ public class Tray : MonoBehaviour
 
         var _tryMoney = _thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel];
 
-        SalesManager.Instance.BuyProduct(_tryExp, _tryMoney, _thisTraySO);
+        PlayerProgressionSystem.Instance.BuyProduct(_tryExp, _tryMoney, _thisTraySO.ProductType);
+        // Debug.Log("Exp: " + _tryExp + " Money: " + _tryMoney);
 
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;

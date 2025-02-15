@@ -1434,6 +1434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_01_LITE (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6396318789275137151, guid: 44753b020bbea8a42b22467f249292b9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

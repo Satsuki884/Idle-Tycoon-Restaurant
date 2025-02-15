@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string clipName)
     {
-        Debug.Log("Playing SFX: " + clipName);
+        // Debug.Log("Playing SFX: " + clipName);
         switch (clipName)
         {
             case "ButtonClick":

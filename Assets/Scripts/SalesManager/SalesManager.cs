@@ -32,11 +32,11 @@ public class SalesManager : MonoBehaviour
         _inventorySystem = InventorySystem.Instance;
     }
 
-    public void BuyProduct(int exp, int money, TrayData trayData)
-    {
-        _trayData.TrayData.Find(tray => tray.TrayData == trayData).TrayData.ItemCount++;
-        _saveManager.SaveTrayData(_trayData);
-        _playerProgressionSystem.SellProduct(exp, money);
-        _inventorySystem.RefreshInventory();
-    }
+    // public void BuyProduct(int exp, int money, TrayData trayData)
+    // {
+    //     _trayData.TrayData.Find(tray => tray.TrayData == trayData).TrayData.ItemCount++;
+    //     _saveManager.SaveTrayData(_trayData);
+    //     _playerProgressionSystem.SellProduct(exp, money);
+    //     _inventorySystem.RefreshInventory();
+    // }
 }

@@ -19,6 +19,7 @@ public class PlayerProgressionSystem : MonoBehaviour
     [SerializeField] private TMP_Text _nextLevelProductText;
     [SerializeField] private Image _productImage;
     private bool _isMaxLevel = false;
+    TrayDataSO _trayData;
 
     public static PlayerProgressionSystem Instance { get; private set; }
 
@@ -35,8 +36,10 @@ public class PlayerProgressionSystem : MonoBehaviour
     void Start()
     {
         _playerData = SaveManager.Instance.PlayerData;
+        InventorySystem.Instance.RefreshInventory();
         _expBar.minValue = 0;
         SetUI();
+        
         UpdatedPlayerMoney();
 
     }
@@ -58,12 +61,13 @@ public class PlayerProgressionSystem : MonoBehaviour
         return _playerData.PlayerLevel;
     }
 
-    public void SellProduct(int exp, int money)
+    public void BuyProduct(int exp, int money, ProductType productType)
     {
         // _playerData = SaveManager.Instance.PlayerData;
         _playerData.PlayerExperience = _playerData.PlayerExperience + exp;
         _playerData.PlayerCoins = _playerData.PlayerCoins + money;
         CheckNewLevel();
+        GetMoneyAndProduct(money, productType);
         // SaveManager.Instance.SavePlayerData(_playerData);
 
     }
@@ -154,32 +158,14 @@ public class PlayerProgressionSystem : MonoBehaviour
         return num.ToString();
     }
 
-    // private void GetMoneyAndProduct(int money, ProductType productType)
-    // {
-    //     _playerData.PlayerCoins += money;
-    //     switch (productType)
-    //     {
-    //         case ProductType.BlueBottle:
-    //             _playerData.BlueBottle++;
-    //             break;
-    //         case ProductType.GreenBottle:
-    //             _playerData.GreenBottle++;
-    //             break;
-    //         case ProductType.RedBottle:
-    //             _playerData.RedBottle++;
-    //             break;
-    //         case ProductType.BrownBottle:
-    //             _playerData.BrounBottle++;
-    //             break;
-    //         case ProductType.Chicken:
-    //             _playerData.Chicken++;
-    //             break;
-    //         case ProductType.Mushrooms:
-    //             _playerData.Mushrooms++;
-    //             break;
-    //     }
-    //     SaveManager.Instance.SavePlayerData(_playerData);
-    //     UpdatedPlayerMoney();
-    //     InventorySystem.Instance.RefreshInventory();
-    // }
+    private void GetMoneyAndProduct(int money, ProductType productType)
+    {
+        _trayData = SaveManager.Instance.TrayData;
+        _playerData.PlayerCoins += money;
+        _trayData.TrayData.Find(tray => tray.TrayData.ProductType == productType).TrayData.ItemCount++;
+        SaveManager.Instance.SaveTrayData(_trayData);
+        SaveManager.Instance.SavePlayerData(_playerData);
+        UpdatedPlayerMoney();
+        InventorySystem.Instance.RefreshInventory();
+    }
 }

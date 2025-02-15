@@ -28,7 +28,7 @@ public class InventorySystem : MonoBehaviour
     void Start()
     {
         _trayData = SaveManager.Instance.TrayData;
-        RefreshInventory();
+        // RefreshInventory();
     }
 
     float xOffset;
@@ -37,69 +37,36 @@ public class InventorySystem : MonoBehaviour
     {
         Debug.Log("CreateInventory");
 
-        if (_inventoryItemsContainer.childCount > 0)
+        // Удаляем все дочерние элементы
+        foreach (Transform child in _inventoryItemsContainer)
         {
-            Destroy(_inventoryItemsContainer.GetChild(0).gameObject);
+            Destroy(child.gameObject);
         }
+
         _inventoryItemsContainer.DetachChildren();
-        _itemWidth = 0;
-
         xOffset = 0f;
-        _itemWidth = _inventoryItemPrefab.GetComponent<RectTransform>().sizeDelta.x;
 
+        if (_inventoryItemPrefab != null)
+        {
+            _itemWidth = _inventoryItemPrefab.GetComponent<RectTransform>().sizeDelta.x;
+        }
+        else
+        {
+            Debug.LogError("InventoryItemPrefab is null!");
+            return;
+        }
+
+        // Проходим по всем элементам инвентаря
         foreach (var tray in _trayData.TrayData)
         {
-            switch (tray.TrayData.ProductType)
-            {
-                case ProductType.BlueBottle:
-                    SetInventoryItem(tray.TrayData);
-                    break;
-                case ProductType.RedBottle:
-                    SetInventoryItem(tray.TrayData);
-                    break;
-                case ProductType.GreenBottle:
-                    SetInventoryItem(tray.TrayData);
-                    break;
-                case ProductType.BrownBottle:
-                    SetInventoryItem(tray.TrayData);
-                    break;
-                case ProductType.Mushrooms:
-                    SetInventoryItem(tray.TrayData);
-                    break;
-                case ProductType.Chicken:
-                    SetInventoryItem(tray.TrayData);
-                    break;
-            }
-
-
-            // foreach(var tray in _trayData.TrayData)
-            // {
-            //     switch (tray.TrayData.ProductType)
-            //     {
-            //         case ProductType.BlueBottle:
-            //             SetInventoryItem(tray.TrayData.ItemCount, tray.TrayData.ProductImage);
-            //             break;
-            //         case ProductType.RedBottle:
-            //             SetInventoryItem(tray.TrayData.ItemCount, tray.TrayData.ProductImage);
-            //             break;
-            //         case ProductType.GreenBottle:
-            //             SetInventoryItem(tray.TrayData.ItemCount, tray.TrayData.ProductImage);
-            //             break;
-            //         case ProductType.BrownBottle:
-            //             SetInventoryItem(tray.TrayData.ItemCount, tray.TrayData.ProductImage);
-            //             break;
-            //         case ProductType.Mushrooms:
-            //             SetInventoryItem(tray.TrayData.ItemCount, tray.TrayData.ProductImage);
-            //             break;
-            //         case ProductType.Chicken:
-            //             SetInventoryItem(tray.TrayData.ItemCount, tray.TrayData.ProductImage);
-            //             break;
-            //     }
+            SetInventoryItem(tray.TrayData);
         }
 
-        _inventoryItemsContainer.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(xOffset, _inventoryItemsContainer.GetComponent<RectTransform>().sizeDelta.y);
+        // Устанавливаем новый размер контейнера
+        RectTransform rectTransform = _inventoryItemsContainer.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(xOffset, rectTransform.sizeDelta.y);
     }
+
 
     public void SetInventoryItem(TrayData trayData)
     {
