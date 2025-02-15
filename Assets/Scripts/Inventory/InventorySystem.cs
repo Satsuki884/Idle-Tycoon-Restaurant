@@ -7,13 +7,6 @@ public class InventorySystem : MonoBehaviour
 {
     [SerializeField] private Transform _inventoryItemsContainer;
     [SerializeField] private GameObject _inventoryItemPrefab;
-    [SerializeField] private Sprite _blueBottleImage;
-    [SerializeField] private Sprite _redBottleImage;
-    [SerializeField] private Sprite _greenBottleImage;
-    [SerializeField] private Sprite _brownBottleImage;
-    [SerializeField] private Sprite _chikenImage;
-    [SerializeField] private Sprite _mushroomsImage;
-    private PlayerData _playerData;
     private TrayDataSO _trayData;
     private float _itemWidth;
 
@@ -34,107 +27,52 @@ public class InventorySystem : MonoBehaviour
 
     void Start()
     {
-        // _playerData = SaveManager.Instance.PlayerData;
         _trayData = SaveManager.Instance.TrayData;
-        CreateInventory();
-        RefreshInventory();
-    }
-
-    public void RefreshInventory()
-    {
-        _playerData = SaveManager.Instance.PlayerData;
-        CreateInventory();
+        // RefreshInventory();
     }
 
     float xOffset;
 
-    private void CreateInventory()
+    public void RefreshInventory()
     {
+        Debug.Log("CreateInventory");
 
-        _playerData = SaveManager.Instance.PlayerData;
-        if (_inventoryItemsContainer.childCount > 0)
+        // Удаляем все дочерние элементы
+        foreach (Transform child in _inventoryItemsContainer)
         {
-            Destroy(_inventoryItemsContainer.GetChild(0).gameObject);
+            Destroy(child.gameObject);
         }
+
         _inventoryItemsContainer.DetachChildren();
-        _itemWidth = 0;
-
         xOffset = 0f;
-        _itemWidth = _inventoryItemPrefab.GetComponent<RectTransform>().sizeDelta.x;
-        SetInventoryItem(_playerData.BlueBottle, _blueBottleImage);
-        SetInventoryItem(_playerData.RedBottle, _redBottleImage);
-        SetInventoryItem(_playerData.GreenBottle, _greenBottleImage);
-        SetInventoryItem(_playerData.BrounBottle, _brownBottleImage);
-        SetInventoryItem(_playerData.Chicken, _chikenImage);
-        SetInventoryItem(_playerData.Mushrooms, _mushroomsImage);
 
+        if (_inventoryItemPrefab != null)
+        {
+            _itemWidth = _inventoryItemPrefab.GetComponent<RectTransform>().sizeDelta.x;
+        }
+        else
+        {
+            Debug.LogError("InventoryItemPrefab is null!");
+            return;
+        }
 
-        // if (_playerData.BlueBottle != 0)
-        // {
-            // SetInventoryItem(_playerData.BlueBottle, _blueBottleImage);
-            // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-            // itemUI.SetItemData(_playerData.BlueBottle, _blueBottleImage);
-            // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-            // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-            // xOffset += _itemWidth;
-        // }
-        // else if (_playerData.RedBottle != 0)
-        // {
-            // SetInventoryItem(_playerData.RedBottle, _redBottleImage);
-        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        //     // itemUI.SetItemData(_playerData.RedBottle, _redBottleImage);
-        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-        //     // xOffset += _itemWidth;
-        // }
-        // else if (_playerData.GreenBottle != 0)
-        // {
-            // SetInventoryItem(_playerData.GreenBottle, _greenBottleImage);
-        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        //     // itemUI.SetItemData(_playerData.GreenBottle, _greenBottleImage);
-        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-        //     // xOffset += _itemWidth;
-        // }
-        // else if (_playerData.BrounBottle != 0)
-        // {
-            // SetInventoryItem(_playerData.BrounBottle, _brownBottleImage);
-        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        //     // itemUI.SetItemData(_playerData.BrounBottle, _brownBottleImage);
-        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-        //     // xOffset += _itemWidth;
-        // }
-        // else if (_playerData.Chicken != 0)
-        // {
-            // SetInventoryItem(_playerData.Chicken, _chikenImage);
-        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        //     // itemUI.SetItemData(_playerData.Food, _chikenImage);
-        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-        //     // xOffset += _itemWidth;
-        // }
-        // else if (_playerData.Mushrooms != 0)
-        // {
-            // SetInventoryItem(_playerData.Mushrooms, _mushroomsImage);
-        //     // InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        //     // itemUI.SetItemData(_playerData.Mushrooms, _mushroomsImage);
-        //     // RectTransform itemRect = itemUI.GetComponent<RectTransform>();
-        //     // itemRect.anchoredPosition = new Vector2(xOffset, 0);
-        //     // xOffset += _itemWidth;
-        // }
+        // Проходим по всем элементам инвентаря
+        foreach (var tray in _trayData.TrayData)
+        {
+            SetInventoryItem(tray.TrayData);
+        }
 
-
-
-
-        _inventoryItemsContainer.GetComponent<RectTransform>().sizeDelta =
-            new Vector2(xOffset, _inventoryItemsContainer.GetComponent<RectTransform>().sizeDelta.y);
+        // Устанавливаем новый размер контейнера
+        RectTransform rectTransform = _inventoryItemsContainer.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(xOffset, rectTransform.sizeDelta.y);
     }
 
-    public void SetInventoryItem(int count, Sprite image)
+
+    public void SetInventoryItem(TrayData trayData)
     {
         InventoryItem itemUI = Instantiate(_inventoryItemPrefab, _inventoryItemsContainer).GetComponent<InventoryItem>();
-        itemUI.SetItemData(count, image);
+        itemUI.SetItemData(trayData);
+        // itemUI.SetItemData(count);
         RectTransform itemRect = itemUI.GetComponent<RectTransform>();
         itemRect.anchoredPosition = new Vector2(xOffset, 0);
         xOffset += _itemWidth;

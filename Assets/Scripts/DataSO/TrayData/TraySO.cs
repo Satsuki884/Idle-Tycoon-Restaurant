@@ -89,4 +89,20 @@ public class TrayData
 
     [SerializeField] private int _cost;
     public int Cost => _cost;
+
+    [Header("Player Progression")]
+    [SerializeField] private int _itemCount;
+    public int ItemCount
+    {
+        get
+        {
+            return _itemCount;
+        }
+        set
+        {
+            _itemCount = value;
+        }
+    }
+    [SerializeField] private Sprite _productImage;
+    public Sprite ProductImage => _productImage;
 }

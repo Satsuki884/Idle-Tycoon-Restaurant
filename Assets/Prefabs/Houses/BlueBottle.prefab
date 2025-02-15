@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: BlueBottle
-  _startPositions: {fileID: 7070106651986262385}
   _endPositions: {fileID: 5666457405744960054}
   _queuePoint: {fileID: 0}
   _queuePoints:
@@ -120,9 +119,6 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
   _spawnZone: {fileID: 0}
-  availableSpots:
-  - {x: -20.016, y: 1.38, z: 15.44}
-  - {x: -18.451, y: 1.38, z: 15.44}
   _availableSpots:
   - position: {fileID: 0}
     isFree: 1
@@ -130,11 +126,9 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-  _queueManager: {fileID: 8515742082716809280, guid: 54281a7a4d0a5e24daf37d927220c489, type: 3}
   _spawnManager: {fileID: 0}
   _productType: 0
   _isQueueFool: 0
-  _isTrayFool: 0
   _secondResidentPrefab: {fileID: 2815371239878388867}
 --- !u!1001 &19872067167089386
 PrefabInstance:

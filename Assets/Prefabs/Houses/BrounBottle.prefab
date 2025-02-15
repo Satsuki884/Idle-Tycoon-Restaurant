@@ -101,20 +101,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: BrounBottle
-  _startPositions: {fileID: 0}
   _endPositions: {fileID: 0}
   _queuePoint: {fileID: 0}
   _queuePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
   _spawnZone: {fileID: 0}
-  availableSpots:
-  - {x: -15.71, y: 2.07, z: -5.76}
-  - {x: -17.06, y: 2.07, z: -5.95}
   _availableSpots:
   - position: {fileID: 0}
     isFree: 1
@@ -122,13 +124,9 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-  incomePerOrder: 5
-  _queueManager: {fileID: 8515742082716809280, guid: 54281a7a4d0a5e24daf37d927220c489, type: 3}
   _spawnManager: {fileID: 0}
-  _spawnTransform: {fileID: 0}
   _productType: 3
   _isQueueFool: 0
-  _isTrayFool: 0
   _secondResidentPrefab: {fileID: 8961856665204433196}
 --- !u!1001 &312884631576270360
 PrefabInstance:
@@ -934,6 +932,10 @@ PrefabInstance:
     - target: {fileID: 5428228273505060056, guid: 44753b020bbea8a42b22467f249292b9, type: 3}
       propertyPath: m_Name
       value: House_01_LITE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396318789275137151, guid: 44753b020bbea8a42b22467f249292b9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

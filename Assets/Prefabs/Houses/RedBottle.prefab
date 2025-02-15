@@ -195,20 +195,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: RedBottle
-  _startPositions: {fileID: 7026593895012273183}
   _endPositions: {fileID: 0}
   _queuePoint: {fileID: 0}
   _queuePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
   _spawnZone: {fileID: 0}
-  availableSpots:
-  - {x: -23.93, y: 1.51, z: -2.5999}
-  - {x: -24.75, y: 1.51, z: -1.28}
   _availableSpots:
   - position: {fileID: 0}
     isFree: 1
@@ -216,13 +218,9 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-  incomePerOrder: 5
-  _queueManager: {fileID: 8515742082716809280, guid: 54281a7a4d0a5e24daf37d927220c489, type: 3}
   _spawnManager: {fileID: 0}
-  _spawnTransform: {fileID: 0}
   _productType: 2
   _isQueueFool: 0
-  _isTrayFool: 0
   _secondResidentPrefab: {fileID: 8849985352932228146}
 --- !u!1001 &43428443673028806
 PrefabInstance:
@@ -1435,6 +1433,10 @@ PrefabInstance:
     - target: {fileID: 5428228273505060056, guid: 44753b020bbea8a42b22467f249292b9, type: 3}
       propertyPath: m_Name
       value: House_01_LITE (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6396318789275137151, guid: 44753b020bbea8a42b22467f249292b9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
