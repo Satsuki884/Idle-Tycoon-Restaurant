@@ -106,20 +106,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: Mushrooms
-  _startPositions: {fileID: 0}
   _endPositions: {fileID: 0}
   _queuePoint: {fileID: 0}
   _queuePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
   _spawnZone: {fileID: 0}
-  availableSpots:
-  - {x: -8.71, y: 1.15, z: -0.26999}
-  - {x: -8.71, y: 1.26, z: 0.8}
   _availableSpots:
   - position: {fileID: 0}
     isFree: 1
@@ -127,13 +129,9 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-  incomePerOrder: 5
-  _queueManager: {fileID: 8515742082716809280, guid: 54281a7a4d0a5e24daf37d927220c489, type: 3}
   _spawnManager: {fileID: 0}
-  _spawnTransform: {fileID: 0}
   _productType: 5
   _isQueueFool: 0
-  _isTrayFool: 0
   _secondResidentPrefab: {fileID: 7235339039691790406}
 --- !u!1001 &20969705305793085
 PrefabInstance:

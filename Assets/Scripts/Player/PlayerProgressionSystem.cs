@@ -12,9 +12,12 @@ public class PlayerProgressionSystem : MonoBehaviour
     [SerializeField] private TMP_Text _currentLevel;
     [SerializeField] private Slider _expBar;
     [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private TMP_Text _moneyTextUpgrade;
     [Header("Info Panel")]
     [SerializeField] private TMP_Text _currentLevelText;
     [SerializeField] private TMP_Text _expirienceText;
+    [SerializeField] private TMP_Text _nextLevelProductText;
+    [SerializeField] private Image _productImage;
     private bool _isMaxLevel = false;
 
     public static PlayerProgressionSystem Instance { get; private set; }
@@ -114,12 +117,18 @@ public class PlayerProgressionSystem : MonoBehaviour
         _currentLevelText.text = _playerData.PlayerLevel.ToString();
         if (_isMaxLevel)
         {
-            _expirienceText.text = "Max Level. Congratulations!";
+            _expirienceText.text = "Max Level";
+            _nextLevelProductText.text = "All products are unlocked";
+            _productImage.gameObject.SetActive(false);
+            _productImage.sprite = CreationManager.Instance.GetProductSprite(_playerData.PlayerLevel);
             return;
         }
         else
         {
             _expirienceText.text = _playerData.PlayerExperience.ToString() + " / " + GetExpForNextLevel(_playerData.PlayerLevel + 1);
+            _nextLevelProductText.text = CreationManager.Instance.GetNextLevelsProduct(_playerData.PlayerLevel + 1);
+            _productImage.gameObject.SetActive(true);
+            _productImage.sprite = CreationManager.Instance.GetProductSprite(_playerData.PlayerLevel + 1);
         }
         _expBar.value = _playerData.PlayerExperience;
     }
@@ -133,6 +142,7 @@ public class PlayerProgressionSystem : MonoBehaviour
     {
         int coins = _playerData.PlayerCoins;
         _moneyText.text = FormatNumber(coins);
+        _moneyTextUpgrade.text = FormatNumber(coins);
     }
     public string FormatNumber(int num)
     {

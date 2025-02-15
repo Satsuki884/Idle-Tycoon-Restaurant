@@ -102,20 +102,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: Chicken
-  _startPositions: {fileID: 0}
   _endPositions: {fileID: 0}
   _queuePoint: {fileID: 0}
   _queuePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
+  - position: {fileID: 0}
+    isFree: 1
   _spawnZone: {fileID: 0}
-  availableSpots:
-  - {x: -9.842, y: 1.74, z: 12.117}
-  - {x: -9.356, y: 1.74, z: 11.003}
   _availableSpots:
   - position: {fileID: 0}
     isFree: 1
@@ -123,13 +125,9 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-  incomePerOrder: 5
-  _queueManager: {fileID: 8515742082716809280, guid: 54281a7a4d0a5e24daf37d927220c489, type: 3}
   _spawnManager: {fileID: 0}
-  _spawnTransform: {fileID: 0}
   _productType: 4
   _isQueueFool: 0
-  _isTrayFool: 0
   _secondResidentPrefab: {fileID: 7316504947402208504}
 --- !u!1001 &463836296171513536
 PrefabInstance:

@@ -5,12 +5,11 @@ using UnityEngine.UI;
 public class InventoryItem : MonoBehaviour
 {
     [SerializeField] private TMP_Text _itemCount;
-    // [SerializeField] private Image _productImage;
+    [SerializeField] private Image _productImage;
 
-    // public void SetItemData(int count, Sprite productImage)
-    public void SetItemData(int count)
+    public void SetItemData(TrayData trayData)
     {
-        _itemCount.text = PlayerProgressionSystem.Instance.FormatNumber(count);
-        // _productImage.sprite = productImage;
+        _itemCount.text = PlayerProgressionSystem.Instance.FormatNumber(trayData.ItemCount);
+        _productImage.sprite = trayData.ProductImage;
     }
 }

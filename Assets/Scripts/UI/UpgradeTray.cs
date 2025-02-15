@@ -17,6 +17,14 @@ public class UpgradeTray : MonoBehaviour
     private TrayData currentTrayData;
     private List<Resident> residents;
 
+    [Header("UI view")]
+    [SerializeField] private TMP_Text _currentLevelTrayText;
+    [SerializeField] private TMP_Text _maxLevelTrayText;
+    [SerializeField] private Image _productImage;
+    [SerializeField] private TMP_Text _countOfSellerText;
+    [SerializeField] private TMP_Text _priceText;
+    [SerializeField] private Slider _slider;
+
     private void Start()
     {
         // SetData();
@@ -107,6 +115,23 @@ public class UpgradeTray : MonoBehaviour
             _costOfUpgradeText.text = "Max Level";
             _upgradeTrayButton.interactable = false;
         }
+
+        _currentLevelTrayText.text = upgradeLevel.ToString();
+        _maxLevelTrayText.text = upgradeData.UpgradeCost.Count.ToString();
+        _slider.minValue = 0;
+        _slider.maxValue = upgradeData.UpgradeCost.Count;
+        _slider.value = upgradeLevel;
+        _productImage.sprite = currentTrayData.ProductImage;
+        if(currentTrayData.SecondResidents)
+        {
+            _countOfSellerText.text = "2 / 2";
+        }
+        else
+        {
+            _countOfSellerText.text = "1 / 2";
+        }
+        _priceText.text = upgradeData.UpgradePrice[upgradeLevel].ToString();
+        
 
 
     }
