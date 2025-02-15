@@ -11,11 +11,9 @@ public class UpgradeTray : MonoBehaviour
     [SerializeField] private TMP_Text _costOfUpgradeText;
     [SerializeField] private TMP_Text _levelUpPriceText;
 
-    // private PlayerData playerData;
     private TrayDataSO trayData;
 
     private TrayData currentTrayData;
-    private List<Resident> residents;
 
     [Header("UI view")]
     [SerializeField] private TMP_Text _currentLevelTrayText;
@@ -38,7 +36,6 @@ public class UpgradeTray : MonoBehaviour
 
     public void UpdatePanel(string trayName)
     {
-        // Debug.Log(trayName);
         _trayName = trayName;
         SetData();
         SetPanelData();
@@ -47,48 +44,29 @@ public class UpgradeTray : MonoBehaviour
 
     private void SetData()
     {
-        // Debug.Log(SaveManager.Instance);
-        // Debug.Log(SaveManager.Instance.PlayerData);
-        // playerData = SaveManager.Instance.PlayerData;
-        // Debug.Log(playerData.PlayerCoins);
         trayData = SaveManager.Instance.TrayData;
-        // foreach (var tray in trayData.TrayData)
-        // {
-        //     Debug.Log(tray.TrayData.TrayName);
-        // }
     }
 
     private void LevelUpTray()
     {
-        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.UpgradeLevel++;
-        // playerData.PlayerCoins -= currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel];
-        SaveUpdate();
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.UpgradeTrayMusic);
         PlayerProgressionSystem.Instance.BuySmth(currentTrayData.ProductUpgradeData.UpgradeCost[currentTrayData.UpgradeLevel]);
+        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.UpgradeLevel++;
+        SaveManager.Instance.SaveTrayData(trayData);
+        UpdatePanel(_trayName);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.UpgradeTrayMusic);
+
     }
 
     private void BuyNewResident()
     {
-        foreach (var resident in residents)
-        {
-            if (!resident.IsActive)
-            {
-                resident.IsActive = true;
-                break;
-            }
-        }
-        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.BuySecondResidentMusic);
-        // playerData.PlayerCoins -= trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents;
+        Debug.Log("BuyNewResident");
         PlayerProgressionSystem.Instance.BuySmth(trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents);
-        SaveUpdate();
-    }
-
-    private void SaveUpdate()
-    {
+        Debug.Log("We buy new resident for some cash");
+        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
+        Debug.Log("Second resident now is true");
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.BuySecondResidentMusic);
         SaveManager.Instance.SaveTrayData(trayData);
-        // SaveManager.Instance.SavePlayerData(playerData);
-        // PlayerProgressionSystem.Instance.UpdatedPlayerMoney();
+        Debug.Log("We save new data about second resident");
         UpdatePanel(_trayName);
     }
 
@@ -122,7 +100,7 @@ public class UpgradeTray : MonoBehaviour
         _slider.maxValue = upgradeData.UpgradeCost.Count;
         _slider.value = upgradeLevel;
         _productImage.sprite = currentTrayData.ProductImage;
-        if(currentTrayData.SecondResidents)
+        if (currentTrayData.SecondResidents)
         {
             _countOfSellerText.text = "2 / 2";
         }
@@ -131,7 +109,7 @@ public class UpgradeTray : MonoBehaviour
             _countOfSellerText.text = "1 / 2";
         }
         _priceText.text = upgradeData.UpgradePrice[upgradeLevel].ToString();
-        
+
 
 
     }

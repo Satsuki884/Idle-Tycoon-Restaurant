@@ -28,7 +28,7 @@ public class InventorySystem : MonoBehaviour
     void Start()
     {
         _trayData = SaveManager.Instance.TrayData;
-        // RefreshInventory();
+        RefreshInventory();
     }
 
     float xOffset;

@@ -18,7 +18,6 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clips SFX")]
     [SerializeField] private AudioClip _buyHomeMusic;
     [SerializeField] private AudioClip _buySecondResidentMusic;
-    [SerializeField] private AudioClip _buttonClick;
     [SerializeField] private AudioClip _upgradeTrayMusic;
     [SerializeField] private AudioClip _levelUpMusic;
 
@@ -45,7 +44,6 @@ public class AudioManager : MonoBehaviour
         _musicSource.Play();
     }
 
-    public string ButtonClick = "ButtonClick";
     public string BuyHomeMusic = "BuyHome";
     public string BuySecondResidentMusic = "BuySecondResident";
     public string UpgradeTrayMusic = "UpgradeTray";
@@ -56,9 +54,6 @@ public class AudioManager : MonoBehaviour
         // Debug.Log("Playing SFX: " + clipName);
         switch (clipName)
         {
-            case "ButtonClick":
-                _sfxSource.clip = _buttonClick;
-                break;
             case "BuyHome":
                 _sfxSource.clip = _buyHomeMusic;
                 break;

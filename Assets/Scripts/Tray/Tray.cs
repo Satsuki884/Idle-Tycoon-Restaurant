@@ -103,7 +103,7 @@ public class Tray : MonoBehaviour
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(Random.Range(_thisTraySO.TimeToServe / 1.3f, _thisTraySO.TimeToServe * 2));
+            yield return new WaitForSeconds(_thisTraySO.TimeToServe*2);
         }
     }
 

@@ -36,7 +36,7 @@ public class PlayerProgressionSystem : MonoBehaviour
     void Start()
     {
         _playerData = SaveManager.Instance.PlayerData;
-        InventorySystem.Instance.RefreshInventory();
+        // InventorySystem.Instance.RefreshInventory();
         _expBar.minValue = 0;
         SetUI();
         

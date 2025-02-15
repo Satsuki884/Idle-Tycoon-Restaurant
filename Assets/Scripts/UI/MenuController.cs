@@ -30,7 +30,6 @@ public class MenuController : MonoBehaviour
     [SerializeField] private Button _getNewLevelButtonClose;
 
     [Header("Experience")]
-
     [SerializeField] private GameObject _infoPanel;
     [SerializeField] private Button _openInfoButton;
     [SerializeField] private Button _closeInfoButton;
