@@ -1459,7 +1459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1467,15 +1467,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 245
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1507,7 +1507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 450.57996
       objectReference: {fileID: 0}
     - target: {fileID: 7583619956853078040, guid: bcba2741bea886d4ab932657a3075ee1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9727,7 +9727,7 @@ Transform:
   m_GameObject: {fileID: 586436797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.04, y: 1.4, z: 2.71}
+  m_LocalPosition: {x: -9.67, y: 1.4, z: 1.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14995,7 +14995,7 @@ Transform:
   m_GameObject: {fileID: 937264316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.08, y: 1.17, z: -4.94}
+  m_LocalPosition: {x: -16.68, y: 1.17, z: -4.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15806,7 +15806,7 @@ Transform:
   m_GameObject: {fileID: 980195832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.55, y: 1.5, z: -3.86}
+  m_LocalPosition: {x: -23.56, y: 1.5, z: -0.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15968,7 +15968,7 @@ Transform:
   m_GameObject: {fileID: 983390126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.78, y: 1.816, z: 6.02}
+  m_LocalPosition: {x: -25.23, y: 1.816, z: 7.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17903,6 +17903,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146150653}
   m_CullTransparentMesh: 1
+--- !u!1 &1151961082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2815371239878388867, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
+  m_PrefabInstance: {fileID: 4866718061815530639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1162014395
 GameObject:
   m_ObjectHideFlags: 0
@@ -26735,7 +26740,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1852732647
 Transform:
   m_ObjectHideFlags: 0
@@ -31530,10 +31535,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 983390127}
     - target: {fileID: 2345813021496220099, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
-      propertyPath: _endPositions
-      value: 
-      objectReference: {fileID: 1447498420}
-    - target: {fileID: 2345813021496220099, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
       propertyPath: _spawnManager
       value: 
       objectReference: {fileID: 1250923127}
@@ -31542,9 +31543,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1511293792}
     - target: {fileID: 2345813021496220099, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
-      propertyPath: _secondEndPoint
+      propertyPath: _leftEndPOsition
       value: 
       objectReference: {fileID: 686339601}
+    - target: {fileID: 2345813021496220099, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
+      propertyPath: _rightEndPosition
+      value: 
+      objectReference: {fileID: 1447498420}
     - target: {fileID: 2345813021496220099, guid: abdb77c1f909d774aa15a5cf50efb89f, type: 3}
       propertyPath: _queuePoints.Array.data[0].position
       value: 
@@ -32351,10 +32356,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 281904103}
     - target: {fileID: 6176396666429940200, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
-      propertyPath: _queuePoint
-      value: 
-      objectReference: {fileID: 1639896898}
-    - target: {fileID: 6176396666429940200, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
       propertyPath: _spawnManager
       value: 
       objectReference: {fileID: 1250923127}
@@ -32362,6 +32363,14 @@ PrefabInstance:
       propertyPath: _spawnListZone
       value: 
       objectReference: {fileID: 2036735117}
+    - target: {fileID: 6176396666429940200, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
+      propertyPath: _queuePoint.position
+      value: 
+      objectReference: {fileID: 1639896898}
+    - target: {fileID: 6176396666429940200, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
+      propertyPath: _secondResidentPrefab
+      value: 
+      objectReference: {fileID: 1151961082}
     - target: {fileID: 6176396666429940200, guid: 2bfe4e8d4ccb2f44c963e1c1c237b8a4, type: 3}
       propertyPath: _queuePoints.Array.data[0].position
       value: 
@@ -32709,10 +32718,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 937264317}
     - target: {fileID: 6289117321512803706, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
-      propertyPath: _endPositions
-      value: 
-      objectReference: {fileID: 1375619475}
-    - target: {fileID: 6289117321512803706, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
       propertyPath: _spawnManager
       value: 
       objectReference: {fileID: 1250923127}
@@ -32721,9 +32726,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 331198189}
     - target: {fileID: 6289117321512803706, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
-      propertyPath: _secondEndPoint
+      propertyPath: _leftEndPOsition
       value: 
       objectReference: {fileID: 632499779}
+    - target: {fileID: 6289117321512803706, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
+      propertyPath: _rightEndPosition
+      value: 
+      objectReference: {fileID: 1375619475}
     - target: {fileID: 6289117321512803706, guid: 3cd45ae076404394ca3fc586fff0d5c2, type: 3}
       propertyPath: _queuePoints.Array.data[0].position
       value: 
@@ -33342,6 +33351,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 5018825040141266436, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
       propertyPath: _spawnZone
       value: 
@@ -33351,10 +33364,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1314409905}
     - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
-      propertyPath: _endPositions
-      value: 
-      objectReference: {fileID: 1260962189}
-    - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
       propertyPath: _spawnManager
       value: 
       objectReference: {fileID: 1250923127}
@@ -33363,9 +33372,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2096887109}
     - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
-      propertyPath: _secondEndPoint
+      propertyPath: _leftEndPOsition
       value: 
       objectReference: {fileID: 895993933}
+    - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
+      propertyPath: _rightEndPosition
+      value: 
+      objectReference: {fileID: 1260962189}
     - target: {fileID: 5159660854831820124, guid: d3038d14c48ce074cba747c8be56b3c1, type: 3}
       propertyPath: _queuePoints.Array.data[0].position
       value: 
@@ -33960,10 +33973,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 980195833}
     - target: {fileID: 6325939266904469440, guid: e9525b18722214144b23c6ec52f72020, type: 3}
-      propertyPath: _endPositions
-      value: 
-      objectReference: {fileID: 686339601}
-    - target: {fileID: 6325939266904469440, guid: e9525b18722214144b23c6ec52f72020, type: 3}
       propertyPath: _spawnManager
       value: 
       objectReference: {fileID: 1250923127}
@@ -33971,6 +33980,10 @@ PrefabInstance:
       propertyPath: _spawnListZone
       value: 
       objectReference: {fileID: 404031122}
+    - target: {fileID: 6325939266904469440, guid: e9525b18722214144b23c6ec52f72020, type: 3}
+      propertyPath: _rightEndPosition
+      value: 
+      objectReference: {fileID: 686339601}
     - target: {fileID: 6325939266904469440, guid: e9525b18722214144b23c6ec52f72020, type: 3}
       propertyPath: _queuePoints.Array.data[0].position
       value: 
@@ -34369,10 +34382,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 586436798}
     - target: {fileID: 8215203994261219000, guid: fe21025b216867b4bbc7bae794177c8f, type: 3}
-      propertyPath: _endPositions
-      value: 
-      objectReference: {fileID: 632499779}
-    - target: {fileID: 8215203994261219000, guid: fe21025b216867b4bbc7bae794177c8f, type: 3}
       propertyPath: _spawnManager
       value: 
       objectReference: {fileID: 1250923127}
@@ -34381,9 +34390,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 984550794}
     - target: {fileID: 8215203994261219000, guid: fe21025b216867b4bbc7bae794177c8f, type: 3}
-      propertyPath: _secondEndPoint
+      propertyPath: _leftEndPOsition
       value: 
       objectReference: {fileID: 1260962189}
+    - target: {fileID: 8215203994261219000, guid: fe21025b216867b4bbc7bae794177c8f, type: 3}
+      propertyPath: _rightEndPosition
+      value: 
+      objectReference: {fileID: 632499779}
     - target: {fileID: 8215203994261219000, guid: fe21025b216867b4bbc7bae794177c8f, type: 3}
       propertyPath: _queuePoints.Array.data[0].position
       value: 

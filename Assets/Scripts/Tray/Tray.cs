@@ -13,6 +13,7 @@ public class TraySpot
     public Transform position;
     public bool isFree = true;
     public bool IsLocked = false;
+    public bool IsLeft;
 }
 
 [System.Serializable]
@@ -27,9 +28,9 @@ public class Tray : MonoBehaviour
 {
     [SerializeField] private string _trayName;
     [SerializeField] public string TrayName => _trayName;
-    [SerializeField] private Transform _endPositions;
-    [SerializeField] private Transform _secondEndPoint;
-    [SerializeField] private Transform _queuePoint;
+    [SerializeField] private Transform _leftEndPosition;
+    [SerializeField] private Transform _rightEndPosition;
+    [SerializeField] private TrayQueuePoint _queuePoint;
     [SerializeField] private List<TrayQueuePoint> _queuePoints;
     [SerializeField] public Transform _spawnZone;
     [SerializeField] private List<TraySpot> _availableSpots;
@@ -110,20 +111,23 @@ public class Tray : MonoBehaviour
     {
         while (true)
         {
-            if (!QueueIsFull() && _thisTraySO.IsActive)
+            if (/*!QueueIsFull() && */_thisTraySO.IsActive && _queuePoint.isFree)
             {
+                _queuePoint.isFree = false;
                 _character = _spawnManager.SpawnCharacters(_spawnZone, _spawnListZone);
                 _waitingQueue.Enqueue(_character);
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(_thisTraySO.TimeToServe);
+            yield return new WaitForSeconds(_thisTraySO.TimeToServe/2);
+            // yield return null;
         }
     }
 
     public void AddCharacterToQueue(Character character)
     {
-        character.MoveTo(_queuePoint.position, () =>
+        
+        character.MoveTo(_queuePoint.position.position, () =>
         {
             TryMoveToSpot();
         });
@@ -138,6 +142,7 @@ public class Tray : MonoBehaviour
         var freeSpot = _availableSpots.FirstOrDefault(s => s.isFree && !s.IsLocked);
         if (freeSpot != null)
         {
+            _queuePoint.isFree = true;
             _currentCharacter = _waitingQueue.Dequeue();
             freeSpot.isFree = false;
             _currentCharacter.MoveTo(freeSpot.position.position, () =>
@@ -158,20 +163,19 @@ public class Tray : MonoBehaviour
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
-        if (spot == _availableSpots.Last())
+        if (spot.IsLeft)
         {
-            character.MoveTo(_endPositions.position, () =>
-        {
-            character.MoveTo(_spawnZone.position, () =>
+            character.MoveTo(_leftEndPosition.position, () =>
             {
-                Destroy(character.gameObject);
+                character.MoveTo(_spawnZone.position, () =>
+                {
+                    Destroy(character.gameObject);
+                });
             });
-        });
         }
         else
-        //  if (spot == _availableSpots.First())
         {
-            character.MoveTo(_secondEndPoint.position, () =>
+            character.MoveTo(_rightEndPosition.position, () =>
             {
                 character.MoveTo(_spawnZone.position, () =>
                 {

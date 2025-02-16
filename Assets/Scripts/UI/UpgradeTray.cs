@@ -70,7 +70,7 @@ public class UpgradeTray : MonoBehaviour
         Debug.Log(_tray);
         // _tray.Find(tray => tray.TrayName == _trayName).SecondResidentPrefab.SetActive(true);
         // _tray.Find(tray => tray.TrayName == _trayName).AvailableSpots.Last().IsLocked = false;
-        _tray.Find(tray => tray.TrayName == _trayName).SetAvailableResident();
+        // _tray.Find(tray => tray.TrayName == _trayName).SetAvailableResident();
         UpdatePanel(_trayName);
     }
 

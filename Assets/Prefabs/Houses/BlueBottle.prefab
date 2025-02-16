@@ -103,9 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: BlueBottle
-  _endPositions: {fileID: 5666457405744960054}
-  _secondEndPoint: {fileID: 7070106651986262385}
-  _queuePoint: {fileID: 0}
+  _leftEndPosition: {fileID: 7070106651986262385}
+  _rightEndPosition: {fileID: 5666457405744960054}
   _queuePoints:
   - position: {fileID: 0}
     isFree: 1
@@ -124,12 +123,14 @@ MonoBehaviour:
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
+    IsLeft: 1
   - position: {fileID: 0}
     isFree: 1
     IsLocked: 0
+    IsLeft: 0
+  _spawnListZone: {fileID: 0}
   _spawnManager: {fileID: 0}
   _productType: 0
-  _secondResidentPrefab: {fileID: 2815371239878388867}
 --- !u!1001 &19872067167089386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,11 +470,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bce7d6f616060b4ba91a14aa337a714, type: 3}
---- !u!1 &2815371239878388867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1036146927597162718, guid: 1bce7d6f616060b4ba91a14aa337a714, type: 3}
-  m_PrefabInstance: {fileID: 2986756395313396829}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3195837840814323257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 372376587426515556, guid: 1bce7d6f616060b4ba91a14aa337a714, type: 3}
