@@ -74,8 +74,9 @@ public class SaveManager : MonoBehaviour
 
     private void Start()
     {
-        SaveTrayData(_trayData);
         SavePlayerData(_playerData.PlayerData);
+        SaveTrayData(_trayData);
+
         SaveSettingsData(_settingsData.SettingsData);
         LoadTrayData();
         LoadPlayerData();

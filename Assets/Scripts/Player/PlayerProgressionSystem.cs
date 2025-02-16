@@ -40,9 +40,10 @@ public class PlayerProgressionSystem : MonoBehaviour
         _trayData = SaveManager.Instance.TrayData;
         // InventorySystem.Instance.RefreshInventory();
         _expBar.minValue = 0;
+        UpdatedPlayerMoney();
         SetUI();
 
-        UpdatedPlayerMoney();
+
 
     }
 
@@ -158,6 +159,7 @@ public class PlayerProgressionSystem : MonoBehaviour
 
     public void UpdatedPlayerMoney()
     {
+        _playerData = SaveManager.Instance.PlayerData;
         int coins = _playerData.PlayerCoins;
         _moneyText.text = FormatNumber(coins);
         _moneyTextUpgrade.text = FormatNumber(coins);

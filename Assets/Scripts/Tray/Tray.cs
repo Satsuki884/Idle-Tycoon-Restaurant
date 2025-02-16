@@ -32,6 +32,16 @@ public class Tray : MonoBehaviour
     [SerializeField] private List<TrayQueuePoint> _queuePoints;
     [SerializeField] public Transform _spawnZone;
     [SerializeField] private List<TraySpot> _availableSpots;
+    public List<TraySpot> AvailableSpots {
+        get
+        {
+            return _availableSpots;
+        }
+        set
+        {
+            _availableSpots = value;
+        }
+    }
     private Queue<Character> _waitingQueue = new Queue<Character>();
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private ProductType _productType;
@@ -39,6 +49,7 @@ public class Tray : MonoBehaviour
     private TrayData _thisTraySO;
 
     [SerializeField] private GameObject _secondResidentPrefab;
+    public GameObject SecondResidentPrefab => _secondResidentPrefab;
 
     private void Start()
     {
@@ -103,7 +114,7 @@ public class Tray : MonoBehaviour
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(_thisTraySO.TimeToServe * 2);
+            yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         }
     }
 

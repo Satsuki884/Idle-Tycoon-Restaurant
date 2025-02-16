@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,8 +67,10 @@ public class UpgradeTray : MonoBehaviour
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
         AudioManager.Instance.PlaySFX(AudioManager.Instance.BuySecondResidentMusic);
         SaveManager.Instance.SaveTrayData(trayData);
-        var tray = _tray.Find(tray => tray.TrayName == _trayName);
-        tray.SetAvailableResident();
+        Debug.Log(_tray);
+        // _tray.Find(tray => tray.TrayName == _trayName).SecondResidentPrefab.SetActive(true);
+        // _tray.Find(tray => tray.TrayName == _trayName).AvailableSpots.Last().IsLocked = false;
+        _tray.Find(tray => tray.TrayName == _trayName).SetAvailableResident();
         UpdatePanel(_trayName);
     }
 
