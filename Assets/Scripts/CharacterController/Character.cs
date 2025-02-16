@@ -7,6 +7,12 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
+    private Animator _animator;
+
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void MoveTo(Vector3 target, Action onComplete = null)
     {
@@ -16,6 +22,9 @@ public class Character : MonoBehaviour
     private IEnumerator MoveRoutine(Vector3 target, Action onComplete)
     {
         yield return new WaitForSeconds(UnityEngine.Random.Range(0.1f, 0.3f));
+        // Debug.Log(_animator);
+
+        _animator.SetBool("walk", true);
         Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
         transform.LookAt(target);
 
@@ -24,18 +33,11 @@ public class Character : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * moveSpeed);
             yield return null;
+
         }
+        _animator.SetBool("walk", false);
         onComplete?.Invoke();
     }
-
-    // private Vector3 GetTargetPosition(Vector3 target)
-    // {
-    //     Vector3 direction = (target - transform.position).normalized; // Нормализованный вектор направления
-    //     float offsetDistance = transform.localScale.x; // Используем ширину объекта как смещение
-    //     Vector3 targetPosition = target - direction * offsetDistance; // Смещаем цель назад
-
-    //     return new Vector3(targetPosition.x, transform.position.y, targetPosition.z); // Оставляем текущую высоту
-    // }
 
 
 }
