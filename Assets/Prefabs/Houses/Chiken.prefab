@@ -102,36 +102,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: Chicken
-  _leftEndPOsition: {fileID: 0}
   _rightEndPosition: {fileID: 0}
-  _queuePoint: {fileID: 0}
-  _queuePoints:
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
+  _queuePoint:
+    position: {fileID: 0}
     isFree: 1
   _spawnZone: {fileID: 0}
   _availableSpots:
-  - position: {fileID: 0}
+    position: {fileID: 0}
     isFree: 1
     IsLocked: 0
-    IsLeft: 1
-  - position: {fileID: 0}
-    isFree: 1
-    IsLocked: 0
-    IsLeft: 0
   _spawnListZone: {fileID: 0}
   _spawnManager: {fileID: 0}
   _productType: 4
-  _secondResidentPrefab: {fileID: 7316504947402208504}
 --- !u!1001 &463836296171513536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1379,11 +1361,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e5c6d351c7c7eb4287492020d3d1bbe, type: 3}
---- !u!1 &7316504947402208504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1436386622688826594, guid: 6e5c6d351c7c7eb4287492020d3d1bbe, type: 3}
-  m_PrefabInstance: {fileID: 8531612620501180442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7981120506742681154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1775758186340273752, guid: 6e5c6d351c7c7eb4287492020d3d1bbe, type: 3}

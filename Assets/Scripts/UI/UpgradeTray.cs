@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class UpgradeTray : MonoBehaviour
 {
-    [SerializeField] private Button _buyNewResidentButton;
     [SerializeField] private Button _upgradeTrayButton;
     [SerializeField] private TMP_Text _costOfUpgradeText;
     [SerializeField] private TMP_Text _levelUpPriceText;
@@ -20,19 +19,11 @@ public class UpgradeTray : MonoBehaviour
     [SerializeField] private TMP_Text _currentLevelTrayText;
     [SerializeField] private TMP_Text _maxLevelTrayText;
     [SerializeField] private Image _productImage;
-    [SerializeField] private TMP_Text _countOfSellerText;
     [SerializeField] private TMP_Text _priceText;
     [SerializeField] private Slider _slider;
 
-    [Header("Tray Name")]
-    [SerializeField] private List<Tray> _tray;
-
     private void Start()
     {
-        // SetData();
-
-        _buyNewResidentButton.onClick.RemoveAllListeners();
-        _buyNewResidentButton.onClick.AddListener(BuyNewResident);
         _upgradeTrayButton.onClick.RemoveAllListeners();
         _upgradeTrayButton.onClick.AddListener(LevelUpTray);
     }
@@ -61,19 +52,6 @@ public class UpgradeTray : MonoBehaviour
 
     }
 
-    private void BuyNewResident()
-    {
-        PlayerProgressionSystem.Instance.BuySmth(trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents);
-        trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.BuySecondResidentMusic);
-        SaveManager.Instance.SaveTrayData(trayData);
-        Debug.Log(_tray);
-        // _tray.Find(tray => tray.TrayName == _trayName).SecondResidentPrefab.SetActive(true);
-        // _tray.Find(tray => tray.TrayName == _trayName).AvailableSpots.Last().IsLocked = false;
-        // _tray.Find(tray => tray.TrayName == _trayName).SetAvailableResident();
-        UpdatePanel(_trayName);
-    }
-
     private void SetPanelData()
     {
         currentTrayData = trayData.TrayData
@@ -85,9 +63,6 @@ public class UpgradeTray : MonoBehaviour
 
         _costOfUpgradeText.text = upgradeData.UpgradeCost[upgradeLevel].ToString();
         _levelUpPriceText.text = $"{upgradeData.UpgradePrice[upgradeLevel]} -> {upgradeData.UpgradePrice[upgradeLevel + 1]}";
-
-        _buyNewResidentButton.interactable = !currentTrayData.SecondResidents &&
-                                              currentTrayData.CostForSecondResidents <= PlayerProgressionSystem.Instance.GetPlayerMoney();
 
         bool canUpgrade = upgradeData.UpgradeCost[upgradeLevel] <= PlayerProgressionSystem.Instance.GetPlayerMoney();
         _upgradeTrayButton.interactable = canUpgrade;
@@ -104,14 +79,6 @@ public class UpgradeTray : MonoBehaviour
         _slider.maxValue = upgradeData.UpgradeCost.Count;
         _slider.value = upgradeLevel;
         _productImage.sprite = currentTrayData.ProductImage;
-        if (currentTrayData.SecondResidents)
-        {
-            _countOfSellerText.text = "2 / 2";
-        }
-        else
-        {
-            _countOfSellerText.text = "1 / 2";
-        }
         _priceText.text = upgradeData.UpgradePrice[upgradeLevel].ToString();
 
 

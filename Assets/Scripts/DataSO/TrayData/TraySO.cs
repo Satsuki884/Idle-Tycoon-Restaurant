@@ -42,20 +42,20 @@ public class TrayData
     public string TrayName => _trayName;
     [SerializeField] private ProductType _productType;
     public ProductType ProductType => _productType;
-    [SerializeField] private bool _secondResidents;
-    [SerializeField] private int _costForSecondResidents;
-    public int CostForSecondResidents => _costForSecondResidents;
-    public bool SecondResidents
-    {
-        get
-        {
-            return _secondResidents;
-        }
-        set
-        {
-            _secondResidents = value;
-        }
-    }
+    // [SerializeField] private bool _secondResidents;
+    // [SerializeField] private int _costForSecondResidents;
+    // public int CostForSecondResidents => _costForSecondResidents;
+    // public bool SecondResidents
+    // {
+    //     get
+    //     {
+    //         return _secondResidents;
+    //     }
+    //     set
+    //     {
+    //         _secondResidents = value;
+    //     }
+    // }
     [SerializeField] private int _levelForUnlock;
     public int LevelForUnlock => _levelForUnlock;
     [SerializeField] private float _timeToServe;
