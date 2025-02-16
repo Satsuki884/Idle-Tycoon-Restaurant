@@ -63,18 +63,22 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         _savePlayerDataPath = Path.Combine(Application.persistentDataPath, _playerDataPath + ".json");
         Debug.Log(_savePlayerDataPath);
         _saveTrayDataPath = Path.Combine(Application.persistentDataPath, _trayDataPath + ".json");
         _saveAudioDataPath = Path.Combine(Application.persistentDataPath, _audioDataPath + ".json");
-        SavePlayerData(_playerData.PlayerData);
+    }
+
+
+    private void Start()
+    {
         SaveTrayData(_trayData);
+        SavePlayerData(_playerData.PlayerData);
         SaveSettingsData(_settingsData.SettingsData);
-        LoadPlayerData();
         LoadTrayData();
+        LoadPlayerData();
         LoadSettingsData();
     }
 

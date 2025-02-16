@@ -52,8 +52,9 @@ public class Tray : MonoBehaviour
         trayData = SaveManager.Instance.TrayData;
     }
 
-    private void SetCurrentTrayData()
+    public void SetCurrentTrayData()
     {
+        // Debug.Log("SetCurrentTrayData");
         GetTrayDataSO();
         foreach (var tray in trayData.TrayData)
         {
@@ -68,6 +69,7 @@ public class Tray : MonoBehaviour
 
     public void SetAvailableResident()
     {
+        // Debug.Log("SetAvailableResident");
         if (_thisTraySO.SecondResidents)
         {
             _secondResidentPrefab.SetActive(true);
@@ -78,10 +80,8 @@ public class Tray : MonoBehaviour
         }
         if (_thisTraySO.SecondResidents)
         {
-            foreach (var spot in _availableSpots)
-            {
-                spot.IsLocked = false;
-            }
+            _availableSpots.First().IsLocked = false;
+            _availableSpots.Last().IsLocked = false;
         }
         else
         {
@@ -103,7 +103,7 @@ public class Tray : MonoBehaviour
                 AddCharacterToQueue(_character);
                 _character = null;
             }
-            yield return new WaitForSeconds(_thisTraySO.TimeToServe*2);
+            yield return new WaitForSeconds(_thisTraySO.TimeToServe * 2);
         }
     }
 

@@ -49,18 +49,6 @@ public class GameManager : MonoBehaviour
 
         await _spawnManager.Initialize();
 
-        if (_inventoryManager == null)
-        {
-            _inventoryManager = FindObjectOfType<InventorySystem>();
-            if (_inventoryManager == null)
-            {
-                Debug.LogError("InventorySystem not found in the scene!");
-                return;
-            }
-        }
-
-        await _inventoryManager.Initialize();
-
         if (_playerProgressionSystem == null)
         {
             _playerProgressionSystem = FindObjectOfType<PlayerProgressionSystem>();
@@ -72,6 +60,18 @@ public class GameManager : MonoBehaviour
         }
 
         await _playerProgressionSystem.Initialize();
+
+        if (_inventoryManager == null)
+        {
+            _inventoryManager = FindObjectOfType<InventorySystem>();
+            if (_inventoryManager == null)
+            {
+                Debug.LogError("InventorySystem not found in the scene!");
+                return;
+            }
+        }
+
+        await _inventoryManager.Initialize();
 
         if (_audioManager == null)
         {

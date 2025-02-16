@@ -15,6 +15,6 @@ MonoBehaviour:
   _playerData:
     _playerLevel: 0
     _maxLevel: 5
-    _playerExperience: 95
-    _playerCoins: 100
+    _playerExperience: 435
+    _playerCoins: 10000
     _lastLongTime: 0

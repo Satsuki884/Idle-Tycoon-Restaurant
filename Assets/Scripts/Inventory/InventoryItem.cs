@@ -10,8 +10,18 @@ public class InventoryItem : MonoBehaviour
 
     public void SetItemData(TrayData trayData)
     {
-        _itemCount.text = PlayerProgressionSystem.Instance.FormatNumber(trayData.ItemCount);
+        _itemCount.text = FormatNumber(trayData.ItemCount);
         _productImage.sprite = trayData.ProductImage;
         // _itemName.text = trayData.TrayName;
+    }
+
+    private string FormatNumber(int num)
+    {
+        if (num >= 1_000_000)
+            return (num / 1_000_000f).ToString("0.#") + "m";
+        if (num >= 1_000)
+            return (num / 1_000f).ToString("0.#") + "k";
+
+        return num.ToString();
     }
 }

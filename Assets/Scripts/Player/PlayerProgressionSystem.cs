@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -36,10 +37,11 @@ public class PlayerProgressionSystem : MonoBehaviour
     void Start()
     {
         _playerData = SaveManager.Instance.PlayerData;
+        _trayData = SaveManager.Instance.TrayData;
         // InventorySystem.Instance.RefreshInventory();
         _expBar.minValue = 0;
         SetUI();
-        
+
         UpdatedPlayerMoney();
 
     }
@@ -124,17 +126,29 @@ public class PlayerProgressionSystem : MonoBehaviour
             _expirienceText.text = "Max Level";
             _nextLevelProductText.text = "All products are unlocked";
             _productImage.gameObject.SetActive(false);
-            _productImage.sprite = CreationManager.Instance.GetProductSprite(_playerData.PlayerLevel);
+            _productImage.sprite = GetProductSprite(_playerData.PlayerLevel);
             return;
         }
         else
         {
             _expirienceText.text = _playerData.PlayerExperience.ToString() + " / " + GetExpForNextLevel(_playerData.PlayerLevel + 1);
-            _nextLevelProductText.text = CreationManager.Instance.GetNextLevelsProduct(_playerData.PlayerLevel + 1);
+            _nextLevelProductText.text = GetNextLevelsProduct(_playerData.PlayerLevel + 1);
             _productImage.gameObject.SetActive(true);
-            _productImage.sprite = CreationManager.Instance.GetProductSprite(_playerData.PlayerLevel + 1);
+            _productImage.sprite = GetProductSprite(_playerData.PlayerLevel + 1);
         }
         _expBar.value = _playerData.PlayerExperience;
+    }
+
+    private string GetNextLevelsProduct(int nextLevel)
+    {
+        var nextLevelProduct = _trayData.TrayData.First(tray => tray.TrayData.LevelForUnlock == nextLevel);
+        return nextLevelProduct.TrayData.TrayName;
+    }
+
+    private Sprite GetProductSprite(int nextLevel)
+    {
+        var nextLevelProduct = _trayData.TrayData.First(tray => tray.TrayData.LevelForUnlock == nextLevel);
+        return nextLevelProduct.TrayData.ProductImage;
     }
 
     private int GetExpForNextLevel(int level)
@@ -148,7 +162,7 @@ public class PlayerProgressionSystem : MonoBehaviour
         _moneyText.text = FormatNumber(coins);
         _moneyTextUpgrade.text = FormatNumber(coins);
     }
-    public string FormatNumber(int num)
+    private string FormatNumber(int num)
     {
         if (num >= 1_000_000)
             return (num / 1_000_000f).ToString("0.#") + "m";

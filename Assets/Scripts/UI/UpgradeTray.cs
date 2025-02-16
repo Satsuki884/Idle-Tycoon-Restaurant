@@ -23,6 +23,9 @@ public class UpgradeTray : MonoBehaviour
     [SerializeField] private TMP_Text _priceText;
     [SerializeField] private Slider _slider;
 
+    [Header("Tray Name")]
+    [SerializeField] private List<Tray> _tray;
+
     private void Start()
     {
         // SetData();
@@ -59,14 +62,12 @@ public class UpgradeTray : MonoBehaviour
 
     private void BuyNewResident()
     {
-        Debug.Log("BuyNewResident");
         PlayerProgressionSystem.Instance.BuySmth(trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.CostForSecondResidents);
-        Debug.Log("We buy new resident for some cash");
         trayData.TrayData.Find(tray => tray.TrayData.TrayName == _trayName).TrayData.SecondResidents = true;
-        Debug.Log("Second resident now is true");
         AudioManager.Instance.PlaySFX(AudioManager.Instance.BuySecondResidentMusic);
         SaveManager.Instance.SaveTrayData(trayData);
-        Debug.Log("We save new data about second resident");
+        var tray = _tray.Find(tray => tray.TrayName == _trayName);
+        tray.SetAvailableResident();
         UpdatePanel(_trayName);
     }
 

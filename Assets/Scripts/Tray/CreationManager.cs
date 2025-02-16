@@ -141,16 +141,4 @@ public class CreationManager : MonoBehaviour
         }
 
     }
-
-    public string GetNextLevelsProduct(int nextLevel)
-    {
-        var nextLevelProduct = trayData.TrayData.First(tray => tray.TrayData.LevelForUnlock == nextLevel);
-        return nextLevelProduct.TrayData.TrayName;
-    }
-
-    public Sprite GetProductSprite(int nextLevel)
-    {
-        var nextLevelProduct = trayData.TrayData.First(tray => tray.TrayData.LevelForUnlock == nextLevel);
-        return nextLevelProduct.TrayData.ProductImage;
-    }
 }

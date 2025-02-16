@@ -17,12 +17,12 @@ MonoBehaviour:
     _trayName: BlueBottle
     _productType: 0
     _secondResidents: 0
-    _costForSecondResidents: 50
+    _costForSecondResidents: 400
     _levelForUnlock: 0
     _timeToServe: 4
     _productUpgradeData: {fileID: 11400000, guid: f3c9c2f2870a88743baf0d72da48d86f, type: 2}
     _upgradeLevel: 0
     _isActive: 1
     _cost: 0
-    _itemCount: 20
+    _itemCount: 40
     _productImage: {fileID: 21300000, guid: baa20127948951244a6aebaf57e86677, type: 3}
