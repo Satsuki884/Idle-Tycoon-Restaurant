@@ -28,11 +28,14 @@ public class Tray : MonoBehaviour
     [SerializeField] private string _trayName;
     [SerializeField] public string TrayName => _trayName;
     [SerializeField] private Transform _endPositions;
+    [SerializeField] private Transform _secondEndPoint;
     [SerializeField] private Transform _queuePoint;
     [SerializeField] private List<TrayQueuePoint> _queuePoints;
     [SerializeField] public Transform _spawnZone;
     [SerializeField] private List<TraySpot> _availableSpots;
-    public List<TraySpot> AvailableSpots {
+    [SerializeField] private Transform _spawnListZone;
+    public List<TraySpot> AvailableSpots
+    {
         get
         {
             return _availableSpots;
@@ -109,7 +112,7 @@ public class Tray : MonoBehaviour
         {
             if (!QueueIsFull() && _thisTraySO.IsActive)
             {
-                _character = _spawnManager.SpawnCharacters(_spawnZone);
+                _character = _spawnManager.SpawnCharacters(_spawnZone, _spawnListZone);
                 _waitingQueue.Enqueue(_character);
                 AddCharacterToQueue(_character);
                 _character = null;
@@ -155,19 +158,34 @@ public class Tray : MonoBehaviour
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
         spot.isFree = true;
         TryMoveToSpot();
-        character.MoveTo(_endPositions.position, () =>
+        if (spot == _availableSpots.Last())
+        {
+            character.MoveTo(_endPositions.position, () =>
         {
             character.MoveTo(_spawnZone.position, () =>
             {
                 Destroy(character.gameObject);
             });
         });
+        }
+        else
+        //  if (spot == _availableSpots.First())
+        {
+            character.MoveTo(_secondEndPoint.position, () =>
+            {
+                character.MoveTo(_spawnZone.position, () =>
+                {
+                    Destroy(character.gameObject);
+                });
+            });
+        }
     }
 
     public bool QueueIsFull()
     {
-        if (_waitingQueue.Count >= _queuePoints.Count)
+        if (_waitingQueue.Count >= _queuePoints.Count || _spawnListZone.childCount >= _queuePoints.Count)
         {
+            Debug.Log("true");
             return true;
         }
         else

@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trayName: RedBottle
   _endPositions: {fileID: 0}
+  _secondEndPoint: {fileID: 7026593895012273183}
   _queuePoint: {fileID: 0}
   _queuePoints:
   - position: {fileID: 0}
@@ -220,7 +221,6 @@ MonoBehaviour:
     IsLocked: 0
   _spawnManager: {fileID: 0}
   _productType: 2
-  _isQueueFool: 0
   _secondResidentPrefab: {fileID: 8849985352932228146}
 --- !u!1001 &43428443673028806
 PrefabInstance:

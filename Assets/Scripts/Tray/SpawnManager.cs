@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _characterDayPrefab;
     [SerializeField] private List<GameObject> _characterNightPrefab;
-    [SerializeField] private Transform _spawnList;
+    // [SerializeField] private Transform _spawnList;
     public static SpawnManager _instance;
     public static SpawnManager Instance => _instance;
 
@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
         await Task.Delay(100);
     }
 
-    public Character SpawnCharacters(Transform _spawnZone)
+    public Character SpawnCharacters(Transform _spawnZone, Transform _spawnList)
     {
         List<GameObject> selectedPrefabs = IsNightTime() ? _characterNightPrefab : _characterDayPrefab;
         GameObject newCharacter = Instantiate(selectedPrefabs[UnityEngine.Random.Range(0, selectedPrefabs.Count)], _spawnZone.position, Quaternion.identity);
