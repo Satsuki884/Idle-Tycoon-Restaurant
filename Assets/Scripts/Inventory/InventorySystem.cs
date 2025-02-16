@@ -35,9 +35,6 @@ public class InventorySystem : MonoBehaviour
 
     public void RefreshInventory()
     {
-        Debug.Log("CreateInventory");
-
-        // Удаляем все дочерние элементы
         foreach (Transform child in _inventoryItemsContainer)
         {
             Destroy(child.gameObject);
@@ -56,13 +53,11 @@ public class InventorySystem : MonoBehaviour
             return;
         }
 
-        // Проходим по всем элементам инвентаря
         foreach (var tray in _trayData.TrayData)
         {
             SetInventoryItem(tray.TrayData);
         }
 
-        // Устанавливаем новый размер контейнера
         RectTransform rectTransform = _inventoryItemsContainer.GetComponent<RectTransform>();
         rectTransform.sizeDelta = new Vector2(xOffset, rectTransform.sizeDelta.y);
     }
