@@ -31,12 +31,11 @@ public class CreationManager : MonoBehaviour
     {
         trayData = SaveManager.Instance.TrayData;
 
-        UpdateView();
-
         foreach (var tr in _addTray)
         {
             tr.SetActive(false);
         }
+        UpdateView();
     }
 
     public void UpdateView()
@@ -117,6 +116,7 @@ public class CreationManager : MonoBehaviour
                 tray.TrayData.IsActive = true;
                 SaveManager.Instance.SaveTrayData(trayData);
                 var playerData = SaveManager.Instance.PlayerData;
+                UpdateView();
                 if (playerData.PlayerCoins >= tray.TrayData.Cost)
                 {
                     PlayerProgressionSystem.Instance.BuySmth(tray.TrayData.Cost);
@@ -136,9 +136,11 @@ public class CreationManager : MonoBehaviour
                         tr.SetActive(false);
                     }
                 }
-
+                UpdateView();
             }
+            UpdateView();
         }
+        UpdateView();
 
     }
 }

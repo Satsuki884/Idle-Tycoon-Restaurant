@@ -28,16 +28,16 @@ public class SpawnManager : MonoBehaviour
 
     public Character SpawnCharacters(Transform _spawnZone, Transform _spawnList)
     {
-        List<GameObject> selectedPrefabs = IsNightTime() ? _characterNightPrefab : _characterDayPrefab;
-        GameObject newCharacter = Instantiate(selectedPrefabs[UnityEngine.Random.Range(0, selectedPrefabs.Count)], _spawnZone.position, Quaternion.identity);
+        // List<GameObject> selectedPrefabs = IsNightTime() ? _characterNightPrefab : _characterDayPrefab;
+        GameObject newCharacter = Instantiate(_characterDayPrefab[UnityEngine.Random.Range(0, _characterDayPrefab.Count)], _spawnZone.position, Quaternion.identity);
         newCharacter.transform.SetParent(_spawnList, true);
         Character character = newCharacter.GetComponent<Character>();
         return character;
     }
 
-    private bool IsNightTime()
-    {
-        int hour = DateTime.Now.Hour;
-        return hour >= 20 || hour < 6; // Ночь с 18:00 до 06:00
-    }
+    // private bool IsNightTime()
+    // {
+    //     int hour = DateTime.Now.Hour;
+    //     return hour >= 20 || hour < 6; // Ночь с 18:00 до 06:00
+    // }
 }

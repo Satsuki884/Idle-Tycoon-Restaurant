@@ -16,7 +16,7 @@ MonoBehaviour:
     _experiencePerOrder: 15
     _trayName: RedBottle
     _productType: 2
-    _secondResidents: 0
+    _secondResidents: 1
     _costForSecondResidents: 6400
     _levelForUnlock: 2
     _timeToServe: 3

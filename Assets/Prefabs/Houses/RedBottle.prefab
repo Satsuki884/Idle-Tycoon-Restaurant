@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: RedBottle
-  _leftEndPosition: {fileID: 0}
+  _leftEndPosition: {fileID: 7026593895012273183}
   _rightEndPosition: {fileID: 0}
   _spawnZone: {fileID: 0}
   _availableSpots:

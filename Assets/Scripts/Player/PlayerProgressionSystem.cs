@@ -183,5 +183,6 @@ public class PlayerProgressionSystem : MonoBehaviour
         SaveManager.Instance.SavePlayerData(_playerData);
         UpdatedPlayerMoney();
         InventorySystem.Instance.RefreshInventory();
+        
     }
 }

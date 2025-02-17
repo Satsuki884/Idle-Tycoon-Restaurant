@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae77fae75b7a414297fd00f78379aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trayName: BrounBottle
+  _trayName: BrownBottle
   _leftEndPosition: {fileID: 0}
   _rightEndPosition: {fileID: 0}
   _spawnZone: {fileID: 0}

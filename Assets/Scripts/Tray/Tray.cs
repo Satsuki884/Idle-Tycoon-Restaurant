@@ -21,6 +21,12 @@ public class Tray : MonoBehaviour
     [SerializeField] private Transform _rightEndPosition;
     [SerializeField] private Transform _spawnZone;
     [SerializeField] private List<TraySpot> _availableSpots;
+    // public void SetSecondAvailableSpots()
+    // {
+    //     _secondResidentPrefab.SetActive(_thisTraySO.SecondResidents);
+    //     _availableSpots.Find(s => s.IsLocked).IsLocked = false;
+    //     _availableSpots.Find(s => s.isFree).isFree = true;
+    // }
     [SerializeField] private Transform _spawnListZone;
     [SerializeField] private SpawnManager _spawnManager;
     [SerializeField] private ProductType _productType;
@@ -31,7 +37,7 @@ public class Tray : MonoBehaviour
     private TrayDataSO trayData;
     private TrayData _thisTraySO;
     private int _countCharactersInSpot;
-    
+
     private void Start()
     {
         SetCurrentTrayData();
@@ -70,16 +76,20 @@ public class Tray : MonoBehaviour
     {
         while (true)
         {
-            if(!_thisTraySO.IsActive)
+            if (!_thisTraySO.IsActive)
             {
                 yield return null;
                 continue;
             }
-            
+
             Character newCharacter = null;
 
-            //there are no queue so we send character to spot
-            if (_queueController.IsQueueEmpty && _countCharactersInSpot < 2)
+            // GetTrayDataSO();
+
+            int maxCharacters = _thisTraySO.SecondResidents ? 2 : 1;
+            Debug.Log(maxCharacters);
+
+            if (_queueController.IsQueueEmpty && _countCharactersInSpot < maxCharacters)
             {
                 newCharacter = _spawnManager.SpawnCharacters(_spawnZone, _spawnListZone);
                 
@@ -87,7 +97,6 @@ public class Tray : MonoBehaviour
                 _waitingQueue.Enqueue(newCharacter);
                 TryMoveToSpot();
             }
-            //add new character to queue
             else if (_queueController.IsQueueSlotAvailableToAdd && !_queueController.IsUpdateQueueInProgress)
             {
                 newCharacter = _spawnManager.SpawnCharacters(_spawnZone, _spawnListZone);
@@ -137,19 +146,24 @@ public class Tray : MonoBehaviour
         float money = _thisTraySO.ProductUpgradeData.UpgradePrice[_thisTraySO.UpgradeLevel];
 
         PlayerProgressionSystem.Instance.BuyProduct((int)exp, (int)money, _thisTraySO.ProductType);
-        
+        var upgradeTray = GameObject.Find("UpgradeTray");
+        if (upgradeTray != null)
+        {
+            upgradeTray.GetComponent<UpgradeTray>().UpdatePanel(_thisTraySO.TrayName);
+        }
+
         yield return new WaitForSeconds(_thisTraySO.TimeToServe);
 
         spot.isFree = true;
 
         StartCoroutine(SendCharacterFromQueueToSpot());
-        
+
         character.MoveTo(spot.IsLeft ? _leftEndPosition.position : _rightEndPosition.position, () =>
         {
             character.MoveTo(_spawnZone.position, () => Destroy(character.gameObject));
         });
     }
-    
+
     private IEnumerator SendCharacterFromQueueToSpot()
     {
         yield return new WaitUntil(() => _queueController.IsQueueEmpty == false);

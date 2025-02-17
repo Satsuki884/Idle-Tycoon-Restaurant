@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trayData:
     _experiencePerOrder: 20
-    _trayName: BrounBottle
+    _trayName: BrownBottle
     _productType: 3
-    _secondResidents: 0
+    _secondResidents: 1
     _costForSecondResidents: 24000
     _levelForUnlock: 3
     _timeToServe: 2.5

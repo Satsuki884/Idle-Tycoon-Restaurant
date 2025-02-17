@@ -16,7 +16,7 @@ MonoBehaviour:
     _experiencePerOrder: 10
     _trayName: GreenBottle
     _productType: 1
-    _secondResidents: 0
+    _secondResidents: 1
     _costForSecondResidents: 1600
     _levelForUnlock: 1
     _timeToServe: 3.5
