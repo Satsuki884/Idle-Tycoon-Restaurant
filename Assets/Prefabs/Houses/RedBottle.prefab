@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 7713250580934702045}
   - component: {fileID: 2647488503863587697}
   - component: {fileID: 6325939266904469440}
+  - component: {fileID: 125735595473119757}
   m_Layer: 0
   m_Name: RedBottle
   m_TagString: Untagged
@@ -195,36 +196,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trayName: RedBottle
-  _leftEndPOsition: {fileID: 7026593895012273183}
+  _leftEndPosition: {fileID: 0}
   _rightEndPosition: {fileID: 0}
-  _queuePoint: {fileID: 0}
-  _queuePoints:
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
-  - position: {fileID: 0}
-    isFree: 1
   _spawnZone: {fileID: 0}
   _availableSpots:
-  - position: {fileID: 0}
+  - transform: {fileID: 0}
     isFree: 1
     IsLocked: 0
     IsLeft: 1
-  - position: {fileID: 0}
+  - transform: {fileID: 0}
     isFree: 1
     IsLocked: 0
     IsLeft: 0
   _spawnListZone: {fileID: 0}
   _spawnManager: {fileID: 0}
   _productType: 2
+  _queueController: {fileID: 125735595473119757}
   _secondResidentPrefab: {fileID: 8849985352932228146}
+--- !u!114 &125735595473119757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3589604094272576350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8efa816bfd72c48b6f55dd68d8a944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsUpdateQueueInProgress: 0
+  _queuePoints:
+  - index: 0
+    isFree: 1
+    character: {fileID: 0}
+    transform: {fileID: 0}
+  - index: 0
+    isFree: 1
+    character: {fileID: 0}
+    transform: {fileID: 0}
+  - index: 0
+    isFree: 1
+    character: {fileID: 0}
+    transform: {fileID: 0}
+  - index: 0
+    isFree: 1
+    character: {fileID: 0}
+    transform: {fileID: 0}
+  - index: 0
+    isFree: 1
+    character: {fileID: 0}
+    transform: {fileID: 0}
+  - index: 0
+    isFree: 1
+    character: {fileID: 0}
+    transform: {fileID: 0}
 --- !u!1001 &43428443673028806
 PrefabInstance:
   m_ObjectHideFlags: 0
